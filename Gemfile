@@ -40,6 +40,10 @@ gem 'dotenv-rails', groups: [:development, :test]
 # Added cloudinary
 gem 'cloudinary', '~> 1.12.0'
 
+# Faker added for seeding
+
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
