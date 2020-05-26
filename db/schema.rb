@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2020_05_26_145735) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "favorite_vendors", force: :cascade do |t|
+    t.bigint "vendor_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_favorite_vendors_on_user_id"
+    t.index ["vendor_id"], name: "index_favorite_vendors_on_vendor_id"
+  end
+
   create_table "guests", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -49,6 +58,30 @@ ActiveRecord::Schema.define(version: 2020_05_26_145735) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_guests_on_user_id"
+  end
+
+  create_table "product_services", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.string "description"
+    t.string "category"
+    t.bigint "vendor_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["vendor_id"], name: "index_product_services_on_vendor_id"
+  end
+
+  create_table "quotes", force: :cascade do |t|
+    t.integer "total_price"
+    t.string "list_of_services"
+    t.datetime "date"
+    t.boolean "booked"
+    t.bigint "vendor_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_quotes_on_user_id"
+    t.index ["vendor_id"], name: "index_quotes_on_vendor_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,6 +98,29 @@ ActiveRecord::Schema.define(version: 2020_05_26_145735) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vendors", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "category"
+    t.integer "phone_number"
+    t.text "description"
+    t.index ["email"], name: "index_vendors_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_vendors_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favorite_vendors", "users"
+  add_foreign_key "favorite_vendors", "vendors"
   add_foreign_key "guests", "users"
+
+  add_foreign_key "product_services", "vendors"
+
+  add_foreign_key "quotes", "users"
+  add_foreign_key "quotes", "vendors"
 end
