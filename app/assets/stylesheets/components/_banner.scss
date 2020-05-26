@@ -1,15 +1,17 @@
 .header-banner {
- padding: 100px 0;
+ padding: 90px 0;
  margin: 0 auto;
  width: 800px;
  
  h1 {
    font-weight: 700;
-   font-size: 80px;
-   color: $indian-red;
+   font-size: 90px;
+   color: #e4314f;
+   text-shadow: 0px 0px 8px rgba(110, 192, 255, 0.219);
  }
 
  p{
    font-size: 24px;
+   color:white;
  }
 }
