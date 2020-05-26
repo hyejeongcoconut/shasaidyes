@@ -1,1 +1,17 @@
 // Specific CSS for your home-page
+.body-wrap {
+background-image: url('https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?cs=srgb&dl=man-and-woman-kissing-2253870.jpg&fm=jpg');
+background-size: cover;
+min-height: 100vh;
+position: relative;
+
+}
+
+// class i want to implement for JUST root path
+.root-nav {
+  position: absolute;
+  top: 0;
+  background: #ffffff81;
+  box-shadow: 0 0 10px 0px #969696;
+}
+
