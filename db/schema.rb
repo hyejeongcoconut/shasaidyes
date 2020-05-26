@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_05_25_143032) do
+ActiveRecord::Schema.define(version: 2020_05_26_072419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +60,17 @@ ActiveRecord::Schema.define(version: 2020_05_25_143032) do
     t.index ["user_id"], name: "index_guests_on_user_id"
   end
 
+  create_table "product_services", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.string "description"
+    t.string "category"
+    t.bigint "vendor_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["vendor_id"], name: "index_product_services_on_vendor_id"
+  end
+
   create_table "quotes", force: :cascade do |t|
     t.integer "total_price"
     t.string "list_of_services"
@@ -108,8 +118,7 @@ ActiveRecord::Schema.define(version: 2020_05_25_143032) do
   add_foreign_key "favorite_vendors", "users"
   add_foreign_key "favorite_vendors", "vendors"
   add_foreign_key "guests", "users"
-
+  add_foreign_key "product_services", "vendors"
   add_foreign_key "quotes", "users"
   add_foreign_key "quotes", "vendors"
-
 end
