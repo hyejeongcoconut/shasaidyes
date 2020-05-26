@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_05_26_072419) do
-
-
+ActiveRecord::Schema.define(version: 2020_05_26_145735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_072419) do
     t.string "phone_number"
     t.string "address"
     t.string "email"
-    t.boolean "rsvp"
+    t.boolean "rsvp", default: false
     t.integer "additional_guest_numbers"
     t.string "food_preference"
     t.bigint "user_id", null: false

@@ -1,0 +1,10 @@
+<%= simple_form_for [@user, @guest] do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :phone_number %>
+  <%= f.input :address %>
+  <%= f.input :email %>
+  <%= f.input :additional_guest_numbers %>
+  <%= f.input :food_preference %>
+  <%= f.submit "Add new guest", class: 'btn btn-primary'%>
+<% end %>

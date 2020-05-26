@@ -1,0 +1,11 @@
+<h1>Show detail</h1>
+<p><%= @guest.first_name %></p>
+<p><%= @guest.last_name %></p>
+<p><%= @guest.phone_number %></p>
+<p><%= @guest.address %></p>
+<p><%= @guest.email %></p>
+<p><%= @guest.rsvp %></p>
+<p><%= @guest.additional_guest_numbers %></p>
+<p><%= @guest.food_preference %></p>
+<%= link_to 'Edit', edit_user_guest_path(current_user.id, @guest.id), class: 'btn btn-warning' %>
+
