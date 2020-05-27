@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
   has_many :guests, dependent: :destroy
 
+  has_many :vendor, through: :favorite_vendor
+
   has_one_attached :photo
 end
