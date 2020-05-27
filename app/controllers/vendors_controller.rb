@@ -4,6 +4,16 @@ class VendorsController < ApplicationController
 
   def index
     @vendors = Vendor.all
+    if params[:query].present?
+      @vendors = Vendor.search_by_category_and_price_and_city(params[:query])
+    else
+      @vendors = Vendor.all
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: { vendors: @vendors } }
+    end
   end
 
   def show
