@@ -8,4 +8,11 @@ class Vendor < ApplicationRecord
   has_many :users, through: :favorite_vendor
 
   has_one_attached :photo
+
+  include PgSearch::Model
+  pg_search_scope :search_by_category_and_price_and_city,
+    against: [ :category, :city ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end

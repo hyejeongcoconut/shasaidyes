@@ -47,6 +47,10 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 # Pundit added
 gem 'pundit'
 
+# PG search added
+
+gem 'pg_search', '~> 2.3.0'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
