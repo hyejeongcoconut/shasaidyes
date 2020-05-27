@@ -3,6 +3,15 @@ import { Controller } from "stimulus";
 export default class extends Controller {
   static targets = [ 'result' ];
 
+  greetWithKeyboard(event) {
+    if (event.keyCode == 13) {
+      console.log('Hello');
+      this.refresh()
+    }
+  }
+
+
+
   refresh(event) {
     const query = document.querySelector("#search_query");
     const queryValue = query.value
@@ -14,7 +23,11 @@ export default class extends Controller {
         console.log(data.vendors)
         data.vendors.forEach((result)=>{
           const piece = `
-                <p>Name: ${result.name}, Category: ${result.category}, City: ${result.city} </p>`
+                <p>Name: ${result.name},
+                   Category: ${result.category},
+                   City: ${result.city},
+                   <a href="vendors/${result.id}">See +details</a>
+                   </p>`
           search_div.insertAdjacentHTML("beforeend", piece);
         })
     });

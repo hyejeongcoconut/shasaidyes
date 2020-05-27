@@ -18,7 +18,7 @@ class VendorsController < ApplicationController
 
   def show
     @vendor = Vendor.find(params[:id])
-    authorize @vender
+    #authorize @vender
   end
 
 end
