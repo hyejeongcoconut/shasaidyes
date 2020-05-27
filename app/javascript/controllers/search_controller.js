@@ -5,7 +5,6 @@ export default class extends Controller {
 
   greetWithKeyboard(event) {
     if (event.keyCode == 13) {
-      console.log('Hello');
       this.refresh()
     }
   }

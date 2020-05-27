@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     resources :products
   end
 
+  resources :favorite_vendors,only: [:create]
+
 end
