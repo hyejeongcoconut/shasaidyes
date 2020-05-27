@@ -74,7 +74,9 @@ lovingyou = Vendor.new(
   password: "123123",
   category: categoryes.sample,
   phone_number: Faker::PhoneNumber,
-  description: "loving you wishes all our brides to feel special."
+  description: "loving you wishes all our brides to feel special.",
+  address: "haeundae-gu, busan, Republic of Korea",
+  city: "Busan"
 )
 puts "loving you created"
 
@@ -87,7 +89,9 @@ brideandyou = Vendor.new(
   password: "123123",
   category: categoryes.sample,
   phone_number: Faker::PhoneNumber,
-  description: "Designer heels."
+  description: "Designer heels.",
+  address: "130-9, ChungDam-dong, GangNam-gu, Seoul, Republic of Korea",
+  city: "Seoul"
 )
 puts "Brideandyou created"
 
@@ -100,7 +104,9 @@ laluce = Vendor.new(
   password: "123123",
   category: categoryes.sample,
   phone_number: Faker::PhoneNumber,
-  description: "Perfect place for small and private wedding."
+  description: "Perfect place for small and private wedding.",
+  address: "Euler 128b, Polanco 11510 México, D.F. Mexico",
+  city: "Mexico city"
 )
 puts "laluce created"
 
