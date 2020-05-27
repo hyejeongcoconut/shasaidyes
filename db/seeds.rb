@@ -106,24 +106,26 @@ puts "laluce created"
 laluce.photo.attach(io:URI.open('https://res.cloudinary.com/dambigbiy/image/upload/v1590482344/mbkpx1xjolb0ll8zkwa5.jpg'), filename: 'wedding21.jpg', content_type: 'image/jpg')
 laluce.save!
 
+
+
 #------quote's seed -----------------------------------------------------------------------------------------
 
-service = ["shoes", "dress", "venue", "flower"]
-vendor = [laluce, brideandyou, lovingyou]
-all = User.all
-ids = []
+# service = ["shoes", "dress", "venue", "flower"]
+# vendor = [laluce, brideandyou, lovingyou]
+# all = User.all
+# ids = []
 
-all.each {|x| ids << x.id }
+# all.each {|x| ids << x.id }
 
 
-5.times do
-  Quote.create(
-    total_price: Faker::Number.between(from: 1000000, to: 50000000),
-    list_of_services: service.sample,
-    date: Faker::Date.forward(days: 4),
-    booked: true,
-    vendor: vendor.sample,
-    user_id: ids.sample
-  )
-  puts "created"
-end
+# 5.times do
+#   Quote.create(
+#     total_price: Faker::Number.between(from: 1000000, to: 50000000),
+#     list_of_services: service.sample,
+#     date: Faker::Date.forward(days: 4),
+#     booked: true,
+#     vendor: vendor.sample,
+#     user_id: ids.sample
+#   )
+#   puts "created"
+# end
