@@ -1,3 +1,3 @@
-class ProductService < ApplicationRecord
+class Product < ApplicationRecord
   belongs_to :vendor
 end
