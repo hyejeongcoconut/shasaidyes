@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_024526) do
-
-
+ActiveRecord::Schema.define(version: 2020_05_27_032747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_024526) do
     t.index ["user_id"], name: "index_guests_on_user_id"
   end
 
-  create_table "product_services", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "price"
     t.string "description"
@@ -70,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_024526) do
     t.bigint "vendor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["vendor_id"], name: "index_product_services_on_vendor_id"
+    t.index ["vendor_id"], name: "index_products_on_vendor_id"
   end
 
   create_table "quotes", force: :cascade do |t|
@@ -114,6 +112,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_024526) do
     t.text "description"
     t.string "address"
     t.string "city"
+    t.integer "average_price"
     t.index ["email"], name: "index_vendors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_vendors_on_reset_password_token", unique: true
   end
@@ -122,7 +121,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_024526) do
   add_foreign_key "favorite_vendors", "users"
   add_foreign_key "favorite_vendors", "vendors"
   add_foreign_key "guests", "users"
-  add_foreign_key "product_services", "vendors"
+  add_foreign_key "products", "vendors"
   add_foreign_key "quotes", "users"
   add_foreign_key "quotes", "vendors"
 end
