@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :guests
   end
 
-  resources :vendors
+  resources :vendors ,only: [] do
+    resources :products
+  end
 
 end

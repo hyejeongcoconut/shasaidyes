@@ -10,7 +10,7 @@
 User.destroy_all
 Guest.destroy_all
 Vendor.destroy_all
-Quote.destroy_all
+Product.destroy_all
 
 h = User.new(
   first_name: "Hyejeong",
@@ -67,11 +67,12 @@ all.each {|x| ids << x.id }
   puts "Done !"
 end
 #------vendor seed ----------------------------------------------------------------------------------------
+categoryes = ["Reception Venue", "Photographers", "Bridal Salons", "Wedding Planner", "Wedding Cakes", "Honeymoon", "Caterers"]
 lovingyou = Vendor.new(
   email: "hello@lovingyou.co.kr",
   name: "loving you",
   password: "123123",
-  category: "wedding dress",
+  category: categoryes.sample,
   phone_number: Faker::PhoneNumber,
   description: "loving you wishes all our brides to feel special."
 )
@@ -84,7 +85,7 @@ brideandyou = Vendor.new(
   email: "hello33@brideandyou.co.kr",
   name: "Bride and you",
   password: "123123",
-  category: "wedding shoes",
+  category: categoryes.sample,
   phone_number: Faker::PhoneNumber,
   description: "Designer heels."
 )
@@ -97,7 +98,7 @@ laluce = Vendor.new(
   email: "hello@laluce.co.kr",
   name: "laluce",
   password: "123123",
-  category: "wedding venue",
+  category: categoryes.sample,
   phone_number: Faker::PhoneNumber,
   description: "Perfect place for small and private wedding."
 )
@@ -106,24 +107,48 @@ puts "laluce created"
 laluce.photo.attach(io:URI.open('https://res.cloudinary.com/dambigbiy/image/upload/v1590482344/mbkpx1xjolb0ll8zkwa5.jpg'), filename: 'wedding21.jpg', content_type: 'image/jpg')
 laluce.save!
 
+#------------------------------------------------ product's seed --------------------------------------------------------------------
+
+all_vendor = Vendor.all
+idss = []
+
+all_vendor.each {|x| idss << x.id }
+
+20.times do
+  Product.create!(
+    name: Faker::Ancient.god,
+    price: Faker::Commerce.price,
+    description: "best product's in the world",
+    category: categoryes.sample,
+    vendor_id: idss.sample
+  )
+  puts "okay"
+end
+
+
+
+
+
+
+
 #------quote's seed -----------------------------------------------------------------------------------------
 
-service = ["shoes", "dress", "venue", "flower"]
-vendor = [laluce, brideandyou, lovingyou]
-all = User.all
-ids = []
+# service = ["shoes", "dress", "venue", "flower"]
+# vendor = [laluce, brideandyou, lovingyou]
+# all = User.all
+# ids = []
 
-all.each {|x| ids << x.id }
+# all.each {|x| ids << x.id }
 
 
-5.times do
-  Quote.create(
-    total_price: Faker::Number.between(from: 1000000, to: 50000000),
-    list_of_services: service.sample,
-    date: Faker::Date.forward(days: 4),
-    booked: true,
-    vendor: vendor.sample,
-    user_id: ids.sample
-  )
-  puts "created"
-end
+# 5.times do
+#   Quote.create(
+#     total_price: Faker::Number.between(from: 1000000, to: 50000000),
+#     list_of_services: service.sample,
+#     date: Faker::Date.forward(days: 4),
+#     booked: true,
+#     vendor: vendor.sample,
+#     user_id: ids.sample
+#   )
+#   puts "created"
+# end
