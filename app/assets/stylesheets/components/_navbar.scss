@@ -2,6 +2,9 @@
   justify-content: space-between;
   background: #ffffffb6;
   box-shadow: 0 0 10px 0px #ffd1d1;
+    h4{
+    margin: 0;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -20,4 +23,15 @@
   box-shadow: 0 0 20px 0px #ffffff81;
   color: white;
   width: 100%;
+  h4{
+    margin: 0;
+  }
+}
+
+.navbtn{
+  padding: 0 20px;
+  :hover{
+    background-color: rgba(255, 59, 59, 0.493);
+    cursor: pointer;
+  }
 }
