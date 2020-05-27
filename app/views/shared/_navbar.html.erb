@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" <% if controller.controller_name == "pages" && controller.action_name == "home" %>id="homenav"<%end%>>
   <div class="container">
   <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "ringlogo1.svg" %>
