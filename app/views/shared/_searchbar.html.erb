@@ -3,4 +3,18 @@
       What would you like to search?
   </h5>
   <input class="search__input" type="text" placeholder="Search">
+  <%= simple_form_for :search, url: vendors_path, method: :get do |f| %>
+    <div class="search-form-control form-group">
+      <%= text_field_tag :query,
+          params[:query],
+          class: "search__input",
+          placeholder: "Find a vendor"
+        %>
+      <button name="button" type="submit" class="btn btn-flat">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  <% end %>
 </div>
+
+
