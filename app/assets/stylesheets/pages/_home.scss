@@ -1,1 +1,25 @@
 // Specific CSS for your home-page
+$bgimg1: url("https://images.unsplash.com/photo-1513262834354-6b2bca9b5b8d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=colette-allen-1qH1GOt7Q-E-unsplash.jpg");
+$bgimg2: url("https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?cs=srgb&dl=man-and-woman-kissing-2253870.jpg&fm=jpg");
+$bgimg3: url("https://images.unsplash.com/photo-1505765052322-75804bb2e5f1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=pablo-heimplatz-OSboZGvoEz4-unsplash.jpg");
+$bgimg4: url("https://images.unsplash.com/photo-1499568509606-4f9b771232ed?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=priscilla-du-preez-9vHPCKymSh0-unsplash.jpg");
+$bgimg5: url("https://images.pexels.com/photos/3082764/pexels-photo-3082764.jpeg?cs=srgb&dl=low-angle-photography-of-bride-and-groom-dancing-3082764.jpg&fm=jpg");
+$bgimg6: url("https://images.unsplash.com/photo-1550257130-f32d770228ac?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=hannah-busing-x3PXh3ljAl0-unsplash.jpg");
+
+.body-wrap {
+background-image: $bgimg6;
+background-size: cover;
+background-position: center center;
+min-height: 100vh;
+position: relative;
+
+}
+
+// class i want to implement for JUST root path
+.root-nav {
+  position: absolute;
+  top: 0;
+  background: #ffffff81;
+  box-shadow: 0 0 10px 0px #969696;
+}
+
