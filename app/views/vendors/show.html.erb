@@ -1,9 +1,16 @@
 <h1>Show details</h1>
-<%= @vendor.name %>
-<%= @vendor.category %>
-<%= @vendor.phone_number %>
-<%= @vendor.description %>
-<%= @vendor.address %>
-<%= @vendor.city %>
-<%= @vendor.average_price %>
-<a href="#" class="btn btn-primary">Add to favorites</a>
+<div data-controller="favoritevendor">
+    <%= @vendor.name %>
+    <%= @vendor.category %>
+    <%= @vendor.phone_number %>
+    <%= @vendor.description %>
+    <%= @vendor.address %>
+    <%= @vendor.city %>
+    <%= @vendor.average_price %></p>
+  <div data-target="favoritevendor.favorite" id="vendor-data">
+    <span id="user_id" style="display:none;"><%= current_user.id %></span>
+    <span id="vendor_id" style="display:none;"><%= @vendor.id %></span>
+  </div>
+  <button class="btn btn-primary" data-action="click->favoritevendor#add" >Add to favorites</button>
+</div>
+
