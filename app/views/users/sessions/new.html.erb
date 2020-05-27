@@ -1,5 +1,5 @@
 <div class="login-form-container">
-  <h1>Log in</h1>
+  <h1>Log in for <%= resource_name %></h1>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">

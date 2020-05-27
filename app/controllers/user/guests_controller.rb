@@ -1,4 +1,4 @@
-class GuestsController < ApplicationController
+class User::GuestsController < User::BaseController
   def index
     @guests = Guest.where(user_id: current_user.id)
   end
