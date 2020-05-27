@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2020_05_27_024526) do
 
-ActiveRecord::Schema.define(version: 2020_05_26_145735) do
 
 
   # These are extensions that must be enabled in order to support this database
@@ -112,6 +112,8 @@ ActiveRecord::Schema.define(version: 2020_05_26_145735) do
     t.string "category"
     t.integer "phone_number"
     t.text "description"
+    t.string "address"
+    t.string "city"
     t.index ["email"], name: "index_vendors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_vendors_on_reset_password_token", unique: true
   end

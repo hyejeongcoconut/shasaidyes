@@ -108,12 +108,22 @@ laluce.save!
 
 #------quote's seed -----------------------------------------------------------------------------------------
 
-quote_one = Quote.new(
-  total_price: 1000,
-  list_of_services: "wedding shoes",
-  date: 2020-05-02,
-  booked: true,
-  vendor: lovingyou,
-  user: m
-)
-quote_one.save
+service = ["shoes", "dress", "venue", "flower"]
+vendor = [laluce, brideandyou, lovingyou]
+all = User.all
+ids = []
+
+all.each {|x| ids << x.id }
+
+
+5.times do
+  Quote.create(
+    total_price: Faker::Number.between(from: 1000000, to: 50000000),
+    list_of_services: service.sample,
+    date: Faker::Date.forward(days: 4),
+    booked: true,
+    vendor: vendor.sample,
+    user_id: ids.sample
+  )
+  puts "created"
+end
