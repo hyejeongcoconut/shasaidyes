@@ -4,11 +4,14 @@ class User::FavoriteVendorsController < User::BaseController
     @favorite_vendor = FavoriteVendor.new
     @favorite_vendor.user = current_user
     @favorite_vendor.vendor = @vendor
-    if @favorite_vendor.save
-      redirect_to vendors_path
-    else
 
-    end
+    @favorite_vendor.save
+    #redirect_to vendors_path
+    respond_to do |format|
+      format.html
+      format.json { render json: { favorite_vendors: @favorite_vendor } }
+
+
   end
 
   private
