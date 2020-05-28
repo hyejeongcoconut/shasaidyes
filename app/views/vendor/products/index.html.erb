@@ -1,0 +1,10 @@
+<h1>Product Index</h1>
+<% @products.each do |product| %>
+  <p><%= product.name %>
+    <%= link_to "View details. . .",vendor_product_path(product.id), class: 'btn btn-success' %>
+    <%= link_to 'Delete', vendor_product_path(product.id),
+                 method: :delete, data: { confirm: 'Are you sure?' },
+                 class: "btn btn-danger" %>
+  </p>
+<% end %>
+<%= link_to "Add product",new_vendor_product_path, class: 'btn btn-primary' %>
