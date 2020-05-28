@@ -13,6 +13,19 @@
                     required: true,
                     autofocus: true,
                     input_html: { autocomplete: "name" }%>
+    <%= f.input :category, as: :radio_buttons, collection: Vendor::CATEGORY, wrapper: :vertical_collection_inline %>
+    <%= f.input :photo, as: :file, required: true %>
+    <%= f.input :phone_number,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "phone number" }%>
+    <%= f.input :city,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "name" }%>
+    <%= f.input :address, autofocus: true,
+                    input_html: { autocomplete: "address" } %>
+    <%= f.input :description, as: :text, input_html: {:rows => 4}, required: true %>               
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
