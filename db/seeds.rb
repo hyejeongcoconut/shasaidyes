@@ -67,14 +67,14 @@ all.each {|x| ids << x.id }
   puts "Done !"
 end
 #------vendor seed ----------------------------------------------------------------------------------------
-categoryes = ["Reception Venue", "Photographers", "Bridal Salons", "Wedding Planner", "Wedding Cakes", "Honeymoon", "Caterers"]
+category = Vendor::CATEGORY
 lovingyou = Vendor.new(
   email: "hello@lovingyou.co.kr",
-  name: "loving you",
+  name: "Loving You",
   password: "123123",
-  category: categoryes.sample,
+  category: category.sample,
   phone_number: Faker::PhoneNumber,
-  description: "loving you wishes all our brides to feel special.",
+  description: "Loving You wishes all our brides to feel special.",
   address: "haeundae-gu, busan, Republic of Korea",
   city: "Busan"
 )
@@ -85,11 +85,11 @@ lovingyou.save!
 
 brideandyou = Vendor.new(
   email: "hello33@brideandyou.co.kr",
-  name: "Bride and you",
+  name: "Bride and You",
   password: "123123",
-  category: categoryes.sample,
+  category: category.sample,
   phone_number: Faker::PhoneNumber,
-  description: "Designer heels.",
+  description: "Designer heels",
   address: "130-9, ChungDam-dong, GangNam-gu, Seoul, Republic of Korea",
   city: "Seoul"
 )
@@ -102,7 +102,7 @@ laluce = Vendor.new(
   email: "hello@laluce.co.kr",
   name: "laluce",
   password: "123123",
-  category: categoryes.sample,
+  category: category.sample,
   phone_number: Faker::PhoneNumber,
   description: "Perfect place for small and private wedding.",
   address: "Euler 128b, Polanco 11510 México, D.F. Mexico",
@@ -125,7 +125,7 @@ all_vendor.each {|x| idss << x.id }
     name: Faker::Ancient.god,
     price: Faker::Commerce.price,
     description: "best product's in the world",
-    category: categoryes.sample,
+    category: category.sample,
     vendor_id: idss.sample
   )
   puts "okay"
