@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :guests
     resources :vendors, only: [:index, :show]
     resources :favorite_vendors,only: [:create]
-    get "dashboard", to: "pages#dashbaord", as: :dashboard
+    get "dashboard", to: "pages#dashboard", as: :dashboard
   end
 
 
@@ -23,6 +23,6 @@ Rails.application.routes.draw do
     # GET /vendor/items
     # GET /vendor/items/1
     resources :products
-    get "dashboard", to: "pages#dashbaord", as: :dashboard
+    get "dashboard", to: "pages#dashboard", as: :dashboard
   end
 end

@@ -1,4 +1,4 @@
-class Vendor::ProductsController < Vendor::BaseController    
+class Vendor::ProductsController < Vendor::BaseController
     # https://github.com/varvet/pundit/blob/df96d2ae6bcf28991c1501d5ff0bde4c42aa4acd/lib/pundit.rb#L217-L227
     # https://github.com/varvet/pundit/blob/df96d2ae6bcf28991c1501d5ff0bde4c42aa4acd/lib/pundit.rb#L261-L263
     
