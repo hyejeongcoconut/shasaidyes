@@ -1,2 +1,2 @@
-class Pages::ProductsController < Vendor::BaseController
+class Vendor::PagesController < Vendor::BaseController
 end
