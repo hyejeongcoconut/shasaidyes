@@ -26,7 +26,7 @@ class Vendor::ProductsController < Vendor::BaseController
     @vendor = Vendor.find(params[:vendor_id])
     @product.vendor = @vendor
     @product.save
-    redirect_to user_products_path
+    redirect_to vendor_products_path
   end
 
   def edit
