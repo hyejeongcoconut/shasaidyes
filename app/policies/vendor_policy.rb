@@ -4,6 +4,10 @@ class VendorPolicy < ApplicationPolicy
       scope.all
     end
 
+    def index?
+      true
+    end
+
     def update?
       record.user == user
     end

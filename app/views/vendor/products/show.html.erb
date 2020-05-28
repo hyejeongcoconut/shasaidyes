@@ -1,0 +1,17 @@
+<h1>Product details</h1>
+<div data-controller="favoritevendor">
+  <%= @product.name %>
+  <%= @product.category %>
+  <%= @product.description %>
+  <%= @product.price %></p>
+<div data-target="favoritevendor.favorite" id="vendor-data">
+</div>
+<!-- Need to resolve this section so that nonuser will be redirected to signup if not currently signed in -->
+<% if current_vendor.present? %>
+  <span id="vendor_id" style="display:none;"><%= current_vendor.id %></span>
+  <button class="btn btn-primary" data-action="click->favoritevendor#add" >Add to favorites</button>
+<% else %>
+  <a href="/vendors/sign_in" class="btn btn-primary">Add to favorites</a>
+  <!--<button class="btn btn-primary" data-action="click->favoritevendor#add" >Add to favorites</button>-->
+<% end %>
+</div>
