@@ -23,14 +23,14 @@ class Vendor::ProductsController < Vendor::BaseController
 
   def create
     @product = Product.new(product_params)
-    @vendor = Vendor.find(params[:vendor_id])
+    @vendor = Vendor.find(current_vendor.id)
     @product.vendor = @vendor
     @product.save
     redirect_to vendor_products_path
   end
 
   def edit
-    @vendor = Vendor.find(params[:vendor_id])
+    @vendor = Vendor.find(current_vendor.id)
     @product = Product.find(params[:id])
     @Product.vendor = @vendor
   end
