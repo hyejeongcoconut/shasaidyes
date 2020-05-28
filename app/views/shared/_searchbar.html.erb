@@ -2,7 +2,7 @@
   <h5 class="search__title">
     What would you like to search?
   </h5>
-  <input class="search__input" type="text" placeholder="Search">
+  <%# <input class="search__input" type="text" placeholder="Search"> %>
   <%= simple_form_for :search, url: user_vendors_path, method: :get do |f| %>
     <div class="search-form-control form-group">
       <%= text_field_tag :query,
@@ -10,9 +10,10 @@
           class: "search__input",
           placeholder: "Find a vendor"
         %>
-      <button name="button" type="submit" class="btn btn-flat">
+        <%= f.button :submit, 'Submit', class: "search-btn", wrapper: :inline_form, html: { class: 'form-inline' }%>
+      <%# <button name="button" type="submit" class="btn btn-flat">
         <i class="fas fa-search"></i> Search
-      </button>
+      </button> %>
     </div>
   <% end %>
 </div>
