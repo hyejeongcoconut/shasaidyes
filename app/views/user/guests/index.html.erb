@@ -1,0 +1,11 @@
+<h1>Guest Index</h1>
+<% @guests.each do |guest| %>
+  <p><%= guest.first_name %>
+    <%= guest.last_name %>
+    <%= link_to "View details. . .",user_guest_path(guest.id), class: 'btn btn-success' %>
+    <%= link_to 'Delete', user_guest_path(guest.id),
+                 method: :delete, data: { confirm: 'Are you sure?' },
+                 class: "btn btn-danger" %>
+  </p>
+<% end %>
+<%= link_to "Add guest",new_user_guest_path, class: 'btn btn-primary' %>

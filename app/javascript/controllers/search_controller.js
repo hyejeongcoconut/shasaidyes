@@ -16,7 +16,7 @@ export default class extends Controller {
     const queryValue = query.value
     const search_div = document.querySelector("#search_div");
     search_div.innerHTML = "";
-    fetch(`/vendors?query=${queryValue}`, { headers: { accept: "application/json" } })
+    fetch(`/user/vendors?query=${queryValue}`, { headers: { accept: "application/json" } })
     .then(response => response.json())
       .then((data) => {
         console.log(data.vendors)
@@ -25,7 +25,7 @@ export default class extends Controller {
                 <p>Name: ${result.name},
                    Category: ${result.category},
                    City: ${result.city},
-                   <a href="vendors/${result.id}">See +details</a>
+                   <a href="/user/vendors/${result.id}">See +details</a>
                    </p>`
           search_div.insertAdjacentHTML("beforeend", piece);
         })

@@ -1,16 +1,4 @@
 <div id=search-results data-controller="search">
-  <!--<%= simple_form_for :search, url: vendors_path, method: :get do |f| %>
-    <div class="search-form-control form-group">
-      <%= text_field_tag :query,
-          params[:query],
-          class: "form-control string required",
-          placeholder: "Find a vendor"
-        %>
-      <button name="button" type="submit" class="btn btn-flat" data-action="click->search#refresh">
-        <i class="fas fa-search"></i> Search
-      </button>
-    </div>
-  <% end %>-->
   <div class="search-form-control form-group">
     <input class="form-control string required"
                    type="text"
@@ -26,7 +14,7 @@
       <p>Name: <%= vendor.name  %>,
         Category: <%= vendor.category  %>,
         City: <%= vendor.city  %>
-        <%= link_to "See + details",vendor_path(vendor.id)  %></p>
+        <%= link_to "See + details",user_vendor_path(vendor.id)  %></p>
     <% end %>
   </div>
 </div>

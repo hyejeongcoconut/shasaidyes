@@ -11,7 +11,7 @@ export default class extends Controller {
     const user_id = parseInt(user_id_query.innerText,10)
     const vendor_id = parseInt(vendor_id_query.innerText,10)
 
-    fetchWithToken("/favorite_vendors", {
+    fetchWithToken("/user/favorite_vendors", {
         method: "POST",
         headers: {
           "Accept": "application/json",

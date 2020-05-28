@@ -1,9 +1,9 @@
 <div class="search__container">
   <h5 class="search__title">
-      What would you like to search?
+    What would you like to search?
   </h5>
   <input class="search__input" type="text" placeholder="Search">
-  <%= simple_form_for :search, url: vendors_path, method: :get do |f| %>
+  <%= simple_form_for :search, url: user_vendors_path, method: :get do |f| %>
     <div class="search-form-control form-group">
       <%= text_field_tag :query,
           params[:query],
@@ -16,5 +16,3 @@
     </div>
   <% end %>
 </div>
-
-
