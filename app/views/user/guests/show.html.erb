@@ -7,5 +7,4 @@
 <p><%= @guest.rsvp %></p>
 <p><%= @guest.additional_guest_numbers %></p>
 <p><%= @guest.food_preference %></p>
-<%= link_to 'Edit', edit_user_guest_path(current_user.id, @guest.id), class: 'btn btn-warning' %>
-
+<%= link_to 'Edit', edit_user_guest_path(@guest.id), class: 'btn btn-warning' %>
