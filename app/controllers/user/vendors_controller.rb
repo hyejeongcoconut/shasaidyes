@@ -19,7 +19,6 @@ class User::VendorsController < User::BaseController
 
   def show
     @vendor = Vendor.find(params[:id])
-    authorize @vendor
   end
 
 end

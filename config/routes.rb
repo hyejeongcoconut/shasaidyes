@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     # GET /user/vendors/1
     resources :guests
     resources :vendors, only: [:index, :show]
+    resources :favorite_vendors,only: [:create]
   end
+
 
   # everything that is acted by vendor, go under namespace `vendor`
   namespace :vendor do
