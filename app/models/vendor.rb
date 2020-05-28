@@ -1,7 +1,7 @@
 class Vendor < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  category = ["Reception Venue", "Photographers", "Bridal Salons", "Wedding Planner", "Wedding Cakes", "Honeymoon", "Caterers"]
+  CATEGORY = ["Reception Venue", "Photographer", "Music & Entertainment","Bridal Salon", "Wedding Dresses", "Wedding Cakes", "Honeymoon Package", "Catering"]
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
