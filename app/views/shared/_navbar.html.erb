@@ -11,6 +11,8 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
+    <%# USER-SIGNED IN NAV BAR %>
       <% if user_signed_in? %>
         <li class="nav-item active">
           <%= link_to "Home", "/", class: "nav-link" %>
@@ -26,13 +28,42 @@
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
+
+      <%# VENDOR-SIGNED IN NAV BAR %>
+      <% elsif vendor_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to "Home", "/", class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Messages", "#", class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <%= image_tag "https://i7.uihere.com/icons/901/956/50/avatar-boy-0455475451b1eb1f4427ffbcc5e74c10.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Action", "#", class: "dropdown-item" %>
+            <%= link_to "Another action", "#", class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+
+      <%# When nobody is logged in %>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        <li class="nav-item dropdown">
+        <div class="navbtn" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h4> User </h4></div>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "User Sign Up", new_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "User Login", new_user_session_path, class: "dropdown-item" %>
+          </div>
         </li>
-        <li class="nav-item">
-          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+        <h4>❤</h4>
+        <li class="nav-item dropdown">
+          <div class="navbtn" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h4> Vendor </h4></div>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Vendor Sign Up", new_vendor_registration_path, class: "dropdown-item" %>
+            <%= link_to "Vendor Login", new_vendor_session_path, class: "dropdown-item" %>
+          </div>
         </li>
+        
       <% end %>
     </ul>
   </div>

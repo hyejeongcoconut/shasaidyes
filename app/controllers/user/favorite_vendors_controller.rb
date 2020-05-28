@@ -1,4 +1,4 @@
-class FavoriteVendorsController < ApplicationController
+class User::FavoriteVendorsController < User::BaseController
   def create
     @user = User.find(params[:favorite_vendor][:user_id])
     @vendor = Vendor.find(params[:favorite_vendor][:vendor_id])

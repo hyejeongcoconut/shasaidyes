@@ -1,4 +1,5 @@
-class VendorsController < ApplicationController
+# notice the `User::` here, so it won't conflict with devise controllers
+class User::VendorsController < User::BaseController
 
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
@@ -18,7 +19,6 @@ class VendorsController < ApplicationController
 
   def show
     @vendor = Vendor.find(params[:id])
-    #authorize @vender
   end
 
 end

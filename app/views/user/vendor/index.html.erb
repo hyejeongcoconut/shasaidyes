@@ -12,21 +12,21 @@
     </div>
   <% end %>-->
   <div class="search-form-control form-group">
-            <input class="form-control string required"
+    <input class="form-control string required"
                    type="text"
                    data-action="keydown->search#greetWithKeyboard"
-                   name="search[query]" id="search_query" />
-            <button class="btn btn-flat" data-action="click->search#refresh">
-              <i class="fas fa-search"></i> Search
-            </button>
-          </div>
+    name="search[query]" id="search_query" />
+    <button class="btn btn-flat" data-action="click->search#refresh">
+      <i class="fas fa-search"></i> Search
+    </button>
+  </div>
   <h1>Vendors Index</h1>
   <div data-target="search.result" id="search_div">
     <% @vendors.each do |vendor| %>
       <p>Name: <%= vendor.name  %>,
-         Category: <%= vendor.category  %>,
-         City: <%= vendor.city  %>
-         <%= link_to "See + details",vendor_path(vendor.id)  %></p>
+        Category: <%= vendor.category  %>,
+        City: <%= vendor.city  %>
+        <%= link_to "See + details",vendor_path(vendor.id)  %></p>
     <% end %>
   </div>
 </div>

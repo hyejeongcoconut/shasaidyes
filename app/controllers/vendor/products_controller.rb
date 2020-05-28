@@ -1,4 +1,16 @@
-class ProductsController < ApplicationController
+class Vendor::ProductsController < Vendor::BaseController    
+    # https://github.com/varvet/pundit/blob/df96d2ae6bcf28991c1501d5ff0bde4c42aa4acd/lib/pundit.rb#L217-L227
+    # https://github.com/varvet/pundit/blob/df96d2ae6bcf28991c1501d5ff0bde4c42aa4acd/lib/pundit.rb#L261-L263
+    
+    # if we specify `policy_class` option,
+    # pundit use it:
+    # policy_class.new(pundit_user, record)
+    
+    # if we override `pundit_user`
+    # the authorize check becomes:
+    # VendorItemPolicy.new(current_vendor, @item).update?
+
+
   def index
     @products = Product.where(vendor_id: current_user.id)
   end
@@ -42,10 +54,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name,
-                                    :price,
-                                    :description,
-                                    :category,
-                                    )
+    params.require(:product).permit(:name, :price, :description, :category)
   end
 end
