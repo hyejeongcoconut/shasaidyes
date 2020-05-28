@@ -14,5 +14,8 @@
   <span id="user_id" style="display:none;"><%= current_user.id %></span>
   <span id="vendor_id" style="display:none;"><%= @vendor.id %></span>
   <button class="btn btn-primary" data-action="click->favoritevendor#add" >Add to favorites</button>
+<% else %>
+  <a href="/users/sign_in" class="btn btn-primary">Add to favorites</a>
+  <!--<button class="btn btn-primary" data-action="click->favoritevendor#add" >Add to favorites</button>-->
 <% end %>
 </div>
