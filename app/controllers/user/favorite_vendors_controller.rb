@@ -1,4 +1,6 @@
 class User::FavoriteVendorsController < User::BaseController
+  #before_action :authenticate_user!, only: [ :create ]
+
   def create
     @vendor = Vendor.find(params[:favorite_vendor][:vendor_id])
     @favorite_vendor = FavoriteVendor.new
@@ -10,8 +12,7 @@ class User::FavoriteVendorsController < User::BaseController
     respond_to do |format|
       format.html
       format.json { render json: { favorite_vendors: @favorite_vendor } }
-
-
+    end
   end
 
   private

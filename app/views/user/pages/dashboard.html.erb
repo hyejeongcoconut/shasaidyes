@@ -1,0 +1,4 @@
+<h1>Dashboard</h1>
+<% @favorites.each do |favorite| %>
+  <p><%= favorite.vendor.name %> <a href="#" class="btn btn-danger">Chat now !</a> <a href="#" class="btn btn-primary" >Invoice</a></p>
+<% end %>
