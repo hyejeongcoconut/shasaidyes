@@ -1,12 +1,14 @@
 class User::FavoriteVendorsController < User::BaseController
   def create
-    @user = User.find(params[:favorite_vendor][:user_id])
     @vendor = Vendor.find(params[:favorite_vendor][:vendor_id])
     @favorite_vendor = FavoriteVendor.new
-    @favorite_vendor.user = @user
+    @favorite_vendor.user = current_user
     @favorite_vendor.vendor = @vendor
-    @favorite_vendor.save
-    redirect_to vendors_path
+    if @favorite_vendor.save
+      redirect_to vendors_path
+    else
+
+    end
   end
 
   private
