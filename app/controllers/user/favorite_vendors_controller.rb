@@ -6,7 +6,11 @@ class User::FavoriteVendorsController < User::BaseController
     @favorite_vendor.user = @user
     @favorite_vendor.vendor = @vendor
     @favorite_vendor.save
-    redirect_to vendors_path
+    #redirect_to vendors_path
+    respond_to do |format|
+      format.html
+      format.json { render json: { favorite_vendors: @favorite_vendor } }
+    end
   end
 
   private

@@ -21,7 +21,7 @@ export default class extends Controller {
       })
         .then(response => response.json())
         .then((data) => {
-          // handle JSON response from server
+          console.log(data);
         });
   }
 }
