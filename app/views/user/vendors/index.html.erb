@@ -12,10 +12,10 @@
           <%= image_tag vendor.photo, class: "vcardimg" %>
           <% end %>
           <div class="vcard-content">
-            <h3><%= vendor.name %></h3>
+            <h4><%= vendor.name.capitalize %></h4>
             <div class="vcard-catcity d-flex justify-content-between">
               <p><%= vendor.category %></p>
-              <p><%= vendor.city %></p>
+              <p><%= vendor.city.capitalize %></p>
             </div>
           </div>
         <% end %>
