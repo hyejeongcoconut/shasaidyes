@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="col-xs-12 col-lg-3">
-    <div class="side-fav-content">
+    <div class="side-fav-content" data-controller="favoritevendor" data-target="favoritevendor.favorite" id="vendor-data">
       <!-- Need to resolve this section so that nonuser will be redirected to signup if not currently signed in --> 
 
 
@@ -31,8 +31,8 @@
         <% if current_user.present? %>
           <span id="user_id" style="display:none;"><%= current_user.id %></span>
           <span id="vendor_id" style="display:none;"><%= @vendor.id %></span>
-          <button data-action="click->favoritevendor#add" >Add to favorites</button>
-          <%= link_to "Add to favorites", user_favorite_vendors_path(@vendor), class: "sha-btn" %>
+          <button data-action="click->favoritevendor#add" class="sha-btn" >Add to favorites</button>
+          <%# <%= link_to "Add to favorites", user_favorite_vendors_path, class: "sha-btn" %> 
         <% else %>
           <a href="/users/sign_in" class="sha-btn">Add to favorites</a>
         <% end %>

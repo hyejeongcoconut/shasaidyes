@@ -1,4 +1,67 @@
-<h1>Dashboard</h1>
-<% @favorites.each do |favorite| %>
-  <p><%= favorite.vendor.name %> <a href="#" class="btn btn-danger">Chat now !</a> <a href="#" class="btn btn-primary" >Invoice</a></p>
-<% end %>
+<div class="content-wrap mt-4 dash-wrap">
+  <div class="row">
+    <div class="col-xs-12 col-md-3">
+      <div class="dash-u-sidebar">
+      <h1>Welcome, <%= @user.first_name %></h1>
+      <div class="dash-user-info">
+      <%= image_tag @user.photo, class: "avatar-prof" %>
+      </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-9">
+      <div class="dash-u-main">
+      <h1 class="text-center">Main Content</h1>
+      <div class="row">
+
+        <div class="col-xs-12 col-md-6">
+          <div class="main-fav">
+          <h3>My Favorite Vendors</h3>
+          <% @favorites.each do |favorite| %>
+            <div class="fav-vendor-wrap d-flex align-items-center justify-content-between">
+              <div class="fav-names d-flex align-items-end">
+              <%= link_to user_vendor_path(favorite.vendor.id) do %>
+              <h4 id="fav-v-name"><%= favorite.vendor.name.capitalize %></h4>
+              <%end%> <p>⠀(<%= favorite.vendor.category.capitalize %>) </p>
+              </div>
+              <div class="fav-options">
+              <a href="#" class="sha-pink-btn">Chat now</a>
+              <a href="#" class="sha-green-btn" >Invoice</a>
+              <%= link_to "Remove",
+                user_favorite_vendor_path(favorite),
+                class: "sha-mustard-btn",
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+              </div>
+            </div>
+          <% end %>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+          <div class="main-guest">
+          <div class="d-flex align-items-center justify-content-between">
+            <h3>My Guest List</h3>
+            <%= link_to "Add guest",new_user_guest_path, class: 'sha-btn' %>
+          </div>
+          <% @guests.each do |guest| %>
+            <div class="fav-vendor-wrap d-flex align-items-center justify-content-between">
+              <h4><%= guest.first_name.capitalize %> <%= guest.last_name.capitalize %></h4>
+              <div class="guest-options">
+              <%= link_to "View Guest details...",user_guest_path(guest.id), class: 'sha-green-btn' %>
+              <%= link_to 'Delete', user_guest_path(guest.id),
+                 method: :delete, data: { confirm: 'Are you sure?' },
+                 class: "sha-mustard-btn" %>
+              </div>
+            </div>
+          <% end %>
+          
+          </div>
+        </div>
+
+
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
