@@ -1,7 +1,9 @@
 class Vendor < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  CATEGORY = ["Reception Venue", "Photographer", "Music & Entertainment","Bridal Salon", "Wedding Dresses", "Wedding Cakes", "Honeymoon Package", "Catering"]
+
+  CATEGORY = ["Reception Venue", "Photographer", "Music & Entertainment", "Bridal Salon", "Wedding Dresses", "Wedding Cakes", "Honeymoon Package", "Catering"]
+
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
@@ -11,6 +13,9 @@ class Vendor < ApplicationRecord
   has_many :favorite_vendors
 
   has_one_attached :photo
+
+  validates :name, :category, :address, presence:true
+  validates :email, presence:true, uniqueness:true
 
   include PgSearch::Model
   pg_search_scope :search_by_category_and_price_and_city,
