@@ -15,7 +15,7 @@
 }
 
 .sha-btn {
-  margin: 10px;
+  // margin: 10px;
   color: white;
   background-color: $indian-red;
   border-radius: 50px;
@@ -33,6 +33,26 @@
     text-decoration: none;
   }
 }
+
+.sha-btn-outline {
+  text-decoration: none;
+  color: $indian-red;
+  border: 1px solid $indian-red;
+  border-radius: 50px;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 6px 12px;
+  transition: transform 250ms ease-in-out;
+  &:hover, &:focus{
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    border-radius: 50px;
+    color: $sweet-red;
+    border: 1px solid $sweet-red;
+    text-decoration: none;
+  }
+}
+
 
 .sha-pink-btn{
   color: white;

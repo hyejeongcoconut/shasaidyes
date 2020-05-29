@@ -16,11 +16,14 @@
 }
 
 .dash-u-main{
-  border: 1px solid lightseagreen;
+  // border: 1px solid lightseagreen;
 }
 
 .main-fav, .main-guest {
-  border: 1px solid lightsalmon;
+  // border: 1px solid lightsalmon;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px #ffffff;
 }
 
 .fav-vendor-wrap {

@@ -23,7 +23,7 @@ class User::GuestsController < User::BaseController
   def update
     @guest = Guest.find(params[:id])
     @guest.update(guest_params)
-    redirect_to user_guests_path
+    redirect_to user_dashboard_path
   end
 
   def show
@@ -33,7 +33,7 @@ class User::GuestsController < User::BaseController
   def destroy
     @guest = Guest.find(params[:id])
     @guest.destroy
-    redirect_to user_guests_path
+    redirect_to user_dashboard_path
   end
 
   private
