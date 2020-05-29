@@ -1,3 +1,4 @@
+
 <%= simple_form_for [:user, @guest] do |f| %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
@@ -6,5 +7,8 @@
   <%= f.input :email %>
   <%= f.input :additional_guest_numbers %>
   <%= f.input :food_preference %>
-  <%= f.submit "Add new guest", class: 'btn btn-primary'%>
+
+  <div class="form-actions form-btn-wrap d-flex justify-content-around">
+  <%= f.submit "Add new guest", class: 'sha-btn'%>
+  </div>
 <% end %>
