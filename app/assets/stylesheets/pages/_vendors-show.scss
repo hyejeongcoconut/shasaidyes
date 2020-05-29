@@ -1,0 +1,33 @@
+.vendor-info-main{
+  // width: 600px;
+  border: 1px solid springgreen;
+}
+
+.side-fav-content{
+  // padding: 20px 0;
+  min-width: 260px;
+  border: 1px solid plum;
+}
+
+.vendor-info-side {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.vinfo-text{
+  margin-top: 10px;
+  h2{
+    color: $not-black;
+  }
+  p {
+    color: $green-grey;
+  }
+}
+
+.vcatcity {
+  h5 {
+    color: $candy-pink;
+    margin: 0;
+  }
+  
+}

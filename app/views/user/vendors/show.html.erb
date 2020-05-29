@@ -1,21 +1,44 @@
-<h1>Show details</h1>
-<div data-controller="favoritevendor">
-  <%= @vendor.name %>
-  <%= @vendor.category %>
-  <%= @vendor.phone_number %>
-  <%= @vendor.description %>
-  <%= @vendor.address %>
-  <%= @vendor.city %>
-  <%= @vendor.average_price %></p>
-<div data-target="favoritevendor.favorite" id="vendor-data">
-</div>
-<!-- Need to resolve this section so that nonuser will be redirected to signup if not currently signed in -->
-<% if current_user.present? %>
-  <span id="user_id" style="display:none;"><%= current_user.id %></span>
-  <span id="vendor_id" style="display:none;"><%= @vendor.id %></span>
-  <button class="btn btn-primary" data-action="click->favoritevendor#add" >Add to favorites</button>
-<% else %>
-  <a href="/users/sign_in" class="btn btn-primary">Add to favorites</a>
-  <!--<button class="btn btn-primary" data-action="click->favoritevendor#add" >Add to favorites</button>-->
-<% end %>
+<div class="content-wrap mt-4">
+  <div class="row">
+  <div class="col-xs-12 col-lg-7 offset-lg-1">
+    <div class="vendor-info-main">
+
+    <h1>This is where the vendor products will go</h1>
+    </div>
+  </div>
+  <div class="col-xs-12 col-lg-3">
+    <div class="side-fav-content">
+      <!-- Need to resolve this section so that nonuser will be redirected to signup if not currently signed in --> 
+
+
+      <div class="vendor-info-side">
+        <%= image_tag @vendor.photo, class: "vcardimg" %>
+        <div class="vinfo-text">
+          <h2><%= @vendor.name.capitalize %></h2>
+          <div class="vcatcity vcard-catcity d-flex justify-content-between mb-2">
+            <h5><%= @vendor.category %></h5>
+            <h5><%= @vendor.city.capitalize %></h5>
+          </div>
+          <p><%= @vendor.description %></p>
+          <p><%= @vendor.address %>
+          <p>Call: <%= @vendor.phone_number %></p>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="favbutton text-center">
+        <% if current_user.present? %>
+          <span id="user_id" style="display:none;"><%= current_user.id %></span>
+          <span id="vendor_id" style="display:none;"><%= @vendor.id %></span>
+          <button data-action="click->favoritevendor#add" >Add to favorites</button>
+          <%= link_to "Add to favorites", user_favorite_vendors_path(@vendor), class: "sha-btn" %>
+        <% else %>
+          <a href="/users/sign_in" class="sha-btn">Add to favorites</a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
 </div>

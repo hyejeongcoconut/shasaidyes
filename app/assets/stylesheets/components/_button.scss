@@ -1,0 +1,33 @@
+.search-btn {
+  color: #e4314f;
+  font-size: 24px;
+  line-height: 24px;
+  padding: 12px 24px;
+  transition: transform 250ms ease-in-out;
+  &:hover, &:focus{
+    background-color: #e4314f;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    border-radius: 50px;
+    color: white;
+  }
+}
+
+.sha-btn {
+  margin: 10px;
+  color: white;
+  background-color: $indian-red;
+  border-radius: 50px;
+  font-size: 24px;
+  line-height: 24px;
+  padding: 12px 24px;
+  transition: transform 250ms ease-in-out;
+  &:hover, &:focus{
+    background-color: #e43131;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+  }
+}
