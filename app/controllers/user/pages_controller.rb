@@ -1,5 +1,7 @@
 class User::PagesController < User::BaseController
   def dashboard
-    @favorites = FavoriteVendor.where(user_id: current_user.id)
+    @user = current_user
+    @favorites = FavoriteVendor.where(user_id: @user.id).all
+    @guests = Guest.where(user_id: @user.id).all
   end
 end

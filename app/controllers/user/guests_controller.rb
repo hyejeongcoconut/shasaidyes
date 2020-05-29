@@ -12,7 +12,7 @@ class User::GuestsController < User::BaseController
     @guest = Guest.new(guest_params)
     @guest.user = current_user
     @guest.save
-    redirect_to user_guests_path
+    redirect_to user_dashboard_path
   end
 
   def edit

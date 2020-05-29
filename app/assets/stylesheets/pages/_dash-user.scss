@@ -1,0 +1,41 @@
+.dash-wrap{
+
+}
+
+.dash-u-sidebar{
+  // border: 1px solid lightsalmon;
+  background-color: white;
+  box-shadow: 0 0 10px #ffffff;
+  height: 100%;
+  padding: 20px;
+}
+
+.dash-user-info{
+  text-align: center;
+  color: $green-grey;
+}
+
+.dash-u-main{
+  border: 1px solid lightseagreen;
+}
+
+.main-fav, .main-guest {
+  border: 1px solid lightsalmon;
+}
+
+.fav-vendor-wrap {
+  padding: 10px 0;
+  h3, h4, h5, p {
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  #fav-v-name{
+    color: $not-black
+    :hover {
+      color: $green-grey
+    }
+  }
+}
+
