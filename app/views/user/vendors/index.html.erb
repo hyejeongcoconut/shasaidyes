@@ -10,11 +10,5 @@
   </div>
   <h1>Vendors Index</h1>
   <div data-target="search.result" id="search_div">
-    <% @vendors.each do |vendor| %>
-      <p>Name: <%= vendor.name  %>,
-        Category: <%= vendor.category  %>,
-        City: <%= vendor.city  %>
-        <%= link_to "See + details",user_vendor_path(vendor.id)  %></p>
-    <% end %>
   </div>
 </div>
