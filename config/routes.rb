@@ -24,5 +24,6 @@ Rails.application.routes.draw do
     # GET /vendor/items/1
     resources :products
     get "dashboard", to: "pages#dashboard", as: :dashboard
+    post "quote/create", to: "pages#create"
   end
 end
