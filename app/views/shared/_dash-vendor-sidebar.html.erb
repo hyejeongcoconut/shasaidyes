@@ -2,16 +2,14 @@
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <h1>Welcome,</h1>
-  <h1><%= @user.first_name.capitalize %></h1>
+  <h1><%= @vendor.name.capitalize %></h1>
   <br>
   <div class="d-flex justify-content-around mb-4">
-    <%= image_tag @user.photo, class: "avatar-prof" %>
+    <%= image_tag @vendor.photo, class: "avatar-prof" %>
   </div>
   <div class="dash-menu">
-  <a href="#">Gotta change</a>
-  <a href="#">these lol</a>
-  <%= link_to "Guest List", user_guests_path %>
-  <%= link_to "My Favorites", user_favorite_vendors_path %>
+  <a href="#">About</a>
+  <%= link_to "My Products", vendor_products_path %>
   </div>
 </div>
 
