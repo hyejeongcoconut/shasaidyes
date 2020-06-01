@@ -9,12 +9,11 @@ class User::MessagesController < User::BaseController
     else
       render "inboxes/show"
     end
+    InboxChannel.broadcast_to(
+      @inbox,
+      render_to_string(partial: "message", locals: { message: @message })
+    )
   end
-
-  # InboxChannel.broadcast_to(
-  #   @inbox,
-  #   render_to_string(partial: "message", locals: { message: @message })
-  # )
 
   private
 
