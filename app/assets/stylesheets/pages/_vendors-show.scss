@@ -6,9 +6,23 @@
 .side-fav-content{
   // padding: 20px 0;
   min-width: 260px;
-  border: 1px solid plum;
+  // border: 1px solid plum;
   margin-bottom: 20px;
+  position: sticky;
+  top: 50px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px 0px #ffdadaab;
 }
+
+.vinfoimg{
+  overflow:hidden;
+  object-fit: cover;
+  height: 224px;
+  width: 100%;
+  border-radius: 10px;
+}
+
 
 .vendor-info-side {
   text-align: left;

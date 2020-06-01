@@ -1,50 +1,43 @@
-<div class="content-wrap text-center mt-3">
-  <div id=search-results data-controller="search">
+<div class="content-wrap text-center mt-3" data-controller="search">
+  <%# <div id=search-results data-controller="search"> %>
 
   <!--WORKING SEARCH BAR-->
-    <div class="search__container">
-      <div class="search-form-control form-group">
-        <input class="form-control string required"
+  <%# <h3>=========Yiro's Ajax Search bar</h3> %>
+
+
+      <div class="search search-form-control form-group">
+        <input class="form-control string required search__input"
                        type="text"
                        data-action="keydown->search#greetWithKeyboard"
                        id="search_query" />
-        <button class="btn btn-flat" data-action="click->search#refresh">
+        <button class="search-btn form-inline" data-action="click->search#refresh">
           <i class="fas fa-search"></i> Search
         </button>
       </div>
-    </div>
+
    <!--WORKING SEARCH BAR-->
-    <h1>Search Results</h1>
+<%#    
+    <h1>Search Results</h1> %>
   <!--SERACH CONTROLLER FOR JS-->
+
+  <div>
     <div data-target="search.result" id="search_div">
+    
+    <div class="row mt-3">
+    <div data-target="search.result" id="search_div_content">
+    </div>
     </div>
   </div>
+  </div>
+  
+    
+  
+<%# 
+<div class="row mt-3">
+  <div data-target="search.result" id="search_div" > %>
+
+<%# 
+  <h3>============END of Yiro's Ajax Search Bar</h3> %>
 </div>
 <!--SERACH CONTROLLER FOR JS-->
-<!--OLD SEARCH WITH SEARCH RESULT CARD-->
-  <%= render 'shared/searchbar' %>
-    <h1>Search Results</h1>
-    <div data-target="search.result" id="search_div">
-    <div class="row mt-3">
-      <% @vendors.each do |vendor| %>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-        <div class="vcard">
-        <%= link_to user_vendor_path(vendor.id) do %>
-          <% if vendor.photo.present? %>
-          <%= image_tag vendor.photo, class: "vcardimg" %>
-          <% end %>
-          <div class="vcard-content">
-            <h4><%= vendor.name.capitalize %></h4>
-            <div class="vcard-catcity d-flex justify-content-between">
-              <p><%= vendor.category %></p>
-              <p><%= vendor.city.capitalize %></p>
-            </div>
-          </div>
-        <% end %>
-        </div>
-        </div>
-      <% end %>
-    </div>
-    </div>
-  </div>
-</div>
+<%# </div> %>

@@ -28,15 +28,25 @@ export default class extends Controller {
           console.log(element)
           const pieceHeader = `<h1>${element.category}</h1>`
           search_div.insertAdjacentHTML("beforeend", pieceHeader);
+          search_div.insertAdjacentHTML("beforeend", "<div class='row mt-3'>");
           element.vendors.forEach((vendor)=>{
-            const piece = `<p>Name: ${vendor.name},
-                            Category: ${vendor.category},
-                            City: ${vendor.city},
-                            <a href="/user/vendors/${vendor.id}">See +details</a>
-                            <img src="${vendor.photo_url}" alt="" width="200px" />
-                            </p>`
-                         search_div.insertAdjacentHTML("beforeend", piece);
-
+            const piece = `
+            <a href="/user/vendors/${vendor.id}" style="text-decoration: none">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="vcard">
+                  <img src="${vendor.photo_url}" alt="" class="vcardimg" />
+                  <div class="vcard-content">
+                    <h4>${vendor.name}</h4>
+                      <div class="vcard-catcity d-flex justify-content-between">
+                        <p>${vendor.category}</p>
+                        <p> ${vendor.city}</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            `
+            search_div.insertAdjacentHTML("beforeend", piece);
           });//Vendors Finished
         });//For Each end
     });
@@ -54,12 +64,24 @@ export default class extends Controller {
           const pieceHeader = `<h1>${element.category}</h1>`
           search_div.insertAdjacentHTML("beforeend", pieceHeader);
           element.vendors.forEach((vendor)=>{
-            const piece = `<p>Name: ${vendor.name},
-                            Category: ${vendor.category},
-                            City: ${vendor.city},
-                            <a href="/user/vendors/${vendor.id}">See +details</a>
-                            <img src="${vendor.photo_url}" alt="" width="200px" />
-                            </p>`
+            const piece = 
+
+            `
+            <a href="/user/vendors/${vendor.id}" style="text-decoration: none">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="vcard">
+                  <img src="${vendor.photo_url}" alt="" class="vcardimg" />
+                  <div class="vcard-content">
+                    <h4>${vendor.name}</h4>
+                      <div class="vcard-catcity d-flex justify-content-between">
+                        <p>${vendor.category}</p>
+                        <p> ${vendor.city}</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            `
                          search_div.insertAdjacentHTML("beforeend", piece);
 
           });//Vendors Finished
