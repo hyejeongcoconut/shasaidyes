@@ -1,4 +1,4 @@
-<%= render 'shared/dash-vendor-sidebar' %>                     
+<%= render 'shared/dash-vendor-sidebar' %>
 <div class="dash-main">
 <h1>Dashboard</h1>
 
@@ -13,7 +13,8 @@
                 data-action="click->vendor-modal#launchModal"
                 data-user_id="<%= favorite.user_id %>"
                 data-user_name="<%= favorite.user.first_name %>"
-                data-vendor_id="<%= favorite.vendor_id %>">Generate quote!</button></p>
+                data-vendor_id="<%= favorite.vendor_id %>">Generate quote!</button>
+        <button class="btn btn-secondary">No quote</button></p>
     </div>
   <% end %>
   <%= render 'shared/vendor_modal' %>
@@ -37,7 +38,7 @@
       <h2>My Products</h2>
         <% if @products.present? %>
           <% @products.each do |product| %>
-            <p><%= product.name %> | 
+            <p><%= product.name %> |
             <%= link_to "Product Details", vendor_product_path(product) %> </p>
           <% end %>
         <% end %>

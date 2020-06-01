@@ -1,5 +1,6 @@
 import { Controller } from "stimulus";
 import { fetchWithToken } from "../utils/fetch_with_token";
+import Swal from 'sweetalert2'
 
 export default class extends Controller {
 
@@ -52,7 +53,45 @@ export default class extends Controller {
             console.log(data);
             window.location.replace("/vendor/dashboard");
           });
-
     }
+
+    dialog(event) {
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, save it!',
+          cancelButtonText: 'No, cancel!',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.value) {
+            this.createQuote()
+            swalWithBootstrapButtons.fire(
+              'Saved!',
+              'Your quote has been sent.',
+              'success'
+            )
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              'Cancelled',
+              'Your quote has not been send :)',
+              'error'
+            )
+          }
+        })
+      }
+
 }
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_060402) do
+ActiveRecord::Schema.define(version: 2020_06_01_015256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_060402) do
     t.integer "total_price"
     t.string "list_of_services"
     t.datetime "date"
-    t.boolean "booked"
+    t.integer "booked"
     t.bigint "vendor_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
