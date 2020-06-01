@@ -10,27 +10,27 @@ class Vendor::ProductsController < Vendor::BaseController
   # the authorize check becomes:
   # VendorItemPolicy.new(current_vendor, @item).update?
 
-
+  skip_before_action :authenticate_vendor!, only: [:index, :show, ]
   def index
+    @vendor = Vendor.find(current_vendor.id)
     @products = Product.where(vendor_id: current_vendor.id)
   end
 
   def new
-    @vendor = Vendor.find(current_vendor.id)
+    @vendor = current_vendor
     @product = Product.new
     @product.vendor = @vendor
   end
 
   def create
     @product = Product.new(product_params)
-    @vendor = Vendor.find(params[:vendor_id])
-    @product.vendor = @vendor
+    @product.vendor = current_vendor
     @product.save
     redirect_to vendor_products_path
   end
 
   def edit
-    @vendor = Vendor.find(params[:vendor_id])
+    @vendor = Vendor.find(current_vendor.id)
     @product = Product.find(params[:id])
     @Product.vendor = @vendor
   end
@@ -42,6 +42,9 @@ class Vendor::ProductsController < Vendor::BaseController
   end
 
   def show
+    if current_vendor
+      @vendor = Vendor.find(current_vendor.id)
+    end
     @product = Product.find(params[:id])
   end
 
@@ -54,6 +57,6 @@ class Vendor::ProductsController < Vendor::BaseController
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :description, :category)
+    params.require(:product).permit(:name, :price, :description, :category, photos:[])
   end
 end

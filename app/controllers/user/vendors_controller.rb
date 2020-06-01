@@ -19,6 +19,7 @@ class User::VendorsController < User::BaseController
 
   def show
     @vendor = Vendor.find(params[:id])
+    @products = Product.where(vendor_id: @vendor)
   end
 
 end

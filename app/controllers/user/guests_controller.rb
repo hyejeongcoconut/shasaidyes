@@ -1,5 +1,6 @@
 class User::GuestsController < User::BaseController
   def index
+    @user = current_user
     @guests = Guest.where(user_id: current_user.id)
   end
 
@@ -27,6 +28,7 @@ class User::GuestsController < User::BaseController
   end
 
   def show
+    @user = current_user
     @guest = Guest.find(params[:id])
   end
 
