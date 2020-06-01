@@ -1,6 +1,12 @@
 class User::FavoriteVendorsController < User::BaseController
   #before_action :authenticate_user!, only: [ :create ]
 
+  def index
+    @user = current_user
+    @favorites = FavoriteVendor.where(user_id: current_user)
+  end
+
+
   def create
     @vendor = Vendor.find(params[:favorite_vendor][:vendor_id])
     @favorite_vendor = FavoriteVendor.new

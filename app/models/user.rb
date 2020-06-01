@@ -8,7 +8,9 @@ class User < ApplicationRecord
 
   has_many :favorite_vendors
 
-  has_many :vendors, through: :favorite_vendor
+  has_many :quotes
+
+  has_many :vendors, through: :favorite_vendors
 
   has_one_attached :photo
 

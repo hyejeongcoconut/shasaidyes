@@ -9,7 +9,7 @@ class Vendor < ApplicationRecord
     :recoverable, :rememberable, :validatable
 
   has_many :quotes, dependent: :destroy
-  has_many :users, through: :favorite_vendor
+  has_many :users, through: :favorite_vendors
   has_many :products
   has_many :favorite_vendors
 

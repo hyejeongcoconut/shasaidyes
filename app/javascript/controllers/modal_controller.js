@@ -4,15 +4,37 @@ import Swal from 'sweetalert2'
 
 export default class extends Controller {
 
-    static targets = ['user_id', 'user_name', 'vendor_id', 'quote_id'];
+    static targets = ['user_id', 'user_name', 'vendor_id', 'quote_id','total_price','list_of_services','date'];
 
     setCoHostContent(data) {
             this.user_idTarget.innerHTML = data.user_id;
             this.user_nameTarget.innerHTML = data.user_name;
             this.vendor_idTarget.innerHTML = data.vendor_id;
             this.quote_idTarget.innerHTML = data.quote_id;
+            const listOfServices = document.querySelector(".list_of_services");
+            listOfServices.setAttribute("value",data.list_of_services);
+
+            const getDate = document.querySelector(".date");
+            const newDate = this.formatDate(data.date)
+            getDate.setAttribute("value",newDate);
+
+            const getTotal = document.querySelector(".total_price");
+            getTotal.setAttribute("value",data.total_price);
         }
 
+    formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
 
     open() {
       document.body.classList.add("modal-open");

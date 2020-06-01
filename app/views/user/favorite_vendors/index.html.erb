@@ -1,0 +1,43 @@
+<%= render 'shared/dash-user-sidebar' %>
+
+<div class="dash-main">
+<div class="main-fav" data-controller="vendor-modal">
+  <h2>My Favorite Vendors</h2>
+  <% @favorites.each do |favorite| %>
+    <div class="fav-vendor-wrap d-flex align-items-center justify-content-between" >
+
+      <div class="fav-names">
+      <%= link_to user_vendor_path(favorite.vendor.id) do %>
+      <h4 id="fav-v-name"><%= favorite.vendor.name.capitalize %></h4>
+      <%end%>
+      <p>(<%= favorite.vendor.category.capitalize %>) </p>
+      </div>
+      <div class="fav-options" data-target="model.openmodal">
+      <a href="#" class="sha-mustard-btn">Chat now</a>
+      <% if favorite.vendor.quotes.first.booked == 0 %>
+        <a href="#" class="btn btn-secondary" >No invoice</a>
+      <% elsif favorite.vendor.quotes.first.booked == 1 %>
+        <button href="#"
+                class="btn btn-primary"
+                data-action="click->vendor-modal#launchModal"
+                data-user_id="<%= favorite.user_id %>"
+                data-user_name="<%= favorite.user.first_name %>"
+                data-vendor_id="<%= favorite.vendor_id %>"
+                data-quote_id="<%= favorite.vendor.quotes.first.id %>"
+                data-total_price="<%= favorite.vendor.quotes.first.total_price %>"
+                data-list_of_services="<%= favorite.vendor.quotes.first.list_of_services %>"
+                data-date="<%= favorite.vendor.quotes.first.date %>">See invoice!</button>
+      <% else %>
+        <a href="#" class="btn btn-success" >Payed</a>
+      <% end %>
+      <%= render 'shared/vendor_modal' %>
+      <%= link_to "Remove",
+        user_favorite_vendor_path(favorite),
+        class: "sha-btn-outline",
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  </div>
