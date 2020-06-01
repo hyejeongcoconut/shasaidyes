@@ -5,14 +5,15 @@ class User::MessagesController < User::BaseController
     @message.inbox = @inbox
     @message.sender = current_user
     if @message.save
+      InboxChannel.broadcast_to(
+        @inbox,
+        render_to_string(partial: "message", locals: { message: @message })
+      )
       redirect_to user_inbox_path(@inbox, anchor: "message-#{@message.id}")
     else
       render "inboxes/show"
     end
-    InboxChannel.broadcast_to(
-      @inbox,
-      render_to_string(partial: "message", locals: { message: @message })
-    )
+
   end
 
   private
