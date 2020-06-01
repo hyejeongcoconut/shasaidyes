@@ -1,0 +1,33 @@
+<h1>Product details</h1>
+<div data-controller="favoritevendor">
+  <ol>
+    <li><%= @product.name %></li>
+    <li><%= @product.category %></li>
+    <li><%= @product.description %></li>
+    <li><%= @product.price %></li>
+  </ol>
+  
+  <div class="product-img">
+  <%# WHY won't this code below show the attached photos??? Raise does not work either %>
+    <% @product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <p>this photo </p>
+      <%= raise %>
+    <% end %>
+  </div>
+
+
+
+
+
+<div data-target="favoritevendor.favorite" id="vendor-data">
+</div>
+<!-- Need to resolve this section so that nonuser will be redirected to signup if not currently signed in -->
+<% if current_vendor.present? %>
+  <span id="vendor_id" style="display:none;"><%= current_vendor.id %></span>
+  <button class="btn btn-primary" data-action="click->favoritevendor#add" >Add to favorites</button>
+<% else %>
+  <a href="/vendors/sign_in" class="btn btn-primary">Add to favorites</a>
+  <!--<button class="btn btn-primary" data-action="click->favoritevendor#add" >Add to favorites</button>-->
+<% end %>
+</div>

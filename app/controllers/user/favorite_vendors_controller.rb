@@ -15,6 +15,15 @@ class User::FavoriteVendorsController < User::BaseController
     end
   end
 
+  def destroy
+    @favorite_vendor = FavoriteVendor.find(params[:id])
+    @favorite_vendor.user = current_user
+    @favorite_vendor.destroy
+
+    # no need for app/views/favorite_vendors/destroy.html.erb
+    redirect_to user_dashboard_path
+  end
+
   private
 
   def favorite_vendor_params

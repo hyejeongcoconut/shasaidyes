@@ -1,5 +1,5 @@
-<div class="login-form-container">
-  <h1>Log in for <%= resource_name %></h1>
+<div class="sha-form-container">
+  <h1>Log in as <%= resource_name.capitalize %></h1>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
@@ -17,7 +17,7 @@
       <%= f.button :submit, "Log in", class:"btn btn-outline-danger btn-lg btn-block" %>
     </div>
   <% end %>
-  <div class="login-form-link">
+  <div class="sha-form-link">
   <%= render "devise/shared/links" %>
   </div>
 </div>

@@ -1,4 +1,6 @@
-<h1>Dashboard</h1>
-<% @favorites.each do |favorite| %>
-  <p><%= favorite.vendor.name %> <a href="#" class="btn btn-danger">Chat now !</a> <a href="#" class="btn btn-primary" >Invoice</a></p>
-<% end %>
+<%= render 'shared/dash-user-sidebar' %>
+
+<div class="dash-main">
+  <h2>User Dashboard</h2>
+  <p>Box out favorites and Guest list</p>
+</div>

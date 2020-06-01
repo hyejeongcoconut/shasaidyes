@@ -1,0 +1,14 @@
+<div class="sha-form-container">
+<h1>New Product for <%= @vendor.name.capitalize %></h1>
+<%= simple_form_for [:vendor, @product] do |f| %>
+  <%= f.input :name, required: true %>
+  <%= f.input :price, hint: 'Price in USD $', required: true %>
+  <%= f.input :description, as: :text, input_html: {:rows => 4}, required: true %>
+  <%= f.input :category, as: :radio_buttons, collection: Vendor::CATEGORY, wrapper: :vertical_collection_inline %>
+  <%= f.input :photo, as: :file, input_html: { multiple: true }, required: true %>
+  <div class="form-actions form-btn-wrap d-flex justify-content-around">
+    <%= f.button :submit, "Add new product", class:"btn btn-outline-danger btn-lg btn-block" %>
+  </div>
+
+<% end %>
+</div>

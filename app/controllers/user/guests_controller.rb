@@ -1,5 +1,6 @@
 class User::GuestsController < User::BaseController
   def index
+    @user = current_user
     @guests = Guest.where(user_id: current_user.id)
   end
 
@@ -12,7 +13,7 @@ class User::GuestsController < User::BaseController
     @guest = Guest.new(guest_params)
     @guest.user = current_user
     @guest.save
-    redirect_to user_guests_path
+    redirect_to user_dashboard_path
   end
 
   def edit
@@ -23,17 +24,18 @@ class User::GuestsController < User::BaseController
   def update
     @guest = Guest.find(params[:id])
     @guest.update(guest_params)
-    redirect_to user_guests_path
+    redirect_to user_dashboard_path
   end
 
   def show
+    @user = current_user
     @guest = Guest.find(params[:id])
   end
 
   def destroy
     @guest = Guest.find(params[:id])
     @guest.destroy
-    redirect_to user_guests_path
+    redirect_to user_dashboard_path
   end
 
   private

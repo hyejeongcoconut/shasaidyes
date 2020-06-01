@@ -1,7 +1,9 @@
 class Vendor::PagesController < Vendor::BaseController
+
   before_action :authenticate_vendor!
 
   def dashboard
+    @vendor = current_vendor
     @products = Product.where(vendor_id: current_vendor.id)
     @favorites = FavoriteVendor.where(vendor_id: current_vendor.id)
     return @products, @favorites
@@ -29,5 +31,4 @@ class Vendor::PagesController < Vendor::BaseController
                                  :list_of_services,
                                  :date,
                                  :booked)
-  end
 end
