@@ -1,7 +1,6 @@
 <%= render 'shared/dash-vendor-sidebar' %>
 <div class="dash-main">
 <h1>Dashboard</h1>
-
 <div style="border: solid 1px red;margin-bottom: 20px;" data-controller="vendor-modal">
   <h1>My service request</h1>
   <% @favorites.each do |favorite| %>
@@ -13,8 +12,13 @@
                 data-action="click->vendor-modal#launchModal"
                 data-user_id="<%= favorite.user_id %>"
                 data-user_name="<%= favorite.user.first_name %>"
-                data-vendor_id="<%= favorite.vendor_id %>">Generate quote!</button>
-        <button class="btn btn-secondary">No quote</button></p>
+                data-vendor_id="<%= favorite.vendor_id %>"
+                data-quote_id="<%= favorite.vendor.quotes.first.id %>">Generate quote!</button>
+        <% if favorite.vendor.quotes.first.booked == 0  %>
+          <button class="btn btn-warning">Quote has not send</button></p>
+        <% else %>
+          <button class="btn btn-success">Payed</button></p>
+        <% end %>
     </div>
   <% end %>
   <%= render 'shared/vendor_modal' %>

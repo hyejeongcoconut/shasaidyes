@@ -25,5 +25,6 @@ Rails.application.routes.draw do
     resources :products
     get "dashboard", to: "pages#dashboard", as: :dashboard
     post "quote/create", to: "pages#create"
+    patch "quote/update", to: "pages#update"
   end
 end
