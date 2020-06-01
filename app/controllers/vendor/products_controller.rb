@@ -32,7 +32,7 @@ class Vendor::ProductsController < Vendor::BaseController
   def edit
     @vendor = Vendor.find(current_vendor.id)
     @product = Product.find(params[:id])
-    @Product.vendor = @vendor
+    @product.vendor = @vendor
   end
 
   def update
