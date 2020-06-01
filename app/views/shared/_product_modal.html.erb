@@ -1,0 +1,20 @@
+<div id="app" data-controller="product-modal">
+    <%# PRACTICE %>
+    <ol>
+      <li><button data-action="click->product-modal#launchProductDeets" data-name="Daniel Coulbourne" data-email="daniel@tighten.co" data-title="Developer">Daniel</button></li>
+      <li><button data-action="click->product-modal#launchProductDeets" data-name="Caleb Porzio" data-email="caleb@tighten.co" data-title="Developer">Caleb</button></li>
+    </ol>
+
+    <%# <button button data-action="click->product-modal#launchProductDeets">Launch Demo</button> %>
+
+    <div class="modal" data-controller="p-modal" data-target="product-modal.modal">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                <h2 data-target="p-modal.name"></h2>
+                <span data-target="p-modal.title"></span>
+                <a data-target="p-modal.email" href=""></a>
+                <button data-action="click->p-modal#close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
