@@ -1,5 +1,27 @@
 <div class="content-wrap text-center mt-3">
   <div id=search-results data-controller="search">
+
+  <!--WORKING SEARCH BAR-->
+    <div class="search__container">
+      <div class="search-form-control form-group">
+        <input class="form-control string required"
+                       type="text"
+                       data-action="keydown->search#greetWithKeyboard"
+                       id="search_query" />
+        <button class="btn btn-flat" data-action="click->search#refresh">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    </div>
+   <!--WORKING SEARCH BAR-->
+    <h1>Search Results</h1>
+  <!--SERACH CONTROLLER FOR JS-->
+    <div data-target="search.result" id="search_div">
+    </div>
+  </div>
+</div>
+<!--SERACH CONTROLLER FOR JS-->
+<!--OLD SEARCH WITH SEARCH RESULT CARD-->
   <%= render 'shared/searchbar' %>
     <h1>Search Results</h1>
     <div data-target="search.result" id="search_div">

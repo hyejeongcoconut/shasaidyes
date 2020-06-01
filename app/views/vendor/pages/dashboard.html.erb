@@ -1,7 +1,35 @@
-<%= render 'shared/dash-vendor-sidebar' %>
-
-
+<%= render 'shared/dash-vendor-sidebar' %>                     
 <div class="dash-main">
+<h1>Dashboard</h1>
+
+<div style="border: solid 1px red;margin-bottom: 20px;" data-controller="vendor-modal">
+  <h1>My service request</h1>
+  <% @favorites.each do |favorite| %>
+    <div data-target="model.openmodal">
+      <p><%= favorite.user.first_name %> <%= favorite.user.last_name %>
+        <a href="#" class="btn btn-danger">Chat now !</a>
+        <button href="#"
+                class="btn btn-success"
+                data-action="click->vendor-modal#launchModal"
+                data-user_id="<%= favorite.user_id %>"
+                data-user_name="<%= favorite.user.first_name %>"
+                data-vendor_id="<%= favorite.vendor_id %>">Generate quote!</button></p>
+    </div>
+  <% end %>
+  <%= render 'shared/vendor_modal' %>
+</div>
+
+
+
+<div style="border: solid 1px green;">
+  <h1>MY PRODUCTS</h1>
+  <a href="#" class="btn btn-primary" > Add new product </a>
+  <% @products.each do |product| %>
+    <p><%= product.name %> <a href="#" class="btn btn-primary" > Edit </a> <a href="#" class="btn btn-danger">Remove !</a></p>
+  <% end %>
+</div>
+
+
   <h2>Vendor Dashboard</h2>
   <div class="row">
   <div class="col-xs-12 col-md-6">
