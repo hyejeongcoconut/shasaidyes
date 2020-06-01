@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     # GET /user/vendors/1
     resources :guests
     resources :vendors, only: [:index, :show]
-    resources :favorite_vendors, only: [:create, :destroy]
+    resources :favorite_vendors, only: [:index, :create, :destroy]
     get "dashboard", to: "pages#dashboard", as: :dashboard
   end
 
