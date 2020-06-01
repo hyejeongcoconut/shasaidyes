@@ -31,4 +31,5 @@ class Vendor::PagesController < Vendor::BaseController
                                  :list_of_services,
                                  :date,
                                  :booked)
+  end
 end
