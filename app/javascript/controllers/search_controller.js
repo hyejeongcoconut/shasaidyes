@@ -32,7 +32,7 @@ export default class extends Controller {
           element.vendors.forEach((vendor)=>{
             const piece = `
             <a href="/user/vendors/${vendor.id}" style="text-decoration: none">
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                 <div class="vcard">
                   <img src="${vendor.photo_url}" alt="" class="vcardimg" />
                   <div class="vcard-content">
@@ -68,7 +68,7 @@ export default class extends Controller {
 
             `
             <a href="/user/vendors/${vendor.id}" style="text-decoration: none">
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                 <div class="vcard">
                   <img src="${vendor.photo_url}" alt="" class="vcardimg" />
                   <div class="vcard-content">
