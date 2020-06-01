@@ -12,6 +12,7 @@ class Vendor < ApplicationRecord
   has_many :users, through: :favorite_vendor
   has_many :products
   has_many :favorite_vendors
+  has_many :messages, as: :sender
 
   has_one_attached :photo
 

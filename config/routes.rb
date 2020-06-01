@@ -14,8 +14,10 @@ Rails.application.routes.draw do
     resources :vendors, only: [:index, :show]
     resources :favorite_vendors, only: [:index, :create, :destroy]
     get "dashboard", to: "pages#dashboard", as: :dashboard
+    resources :inboxes, only: [:index, :show] do
+      resources :messages, only: :create
+    end
   end
-
 
   # everything that is acted by vendor, go under namespace `vendor`
   namespace :vendor do
@@ -25,5 +27,11 @@ Rails.application.routes.draw do
     resources :products
     get "dashboard", to: "pages#dashboard", as: :dashboard
     post "quote/create", to: "pages#create"
+    
+    resources :inboxes, only: [:index, :show] do
+      resources :messages, only: :create
+    end
+    
   end
+
 end
