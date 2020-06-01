@@ -1,3 +1,6 @@
+<%= render 'shared/dash-user-sidebar' %>
+
+<div class="dash-main">
 <h1>Guest Index</h1>
 <% @guests.each do |guest| %>
   <p><%= guest.first_name %>
@@ -9,3 +12,4 @@
   </p>
 <% end %>
 <%= link_to "Add guest",new_user_guest_path, class: 'btn btn-primary' %>
+</div>

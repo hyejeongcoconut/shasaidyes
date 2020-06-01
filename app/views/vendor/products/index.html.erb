@@ -1,10 +1,18 @@
+<%= render 'shared/dash-vendor-sidebar' %>
+
+<div class="dash-main">
 <h1>Product Index</h1>
 <% @products.each do |product| %>
   <p><%= product.name %>
-    <%= link_to "View details. . .",vendor_product_path(product.id), class: 'btn btn-success' %>
-    <%= link_to 'Delete', vendor_product_path(product.id),
+    <%= link_to "View details. . .",vendor_product_path(product), class: 'btn btn-success' %>
+    <%= link_to 'Delete', vendor_product_path(product),
                  method: :delete, data: { confirm: 'Are you sure?' },
                  class: "btn btn-danger" %>
   </p>
+    <% product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <p>this photo </p>
+    <% end %>
 <% end %>
-<%= link_to "Add product",new_vendor_product_path, class: 'btn btn-primary' %>
+<%= link_to "Add product",new_vendor_product_path, class: 'sha-button' %>
+</div>

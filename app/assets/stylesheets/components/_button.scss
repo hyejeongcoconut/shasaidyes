@@ -39,9 +39,9 @@
   color: $indian-red;
   border: 1px solid $indian-red;
   border-radius: 50px;
-  font-size: 16px;
-  line-height: 16px;
-  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 4px 8px;
   transition: transform 250ms ease-in-out;
   &:hover, &:focus{
     transition: all 250ms ease-in-out;
@@ -53,14 +53,32 @@
   }
 }
 
+.sha-btn-outline-md {
+  text-decoration: none;
+  color: $indian-red;
+  border: 1px solid $indian-red;
+  border-radius: 50px;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 8px 16px;
+  transition: transform 250ms ease-in-out;
+  &:hover, &:focus{
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    border-radius: 50px;
+    color: $sweet-red;
+    border: 1px solid $sweet-red;
+    text-decoration: none;
+  }
+}
 
 .sha-pink-btn{
   color: white;
   background-color: $lt-coral;
   border-radius: 50px;
-  font-size: 16px;
-  line-height: 16px;
-  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 4px 8px;
   transition: transform 250ms ease-in-out;
   border: none;
   &:hover, &:focus{
@@ -77,9 +95,9 @@
   color: white;
   background-color: #2a9177;
   border-radius: 50px;
-  font-size: 16px;
-  line-height: 16px;
-  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 4px 8px;
   transition: transform 250ms ease-in-out;
   border: none;
   &:hover, &:focus{
@@ -97,9 +115,9 @@
   color: white;
   background-color: #e9ab26;
   border-radius: 50px;
-  font-size: 16px;
-  line-height: 16px;
-  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 4px 8px;
   transition: transform 250ms ease-in-out;
   border: none;
   &:hover, &:focus{

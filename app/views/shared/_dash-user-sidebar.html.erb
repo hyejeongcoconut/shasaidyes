@@ -1,0 +1,37 @@
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <h1>Welcome,</h1>
+  <h1><%= @user.first_name.capitalize %></h1>
+  <br>
+  <div class="d-flex justify-content-around mb-4">
+    <%= image_tag @user.photo, class: "avatar-prof" %>
+  </div>
+  <div class="dash-menu">
+  <a href="#">Gotta change</a>
+  <a href="#">these lol</a>
+  <%= link_to "Guest List", user_guests_path %>
+  <%= link_to "My Favorites", user_favorite_vendors_path %>
+  </div>
+</div>
+
+
+<div class="sidebar-open" onclick="openNav()">
+<h4>▶ Dashboard Menu</h4>
+</div>
+
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.querySelector(".dash-main").style.marginLeft = "250px";
+  document.querySelector(".navbar").style.marginLeft = "200px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.querySelector(".dash-main").style.marginLeft= "102px";
+  document.querySelector(".navbar").style.marginLeft = "0";
+}
+</script>

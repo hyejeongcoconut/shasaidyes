@@ -41,7 +41,8 @@
 
 
 .avatar-prof {
-  width: 90%;
-  height: 90%;
-  border-radius: 30%;
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
