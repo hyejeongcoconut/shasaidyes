@@ -60,15 +60,15 @@ export default class extends Controller {
     .then(response => response.json())
       .then((data) => {
         data.forEach((element)=>{
-          console.log(element)
-          const pieceHeader = `<h1>${element.category}</h1>`
-          search_div.insertAdjacentHTML("beforeend", pieceHeader);
+          // console.log(element)
+          // const pieceHeader = `<h1>${element.category}</h1>`
+          // search_div.insertAdjacentHTML("beforeend", pieceHeader);
           element.vendors.forEach((vendor)=>{
             const piece = 
 
             `
-            <a href="/user/vendors/${vendor.id}" style="text-decoration: none">
-              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+              <a href="/user/vendors/${vendor.id}" style="text-decoration: none">  
                 <div class="vcard">
                   <img src="${vendor.photo_url}" alt="" class="vcardimg" />
                   <div class="vcard-content">
@@ -79,11 +79,10 @@ export default class extends Controller {
                       </div>
                   </div>
                 </div>
-              </div>
-            </a>
+              </a>
+            </div>
             `
-                         search_div.insertAdjacentHTML("beforeend", piece);
-
+          search_div.insertAdjacentHTML("beforeend", piece);
           });//Vendors Finished
         });//For Each end
     });
