@@ -22,5 +22,3 @@ class Vendor::MessagesController < Vendor::BaseController
     params.require(:message).permit(:content)
   end
 end
-
-end
