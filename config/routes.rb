@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     # GET /user/vendors/1
     resources :guests
     resources :vendors, only: [:index, :show]
+
     resources :favorite_vendors, only: [:index, :create, :destroy]
+
     get "dashboard", to: "pages#dashboard", as: :dashboard
     resources :inboxes, only: [:index, :show] do
       resources :messages, only: :create
@@ -27,6 +29,8 @@ Rails.application.routes.draw do
     resources :products
     get "dashboard", to: "pages#dashboard", as: :dashboard
     post "quote/create", to: "pages#create"
+
+    patch "quote/update", to: "pages#update"
     
     resources :inboxes, only: [:index, :show] do
       resources :messages, only: :create
