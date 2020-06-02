@@ -5,6 +5,7 @@ class User::VendorsController < User::BaseController
 
   def index
     @vendors = Vendor.all
+    @categories = Vendor::CATEGORY
     if params[:query].present?
       @vendors = Vendor.search_by_category_and_price_and_city(params[:query])
       #@vendors = get_category(@vendors_query)
@@ -22,6 +23,7 @@ class User::VendorsController < User::BaseController
     @vendor = Vendor.find(params[:id])
     @products = Product.where(vendor_id: @vendor)
   end
+
 
   private
 

@@ -1,50 +1,46 @@
-<div class="content-wrap text-center mt-3">
-  <div id=search-results data-controller="search">
+<div class="content-wrap text-center mt-3" data-controller="search">
 
-  <!--WORKING SEARCH BAR-->
-    <div class="search__container">
-      <div class="search-form-control form-group">
-        <input class="form-control string required"
-                       type="text"
-                       data-action="keydown->search#greetWithKeyboard"
-                       id="search_query" />
-        <button class="btn btn-flat" data-action="click->search#refresh">
-          <i class="fas fa-search"></i> Search
-        </button>
-      </div>
+<div class="row">
+<%# Side bar for category search %>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+    <div class="vendor-search-categories">
+      <h4>Search by category</h4>
+      <hr>
+      <ul>
+          <li class="catlist" data-action="click->search#findcategory"><p>All</p></li>
+        <% @categories.each do |category| %>
+          <li class="catlist" id=<%=category%> data-action="click->search#findcategory"><p><%=category%><p></li>
+        <% end %>
+      </ul>
     </div>
-   <!--WORKING SEARCH BAR-->
-    <h1>Search Results</h1>
-  <!--SERACH CONTROLLER FOR JS-->
-    <div data-target="search.result" id="search_div">
+  </div>
+
+<%# right side column for search bar and search results %>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-9">
+
+<%# search bar %>
+<div class="row">
+  <div class="vendor-search">
+    <div class="search search-form-control form-group form-inline">
+      <input class="string required search__input"
+                    type="text"
+                    data-action="keydown->search#greetWithKeyboard"
+                    id="search_query" />
+      <button class="search-btn2" data-action="click->search#refresh">Search
+        <%# <i class="fas fa-search"></i> Search %>
+      </button>
     </div>
   </div>
 </div>
-<!--SERACH CONTROLLER FOR JS-->
-<!--OLD SEARCH WITH SEARCH RESULT CARD-->
-  <%= render 'shared/searchbar' %>
-    <h1>Search Results</h1>
-    <div data-target="search.result" id="search_div">
-    <div class="row mt-3">
-      <% @vendors.each do |vendor| %>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-        <div class="vcard">
-        <%= link_to user_vendor_path(vendor.id) do %>
-          <% if vendor.photo.present? %>
-          <%= image_tag vendor.photo, class: "vcardimg" %>
-          <% end %>
-          <div class="vcard-content">
-            <h4><%= vendor.name.capitalize %></h4>
-            <div class="vcard-catcity d-flex justify-content-between">
-              <p><%= vendor.category %></p>
-              <p><%= vendor.city.capitalize %></p>
-            </div>
-          </div>
-        <% end %>
-        </div>
-        </div>
-      <% end %>
-    </div>
-    </div>
+
+<%# Search results display div %>
+<div >
+  <div class="row" data-target="search.result" id="search_div">
+  <!--SERACH CONTROLLER FOR JS displays result cards here-->
   </div>
+</div>
+</div>
+
+<%# closers for top two divs of page %>
+</div>    
 </div>
