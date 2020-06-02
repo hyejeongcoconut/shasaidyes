@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :inboxes, only: [:index, :show] do
       resources :messages, only: :create
     end
+    patch "quote/pay", to: "pages#update"
   end
 
   # everything that is acted by vendor, go under namespace `vendor`
@@ -31,11 +32,11 @@ Rails.application.routes.draw do
     post "quote/create", to: "pages#create"
 
     patch "quote/update", to: "pages#update"
-    
+
     resources :inboxes, only: [:index, :show] do
       resources :messages, only: :create
     end
-    
+
   end
 
 end

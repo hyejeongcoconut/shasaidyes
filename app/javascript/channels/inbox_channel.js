@@ -14,6 +14,5 @@ const initInboxCable = () => {
 }
 
 
-
 export { initInboxCable };
 

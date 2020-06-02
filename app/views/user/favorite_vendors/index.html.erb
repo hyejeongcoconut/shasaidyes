@@ -13,10 +13,6 @@
       <%end%>
       <p>(<%= favorite.vendor.category.capitalize %>) </p>
       </div>
-      <%= favorite.user_id %>
-      <%= favorite.user.first_name %>
-      <%= favorite.vendor_id %>
-      <%= favorite.vendor.quotes.first.id %>
       <div class="fav-options">
       <a href="#" class="sha-mustard-btn">Chat now</a>
       <% if favorite.vendor.quotes.first.booked == 0 %>
@@ -25,9 +21,9 @@
         <button href="#"
                 class="btn btn-primary"
                 data-action="click->invoice-modal#openModal"
-                data-user_id="<%= favorite.user_id %>"
-                data-user_name="<%= favorite.user.first_name %>"
-                data-vendor_id="<%= favorite.vendor_id %>"
+                data-date="<%= favorite.vendor.quotes.first.date %>"
+                data-list_of_services="<%= favorite.vendor.quotes.first.list_of_services %>"
+                data-total_price="<%= favorite.vendor.quotes.first.total_price %>"
                 data-quote_id="<%= favorite.vendor.quotes.first.id %>">See invoice!</button>
       <% else %>
         <a href="#" class="btn btn-success" >Payed</a>
