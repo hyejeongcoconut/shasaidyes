@@ -16,6 +16,8 @@
                 data-quote_id="<%= favorite.vendor.quotes.first.id %>">Generate quote!</button>
         <% if favorite.vendor.quotes.first.booked == 0  %>
           <button class="btn btn-warning">Quote has not send</button></p>
+        <% elsif favorite.vendor.quotes.first.booked == 1 %>
+          <button class="btn btn-danger">Has not payed</button></p>
         <% else %>
           <button class="btn btn-success">Payed</button></p>
         <% end %>

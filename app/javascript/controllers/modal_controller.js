@@ -11,30 +11,7 @@ export default class extends Controller {
             this.user_nameTarget.innerHTML = data.user_name;
             this.vendor_idTarget.innerHTML = data.vendor_id;
             this.quote_idTarget.innerHTML = data.quote_id;
-            const listOfServices = document.querySelector(".list_of_services");
-            listOfServices.setAttribute("value",data.list_of_services);
-
-            const getDate = document.querySelector(".date");
-            const newDate = this.formatDate(data.date)
-            getDate.setAttribute("value",newDate);
-
-            const getTotal = document.querySelector(".total_price");
-            getTotal.setAttribute("value",data.total_price);
         }
-
-    formatDate(date) {
-        var d = new Date(date),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
-            year = d.getFullYear();
-
-        if (month.length < 2)
-            month = '0' + month;
-        if (day.length < 2)
-            day = '0' + day;
-
-        return [year, month, day].join('-');
-    }
 
     open() {
       document.body.classList.add("modal-open");
@@ -51,9 +28,12 @@ export default class extends Controller {
         }
 
     createQuote() {
-      const list_of_services = document.querySelector("#list_of_services");
-      const date = document.querySelector("#date");
-      const total_price = document.querySelector("#total_price");
+      const list_of_services = document.querySelector(".list_of_services");
+      const date = document.querySelector(".date");
+      const total_price = document.querySelector(".total_price");
+      console.log(total_price)
+      console.log(date)
+      console.log(list_of_services)
       const booked = 1;
       const user_id = this.user_idTarget.innerHTML;
       const vendor_id = this.vendor_idTarget.innerHTML;
