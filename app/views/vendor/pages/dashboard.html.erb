@@ -1,63 +1,61 @@
 <%= render 'shared/dash-vendor-sidebar' %>
 <div class="dash-main">
-<h1>Dashboard</h1>
-<div style="border: solid 1px red;margin-bottom: 20px;" data-controller="vendor-modal">
-  <h1>My service request</h1>
-  <% @favorites.each do |favorite| %>
-    <div >
-      <p><%= favorite.user.first_name %> <%= favorite.user.last_name %>
-        <a href="#" class="btn btn-danger">Chat now !</a>
-        <button href="#"
-                class="btn btn-success"
-                data-action="click->vendor-modal#launchModal"
-                data-user_id="<%= favorite.user_id %>"
-                data-user_name="<%= favorite.user.first_name %>"
-                data-vendor_id="<%= favorite.vendor_id %>"
-                data-quote_id="<%= favorite.vendor.quotes.first.id %>">Generate quote!</button>
-        <% if favorite.vendor.quotes.first.booked == 0  %>
-          <button class="btn btn-warning">Quote has not send</button></p>
-        <% elsif favorite.vendor.quotes.first.booked == 1 %>
-          <button class="btn btn-danger">Has not payed</button></p>
-        <% else %>
-          <button class="btn btn-success">Payed</button></p>
-        <% end %>
-    </div>
-  <% end %>
-  <%= render 'shared/vendor_modal' %>
-</div>
-
-
-
-<div style="border: solid 1px green;">
-  <h1>MY PRODUCTS</h1>
-  <a href="#" class="btn btn-primary" > Add new product </a>
-  <% @products.each do |product| %>
-    <p><%= product.name %> <a href="#" class="btn btn-primary" > Edit </a> <a href="#" class="btn btn-danger">Remove !</a></p>
-  <% end %>
-</div>
-
-
   <h2>Vendor Dashboard</h2>
   <div class="row">
+
   <div class="col-xs-12 col-md-6">
-    <div class="my-products">
+    <div class="my-products" data-controller="product-modal">
       <h2>My Products</h2>
+      <%= link_to "Add new products", new_vendor_product_path %>
         <% if @products.present? %>
           <% @products.each do |product| %>
-            <p><%= product.name %> |
-            <%= link_to "Product Details", vendor_product_path(product) %> </p>
+            <p><%= product.name %>
+            <button
+                class="sha-green-btn"
+                data-action="click->product-modal#launchProductDeets"
+                data-product="<%=product.id%>"
+                data-product_name="<%= product.name %>"
+                data-product_price="<%=product.price%>"
+                data-product_description="<%=product.description%>"
+                data-product_category="<%=product.category%>"
+                >Product Details</button> 
+                <%= link_to "Edit Product", edit_vendor_product_path(product), class:"sha-mustard-btn" %>
+                </p>
           <% end %>
         <% end %>
-      <div class="products">
-        <%= link_to "Add new products", new_vendor_product_path %>
-      </div>
+        
+        <%= render 'shared/product_modal' %>
+
+        
+
+    </div>
+  
+
+  <div class="col-xs-12 col-md-6">
+    <div class="client-messages" data-controller="vendor-modal">
+      <h2>My Clients</h2>
+      <% @favorites.each do |favorite| %>
+        <div data-target="model.openmodal">
+          <p><%= favorite.user.first_name %> <%= favorite.user.last_name %>
+            <a href="#" class="btn btn-danger">Chat now !</a>
+            <button href="#"
+                    class="btn btn-success"
+                    data-action="click->vendor-modal#launchModal"
+                    data-user_id="<%= favorite.user_id %>"
+                    data-user_name="<%= favorite.user.first_name %>"
+                    data-vendor_id="<%= favorite.vendor_id %>"
+                    data-quote_id="<%= favorite.vendor.quotes.first.id %>">Generate quote!</button>
+            <% if favorite.vendor.quotes.first.booked == 0  %>
+              <button class="btn btn-warning">Quote not sent</button></p>
+            <% else %>
+              <button class="btn btn-success">Paid</button></p>
+            <% end %>
+        </div>
+      <% end %>
+      <%= render 'shared/vendor_modal' %>
     </div>
   </div>
 
-  <div class="col-xs-12 col-md-6">
-    <div class="client-messages">
-      <h2>My Clients</h2>
-    </div>
-  </div>
+</div>
 </div>
 </div>
