@@ -3,14 +3,14 @@
   <% @inbox.messages.each do |message| %>
     <div class="message-container" id="message-<%= message.id %>">
       <i class="author">
-        <span><%= message.sender.nickname %></span>
+        <span><%= message.sender.name%></span>
         <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
       </i>
       <p><%= message.content %></p>
     </div>
   <% end %>
 </div>
-<%= simple_form_for [:user, @inbox, @message ] do |f| %>
+<%= simple_form_for [:vendor, @inbox, @message ] do |f| %>
   <%= f.input :content, label: false, placeholder: "Message ##{@inbox.name}" %>
   <div class="form-actions form-btn-wrap d-flex justify-content-around">
     <%= f.submit "submit", class: 'sha-btn'%>

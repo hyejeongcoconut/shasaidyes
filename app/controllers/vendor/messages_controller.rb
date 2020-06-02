@@ -3,7 +3,7 @@ class Vendor::MessagesController < Vendor::BaseController
     @inbox = Inbox.find(params[:inbox_id])
     @message = Message.new(message_params)
     @message.inbox = @inbox
-    @message.sender = current_user
+    @message.sender = current_vendor
     if @message.save
       InboxChannel.broadcast_to(
         @inbox,
