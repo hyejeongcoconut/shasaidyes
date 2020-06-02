@@ -1,4 +1,4 @@
-<div class="modal fade" data-controller="invmodal"data-target="invoice-modal.modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" data-controller="invmodal" data-target="invoice-modal.modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,7 +8,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <p data-target="modal.user_id"></p>
+        <p data-target="invmodal.user_id"></p>
+        <p data-target="invmodal.user_name"></p>
+        <p data-target="invmodal.vendor_id"></p>
+        <p data-target="invmodal.quote_id"></p>
       </div>
       <div class="modal-footer">
         <button  data-action="click->invmodal#close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

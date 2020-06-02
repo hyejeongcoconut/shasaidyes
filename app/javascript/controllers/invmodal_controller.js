@@ -6,22 +6,19 @@ export default class extends Controller {
 
     static targets = ['user_id', 'user_name', 'vendor_id', 'quote_id'];
 
-
     setCoHostContent(data) {
-            console.log(data);
-            this.user_idTarget.innerHTML = data.user_id;
-            this.user_nameTarget.innerHTML = data.user_name;
-            this.vendor_idTarget.innerHTML = data.vendor_id;
-            this.quote_idTarget.innerHTML = data.quote_id;
-        }
-
+        this.user_idTarget.innerHTML = data.user_id;
+        this.user_nameTarget.innerHTML = data.user_name;
+        this.vendor_idTarget.innerHTML = data.vendor_id;
+        this.quote_idTarget.innerHTML = data.quote_id;
+    }
 
     open() {
-            document.body.classList.add("modal-open");
-            this.element.setAttribute("style", "di    splay: block;");
-            this.element.classList.add("show");
-            document.body.innerHTML += '<div class="modal-backdrop fade show"></div>';
-        }
+        document.body.classList.add("modal-open");
+        this.element.setAttribute("style", "display: block;");
+        this.element.classList.add("show");
+        document.body.innerHTML += '<div id="modal-backdrop" class="modal-backdrop fade show"></div>'
+    }
 
     close() {
         document.body.classList.remove("modal-open");
