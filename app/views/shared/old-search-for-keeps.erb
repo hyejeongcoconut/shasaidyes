@@ -1,0 +1,25 @@
+<!--OLD SEARCH WITH SEARCH RESULT CARD-->
+  <%= render 'shared/searchbar' %>
+    <h1>Search Results</h1>
+    <div data-target="search.result" id="search_div">
+    <div class="row mt-3">
+      <% @vendors.each do |vendor| %>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+        <div class="vcard">
+        <%= link_to user_vendor_path(vendor.id) do %>
+          <% if vendor.photo.present? %>
+          <%= image_tag vendor.photo, class: "vcardimg" %>
+          <% end %>
+          <div class="vcard-content">
+            <h4><%= vendor.name.capitalize %></h4>
+            <div class="vcard-catcity d-flex justify-content-between">
+              <p><%= vendor.category %></p>
+              <p><%= vendor.city.capitalize %></p>
+            </div>
+          </div>
+        <% end %>
+        </div>
+        </div>
+      <% end %>
+    </div>
+    </div>

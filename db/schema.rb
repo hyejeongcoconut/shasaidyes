@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_060402) do
+
+ActiveRecord::Schema.define(version: 2020_06_01_063127) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,12 +63,24 @@ ActiveRecord::Schema.define(version: 2020_05_29_060402) do
   end
 
   create_table "inboxes", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "vendor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.bigint "vendor_id", null: false
     t.index ["user_id"], name: "index_inboxes_on_user_id"
     t.index ["vendor_id"], name: "index_inboxes_on_vendor_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "inbox_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "sender_type", null: false
+    t.bigint "sender_id", null: false
+    t.index ["inbox_id"], name: "index_messages_on_inbox_id"
+    t.index ["sender_type", "sender_id"], name: "index_messages_on_sender_type_and_sender_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -84,7 +98,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_060402) do
     t.integer "total_price"
     t.string "list_of_services"
     t.datetime "date"
-    t.boolean "booked"
+    t.integer "booked"
     t.bigint "vendor_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -133,6 +147,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_060402) do
   add_foreign_key "guests", "users"
   add_foreign_key "inboxes", "users"
   add_foreign_key "inboxes", "vendors"
+  add_foreign_key "messages", "inboxes"
   add_foreign_key "products", "vendors"
   add_foreign_key "quotes", "users"
   add_foreign_key "quotes", "vendors"
