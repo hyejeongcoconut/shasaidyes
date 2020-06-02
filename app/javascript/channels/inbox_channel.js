@@ -13,7 +13,7 @@ const initInboxCable = () => {
       }
 }
 
-  }
+
 
 export { initInboxCable };
 
