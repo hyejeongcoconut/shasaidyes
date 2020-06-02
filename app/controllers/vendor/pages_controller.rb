@@ -25,6 +25,7 @@ class Vendor::PagesController < Vendor::BaseController
 
   #update quote method
   def update
+
     @quote = Quote.find(params[:page][:id])
     @quote.update(quote_params)
     respond_to do |format|

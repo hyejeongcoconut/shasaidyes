@@ -1,0 +1,27 @@
+<div class="modal fade" data-controller="invmodal" data-target="invoice-modal.modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Quote</h5>
+        <button data-action="click->invmodal#close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5 style="border-bottom: 1px black solid">Order number:</h5>
+        <p data-target="invmodal.quote_id"></p>
+        <h5>Service date:</h5>
+        <p data-target="invmodal.date"></p>
+        <h5>List of services:</h5>
+        <p data-target="invmodal.list_of_services"></p>
+        <h5 style="border-bottom: 1px black solid">Total price:</h5>
+        <p data-target="invmodal.total_price"></p>
+        <p ></p>
+      </div>
+      <div class="modal-footer">
+        <button  data-action="click->invmodal#close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button data-action="click->invmodal#payOrder" type="button" class="btn btn-warning">Confirm order</button>
+      </div>
+    </div>
+  </div>
+</div>

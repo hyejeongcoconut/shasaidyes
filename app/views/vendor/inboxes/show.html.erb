@@ -10,7 +10,7 @@
     </div>
   <% end %>
 </div>
-<%= simple_form_for [:vendor, @inbox, @message ] do |f| %>
+<%= simple_form_for [:vendor, @inbox, @message ],remote:true,authenticity_token: true do |f| %>
   <%= f.input :content, label: false, placeholder: "Message ##{@inbox.name}" %>
   <div class="form-actions form-btn-wrap d-flex justify-content-around">
     <%= f.submit "submit", class: 'sha-btn'%>

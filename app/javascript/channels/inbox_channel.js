@@ -11,8 +11,8 @@ const initInboxCable = () => {
   }
 });
       }
+}
 
-  }
 
 export { initInboxCable };
 
