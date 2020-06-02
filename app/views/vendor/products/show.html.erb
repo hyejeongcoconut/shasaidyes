@@ -15,9 +15,12 @@
     <% end %>
   </div>
 
-<%= link_to "Edit Product Details", edit_vendor_product_path %>
-<%= link_to "Delete Product",
-            vendor_product_path(@product),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+<%# only see these links if logged in as vendor %>
+<% if current_vendor == @product.vendor %>
+  <%= link_to "Edit Product Details", edit_vendor_product_path %>
+  <%= link_to "Delete Product",
+              vendor_product_path(@product),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+<% end %>
 </div>

@@ -9,10 +9,11 @@ export default class extends Controller {
             this.modalTarget,
             "p-modal"
         );
+        console.log(modalController);
         modalController.setCoHostContent(event.currentTarget.dataset);
         modalController.open();
 
-        console.log(event.currentTarget);
+        console.log("ghello?");
         console.log(event.currentTarget.dataset);
     }
 }

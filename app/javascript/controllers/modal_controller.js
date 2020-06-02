@@ -23,9 +23,7 @@ export default class extends Controller {
             getTotal.setAttribute("value",data.total_price);
         }
 
-<<<<<<< HEAD
-    // JS function to open the modal
-=======
+
     formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
@@ -40,7 +38,7 @@ export default class extends Controller {
         return [year, month, day].join('-');
     }
 
->>>>>>> master
+    // JS function to open the modal
     open() {
       document.body.classList.add("modal-open");
       this.element.setAttribute("style", "display: block;");

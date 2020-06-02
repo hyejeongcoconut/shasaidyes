@@ -7,7 +7,9 @@ environment.loaders.delete('nodeModules');
 environment.plugins.prepend('Provide',
   new webpack.ProvidePlugin({
     $: 'jquery',
-    jQuery: 'jquery',
+    jQuery: 'jquery/src/jquery',
+    jquery: 'jquery',
+    'window.jQuery': 'jquery',
     Popper: ['popper.js', 'default']
   })
 );

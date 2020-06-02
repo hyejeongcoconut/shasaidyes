@@ -1,13 +1,17 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ['name', 'title', 'email'];
+  // List the data-names that we are capturing in the targets array
+  static targets = ['product_name', 'product_category', 'product_description', 'product_price', 'product'];
 
   setCoHostContent(data) {
-    this.nameTarget.innerHTML = data.name;
-    this.titleTarget.innerHTML = data.title;
-    this.emailTarget.href = 'mailto:' + data.email;
-    this.emailTarget.innerHTML = data.email;
+    console.log("BLAA")
+    console.log(data)
+    this.product_nameTarget.innerHTML = data.product_name;
+    this.product_categoryTarget.innerHTML = data.product_category;
+    this.product_descriptionTarget.innerHTML = data.product_description;
+    this.product_priceTarget.innerHTML = data.product_price;
+    this.productTarget.innerHTML = data.product;   
   }
 
   open() {
