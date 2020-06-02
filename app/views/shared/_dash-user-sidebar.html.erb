@@ -8,10 +8,9 @@
     <%= image_tag @user.photo, class: "avatar-prof" %>
   </div>
   <div class="dash-menu">
-  <a href="#">Gotta change</a>
-  <a href="#">these lol</a>
   <%= link_to "Guest List", user_guests_path %>
   <%= link_to "My Favorites", user_favorite_vendors_path %>
+  <%= link_to "Edit my Profile", edit_user_registration_path %>
   </div>
 </div>
 
