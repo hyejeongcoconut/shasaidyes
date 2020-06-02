@@ -21,8 +21,8 @@ export default class extends Controller {
       })
         .then(response => response.json())
         .then((data) => {
-          console.log(data);
           window.location.replace("/user/dashboard");
         });
   }
+
 }

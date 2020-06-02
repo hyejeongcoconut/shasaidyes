@@ -14,22 +14,24 @@
         <p data-target="modal.user_name"></p>
         <h5>Vendor ID</h5>
         <p data-target="modal.vendor_id"></p>
+        <h5>Quote ID</h5>
+        <p data-target="modal.quote_id"></p>
         <div class="form-group">
           <label for="list_of_services">List of services</label>
-          <input type="text" class="form-control" id="list_of_services">
+          <input  type="text" class="list_of_services form-control"  data-target="modal.list_of_services" value="">
         </div>
         <div class="form-group">
           <label for="date">Date</label>
-          <input type="date" class="form-control" id="date">
+          <input type="date" class=" date form-control" id="date" data-target="modal.date" value="">
         </div>
         <div class="form-group">
           <label for="total_price">Total price</label>
-          <input type="number" class="form-control" id="total_price">
+          <input type="number" class="total_price form-control" id="total_price" data-target="modal.total_price" value="">
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" data-action="click->modal#close">Close</button>
-        <button type="button" class="btn btn-primary" data-action="click->modal#createQuote">Save changes</button>
+        <button id="sweet-alert" class="btn btn-primary" type="button" data-action="click->modal#dialog">Save changes</button>
       </div>
     </div>
   </div>

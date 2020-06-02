@@ -9,6 +9,7 @@ class Vendor::PagesController < Vendor::BaseController
     return @products, @favorites
   end
 
+  #create new quote method
   def create
     @quote = Quote.new(quote_params)
     @vendor = Vendor.find(params[:page][:vendor_id])
@@ -16,12 +17,22 @@ class Vendor::PagesController < Vendor::BaseController
     @quote.vendor = @vendor
     @quote.user = @user
     @quote.save
-
     respond_to do |format|
       format.html
       format.json { render json: {quotes: @quote }}
     end
   end
+
+  #update quote method
+  def update
+    @quote = Quote.find(params[:page][:id])
+    @quote.update(quote_params)
+    respond_to do |format|
+      format.html
+      format.json { render json: {quotes: @quote }}
+    end
+  end
+
 
   private
 
@@ -30,6 +41,7 @@ class Vendor::PagesController < Vendor::BaseController
                                  :total_price,
                                  :list_of_services,
                                  :date,
-                                 :booked)
+                                 :booked,
+                                 :id)
   end
 end
