@@ -1,12 +1,13 @@
 .navbar {
   transition: 0.5s;
+  z-index: 1;
 }
 
 .sidebar-open{
   height: 100%;
   position: fixed;
   z-index: 0;
-  top: 66px;
+  top: 0;
   left: 0;
   background-color: #111;
   color: white;

@@ -1,6 +1,7 @@
 <%= render 'shared/dash-user-sidebar' %>
 
 <div class="dash-main">
+
 <div class="main-fav" data-controller="vendor-modal">
   <h2>My Favorite Vendors</h2>
   <% @favorites.each do |favorite| %>
@@ -12,6 +13,7 @@
       <%end%>
       <p>(<%= favorite.vendor.category.capitalize %>) </p>
       </div>
+
       <div class="fav-options" data-target="model.openmodal">
       <a href="#" class="sha-mustard-btn">Chat now</a>
       <% if favorite.vendor.quotes.first.booked == 0 %>
@@ -31,6 +33,7 @@
         <a href="#" class="btn btn-success" >Payed</a>
       <% end %>
       <%= render 'shared/vendor_modal' %>
+
       <%= link_to "Remove",
         user_favorite_vendor_path(favorite),
         class: "sha-btn-outline",
