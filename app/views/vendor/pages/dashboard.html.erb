@@ -4,7 +4,7 @@
 <div style="border: solid 1px red;margin-bottom: 20px;" data-controller="vendor-modal">
   <h1>My service request</h1>
   <% @favorites.each do |favorite| %>
-    <div data-target="model.openmodal">
+    <div >
       <p><%= favorite.user.first_name %> <%= favorite.user.last_name %>
         <a href="#" class="btn btn-danger">Chat now !</a>
         <button href="#"
