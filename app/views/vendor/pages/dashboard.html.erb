@@ -1,26 +1,33 @@
 <%= render 'shared/dash-vendor-sidebar' %>
 <div class="dash-main">
-  <h2>Welcome, <%=@vendor.name%></h2>
+  <h1>Welcome, <%=@vendor.name%></h1>
   <div class="row">
 
   <div class="col-xs-12 col-md-3">
-    <div class="my-accountinfo">
+    <div class="my-accountinfo vdash-divbackground">
       <h2>Account Info</h2>
+      <hr>
+      <div class="d-flex justify-content-around">
+      <%= cl_image_tag @vendor.photo.key, class: "avatar-prof2"%>
+      </div>
       <p class="vacctinfo-title"><strong>Category</strong></p>
       <p><%=@vendor.category%></p>
       <p class="vacctinfo-title"><strong>Address</strong></p>
       <p><%=@vendor.address%></p>
-      <p class="vacctinfo-title"><strong>Describe your business</strong></p>
+      <p class="vacctinfo-title"><strong>Business Description</strong></p>
       <p><%=@vendor.description%></p>
-      <p>Tel: <%=@vendor.phone_number%></p>
-      <p><%= link_to "Edit my Profile", edit_vendor_registration_path, class:"sha-mustard-btn"%></p>
+      <p><strong>Tel:</strong> <%=@vendor.phone_number%></p>
+      <div class="d-flex justify-content-around">
+      <%= link_to "Edit my Profile", edit_vendor_registration_path, class:"sha-mustard-btn sha-btn-md"%>
+    </div>
     </div>
   </div>
 
 
   <div class="col-xs-12 col-md-5">
-    <div class="my-products" data-controller="product-modal">
+    <div class="my-products vdash-divbackground" data-controller="product-modal">
       <h2>My Products</h2>
+      <hr>
       <%= link_to "Add new products", new_vendor_product_path %>
         <% if @products.present? %>
           <% @products.each do |product| %>
@@ -44,8 +51,9 @@
 
 <%# See who favorited me and able to create invoices %>
   <div class="col-xs-12 col-md-4">
-    <div class="client-messages" data-controller="vendor-modal">
+    <div class="client-messages vdash-divbackground" data-controller="vendor-modal">
       <h2>My Clients</h2>
+      <hr>
       <% @favorites.each do |favorite| %>
         <div data-target="model.openmodal">
           <p><%= favorite.user.first_name %> <%= favorite.user.last_name %>
