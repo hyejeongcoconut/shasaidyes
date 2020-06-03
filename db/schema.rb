@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_011919) do
+ActiveRecord::Schema.define(version: 2020_06_03_073611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2020_06_03_011919) do
     t.string "name"
     t.bigint "user_id", null: false
     t.bigint "vendor_id", null: false
+    t.bigint "favorite_vendor_id"
+    t.index ["favorite_vendor_id"], name: "index_inboxes_on_favorite_vendor_id"
     t.index ["user_id"], name: "index_inboxes_on_user_id"
     t.index ["vendor_id"], name: "index_inboxes_on_vendor_id"
   end
@@ -145,6 +147,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_011919) do
   add_foreign_key "favorite_vendors", "users"
   add_foreign_key "favorite_vendors", "vendors"
   add_foreign_key "guests", "users"
+  add_foreign_key "inboxes", "favorite_vendors"
   add_foreign_key "inboxes", "users"
   add_foreign_key "inboxes", "vendors"
   add_foreign_key "messages", "inboxes"
