@@ -1,26 +1,59 @@
 <div class="content-wrap mt-4">
-  <div class="row">
-    <div class="col-xs-12 col-lg-7 offset-lg-1">
-      <div class="vendor-info-main">
-        <h1>This is where the vendor products will go</h1>
-        <div class="products">
-          <% @products.each do |product| %>
-            <p><%= product.name %> |
-            <%= link_to "Product Details", vendor_product_path(product) %> </p>
+<div class="row">
+
+  <div class="col-xs-12 col-lg-7 offset-lg-1">
+    <div class="vendor-info-main">
+
+    <h1><%= @vendor.name.capitalize %></h1>
+
+      <div class="products">
+      <div class="glider-contain">
+      <div class="glider gliderwrapcustom">
+
+        <% @products.each do |product| %>
+          <%# IF product photos exsits, show product images in carousel %>
+          <% if product.photos.present? %>
             <% product.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+              <div class="gliderslide">
+                <%= cl_image_tag photo.key, height: 400, wdith: 'auto', crop: :fill, id: "product-photo" %>
+                <h3><%= product.name %></h3>
+                <p><%= product.description %></p>
+              </div>
             <% end %>
-          <% end %>
-        <h1><%= @vendor.name.capitalize %></h1>
-          <div class="products">
-            <% @products.each do |product| %>
-                  <% product.photos.each do |photo| %>
-                    <%= cl_image_tag photo.key, height: 500, crop: :fill, id: "product-photo" %>
-                  <% end %>
-                  <%= product.name %>
-                  <%= product.description %>
-            <% end %>
+          <%# IF product does not have product images, %>
+          <% else %>
+            <div class="gliderslide">
+              <h3><%= product.name %></h3>
+              <p><%= product.description %></p>
+            </div>
+          <%end%>
+        <% end %>
+      </div>
+
+        <button aria-label="Previous" class="glider-prev">◄</button>
+        <button aria-label="Next" class="glider-next">►</button>
+        <div role="tablist" class="dots"></div>
+      </div>     
+
+      </div>
+    </div>
+  </div>
+
+  <%# Vendor info left sidebar %>
+  <div class="col-xs-12 col-lg-3">
+    <div class="side-fav-content" data-controller="favoritevendor" data-target="favoritevendor.favorite" id="vendor-data">
+      <div class="vendor-info-side">
+        <%= image_tag @vendor.photo, class: "vinfoimg" %>
+        <div class="vinfo-text">
+          <h2><%= @vendor.name.capitalize %></h2>
+          <div class="vcatcity vcard-catcity d-flex justify-content-between mb-2">
+            <h5><%= @vendor.category %></h5>
+            <h5><%= @vendor.city.capitalize %></h5>
           </div>
+          <p><%= @vendor.description %></p>
+          <p><%= @vendor.address %>
+          <p>Call: <%= @vendor.phone_number %></p>
+          </p>
         </div>
       </div>
       <div class="col-xs-12 col-lg-3">
@@ -57,4 +90,21 @@
     </div>
   </div>
 </div>
+</div>
 
+
+<script>
+  window.addEventListener('load', function(){
+    new Glider(document.querySelector('.glider'), {
+      slidesToShow: 1,
+      slidesToScroll: 'auto',
+      itemWidth: 'auto',
+      draggable: true,
+      dots: '.dots',
+      arrows: {
+        prev: '.glider-prev',
+        next: '.glider-next'
+      }
+    })
+  })
+</script>

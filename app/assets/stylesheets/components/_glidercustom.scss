@@ -1,0 +1,34 @@
+.gliderslide {
+  margin: 0 auto;
+  margin-top: 10px;
+  text-align: center;
+  h3{
+    margin-top: 10px;
+  }
+}
+
+.gliderwrapcustom{
+  width: 85%;
+  // border: 1px solid red;
+}
+
+.glider-next {
+  right: 10px;
+}
+
+.glider-prev{
+  left: 10px;
+}
+
+.glider, .glider-contain {
+    margin: 0 auto;
+    position: relative;
+}
+
+.glider-next, .glider-prev {
+  top: 45%;
+}
+
+.glider-dot.active {
+  background: $indian-red;
+}
