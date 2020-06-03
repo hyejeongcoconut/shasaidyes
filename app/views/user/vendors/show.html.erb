@@ -7,15 +7,7 @@
     <h1><%= @vendor.name.capitalize %></h1>
 
       <div class="products">
-        <div class="owl-carousel owl-theme">
-          <div>
-            <div class="item" style="width:250px"><h4>1</h4></div>
-    <div class="item" style="width:100px"><h4>2</h4></div>
-    <div class="item" style="width:500px"><h4>3</h4></div>
-          </div>
-        </div>
-
-
+        
         <% @products.each do |product| %>
           
               <% product.photos.each do |photo| %>
@@ -66,13 +58,3 @@
 
 </div>
 </div>
-
-<%# the script code to initialize the carousel on the same page %>
-
-<%= content_for(:after_js) do %>
-  <script>
-    $(document).ready(function(){
-      $('.owl-carousel').owlCarousel();
-    });
-  </script>
-<% end %>
