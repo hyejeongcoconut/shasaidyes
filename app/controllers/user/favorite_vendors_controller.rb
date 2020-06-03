@@ -1,4 +1,3 @@
-require "pry-byebug"
 class User::FavoriteVendorsController < User::BaseController
 
   #before_action :authenticate_user!, only: [ :create ]
