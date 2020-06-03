@@ -1,14 +1,15 @@
 
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <h1>Welcome,</h1>
-  <h1><%= @vendor.name.capitalize %></h1>
+  <h1>Welcome, <%= @vendor.name.capitalize %></h1>
+  <h1></h1>
   <br>
   <div class="d-flex justify-content-around mb-4">
     <%= image_tag @vendor.photo, class: "avatar-prof" %>
   </div>
   <div class="dash-menu">
   <%= link_to "My Products", vendor_products_path %>
+  <%= link_to "My Inbox", "#" %>
   <%= link_to "Edit my Profile", edit_vendor_registration_path %>
   </div>
 </div>
