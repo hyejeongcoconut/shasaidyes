@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
     resources :favorite_vendors, only: [:index, :create, :destroy]
     patch "quote/pay", to: "pages#update"
+    post "favorite_vendor_exist", to: "favorite_vendors#verify_vendor?"
+
     get "dashboard", to: "pages#dashboard", as: :dashboard
     resources :inboxes, only: [:index, :create, :show] do
       resources :messages, only: :create
