@@ -6,7 +6,7 @@
     <h1>This is where the vendor products will go</h1>
     <div class="products">
       <% @products.each do |product| %>
-        <p><%= product.name %> | 
+        <p><%= product.name %> |
         <%= link_to "Product Details", vendor_product_path(product) %> </p>
         <% product.photos.each do |photo| %>
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
@@ -17,7 +17,7 @@
   </div>
   <div class="col-xs-12 col-lg-3">
     <div class="side-fav-content" data-controller="favoritevendor" data-target="favoritevendor.favorite" id="vendor-data">
-      <!-- Need to resolve this section so that nonuser will be redirected to signup if not currently signed in --> 
+      <!-- Need to resolve this section so that nonuser will be redirected to signup if not currently signed in -->
 
 
       <div class="vendor-info-side">
@@ -40,8 +40,8 @@
         <% if current_user.present? %>
           <span id="user_id" style="display:none;"><%= current_user.id %></span>
           <span id="vendor_id" style="display:none;"><%= @vendor.id %></span>
-          <button data-action="click->favoritevendor#add" class="sha-btn" >Add to favorites</button>
-          <%# <%= link_to "Add to favorites", user_favorite_vendors_path, class: "sha-btn" %> 
+          <button data-action="click->favoritevendor#addVendor" class="sha-btn" >Add to favorites</button>
+          <%# <%= link_to "Add to favorites", user_favorite_vendors_path, class: "sha-btn" %>
         <% else %>
           <%= link_to "Add to favorites", new_user_session_path, class: "sha-btn"  %>
         <% end %>
