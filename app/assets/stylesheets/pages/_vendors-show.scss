@@ -1,6 +1,9 @@
 .vendor-info-main{
   // width: 600px;
-  border: 1px solid springgreen;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px 0px #ffdadaab;
+  padding: 20px;
 }
 
 .side-fav-content{
@@ -11,6 +14,7 @@
   position: sticky;
   top: 50px;
   padding: 20px;
+  padding-bottom: 30px;
   background-color: white;
   box-shadow: 0 0 10px 0px #ffdadaab;
 }

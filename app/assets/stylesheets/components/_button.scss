@@ -55,6 +55,8 @@
 }
 
 .sha-btn-outline-md {
+  font-family: $body-font;
+  margin: 1px;
   text-decoration: none;
   color: $indian-red;
   border: 1px solid $indian-red;
@@ -129,4 +131,10 @@
     color: white;
     text-decoration: none;
   }
+}
+
+.sha-btn-md {
+  font-size: 16px;
+  line-height: 16px;
+  padding: 8px 12px;
 }
