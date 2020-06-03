@@ -4,6 +4,9 @@
   background-color: white;
   box-shadow: 0 0 10px 0px #ffdadaab;
   padding: 20px;
+  //Added for showing the alert in the top of page
+  position: relative;
+  //Added for showing the alert in the top of page
   h1{
     margin-top: 10px;
     margin-left: 58px;
@@ -52,5 +55,11 @@
     color: $candy-pink;
     margin: 0;
   }
-  
+
+.valert-position {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
 }

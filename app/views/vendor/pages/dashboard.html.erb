@@ -76,7 +76,7 @@
             </div>
             <div class="col-xs-12 col-md-7">
               <div class="float-right">
-                <a href="#" class="sha-green-btn">Chat now !</a>
+                <%= link_to "Chat Now", vendor_inbox_path(favorite.inbox.id), class:"sha-green-btn" %>
                 <button href="#"
                         class="sha-mustard-btn"
                         data-action="click->vendor-modal#launchModal"
