@@ -16,7 +16,9 @@ class User::FavoriteVendorsController < User::BaseController
     @favorite_vendor.vendor = @vendor
     @favorite_vendor.save
     id = @favorite_vendor.id
-    create_quote(current_user.id,vendor,id)
+    create_quote(current_user.id,params[:favorite_vendor][:vendor_id],id)
+    @inbox_id = create_inbox(current_user.id,params[:favorite_vendor][:vendor_id],id,@vendor.name)
+    #redirect_to vendors_path
     respond_to do |format|
       format.html
       format.json { render json: { favorite_vendors: @favorite_vendor } }
@@ -65,8 +67,19 @@ class User::FavoriteVendorsController < User::BaseController
     @quote.save
   end
 
+
+  def create_inbox(user_id, vendor_id, fav_id,v_name)
+    @inbox = Inbox.new(name: v_name,
+                       vendor_id: vendor_id,
+                       user_id: user_id,
+                       favorite_vendor_id: fav_id)
+    @inbox.save
+    return @inbox.id
+  end
+
   def favorite_exist?(user_id,vendor_id)
     exist = FavoriteVendor.where(user_id: user_id).where(vendor_id: vendor_id)
     exist.count > 0 ? true : false
+
   end
 end

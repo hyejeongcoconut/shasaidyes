@@ -14,7 +14,8 @@
       <p>(<%= favorite.vendor.category.capitalize %>) </p>
       </div>
       <div class="fav-options">
-      <a href="#" class="sha-mustard-btn">Chat now</a>
+      <%= link_to "Chat Now", user_inbox_path(favorite.inbox.id) %>
+      <%# <a href="#" class="sha-mustard-btn">Chat now</a> %>
       <% if favorite.vendor.quotes.first.booked == 0 %>
         <a href="#" class="btn btn-secondary" >No invoice</a>
       <% elsif favorite.quote.booked == 1 %>
