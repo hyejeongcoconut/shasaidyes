@@ -7,16 +7,27 @@
     <h1><%= @vendor.name.capitalize %></h1>
 
       <div class="products">
-        
+
+      <div class="glider-contain">
+      <div class="glider gliderwrapcustom">
+
         <% @products.each do |product| %>
-          
-              <% product.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, height: 500, crop: :fill, id: "product-photo" %>
-              <% end %>
-              <%= product.name %>
-              <%= product.description %>
-            
+          <% product.photos.each do |photo| %>
+          <%# div below contains each photo into carousel %>
+          <div class="gliderslide">
+            <%= cl_image_tag photo.key, height: 400, wdith: 'auto', crop: :fill, id: "product-photo" %>
+            <h3><%= product.name %></h3>
+            <p><%= product.description %></p>
+          </div>
+          <% end %>
         <% end %>
+      </div>
+
+        <button aria-label="Previous" class="glider-prev">◄</button>
+        <button aria-label="Next" class="glider-next">►</button>
+        <div role="tablist" class="dots"></div>
+      </div>     
+
       </div>
     </div>
   </div>
@@ -51,10 +62,22 @@
       </div>
     </div>
   </div>
-
-
-
-
-
 </div>
 </div>
+
+
+<script>
+  window.addEventListener('load', function(){
+    new Glider(document.querySelector('.glider'), {
+      slidesToShow: 1,
+      slidesToScroll: 'auto',
+      itemWidth: 'auto',
+      draggable: true,
+      dots: '.dots',
+      arrows: {
+        prev: '.glider-prev',
+        next: '.glider-next'
+      }
+    })
+  })
+</script>
