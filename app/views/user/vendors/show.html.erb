@@ -7,19 +7,26 @@
     <h1><%= @vendor.name.capitalize %></h1>
 
       <div class="products">
-
       <div class="glider-contain">
       <div class="glider gliderwrapcustom">
 
         <% @products.each do |product| %>
-          <% product.photos.each do |photo| %>
-          <%# div below contains each photo into carousel %>
-          <div class="gliderslide">
-            <%= cl_image_tag photo.key, height: 400, wdith: 'auto', crop: :fill, id: "product-photo" %>
-            <h3><%= product.name %></h3>
-            <p><%= product.description %></p>
-          </div>
-          <% end %>
+          <%# IF product photos exsits, show product images in carousel %>
+          <% if product.photos.present? %>
+            <% product.photos.each do |photo| %>
+              <div class="gliderslide">
+                <%= cl_image_tag photo.key, height: 400, wdith: 'auto', crop: :fill, id: "product-photo" %>
+                <h3><%= product.name %></h3>
+                <p><%= product.description %></p>
+              </div>
+            <% end %>
+          <%# IF product does not have product images, %>
+          <% else %>
+            <div class="gliderslide">
+              <h3><%= product.name %></h3>
+              <p><%= product.description %></p>
+            </div>
+          <%end%>
         <% end %>
       </div>
 
