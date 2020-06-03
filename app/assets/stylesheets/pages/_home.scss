@@ -7,12 +7,25 @@ $bgimg5: url("https://images.pexels.com/photos/3082764/pexels-photo-3082764.jpeg
 $bgimg6: url("https://images.unsplash.com/photo-1550257130-f32d770228ac?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=hannah-busing-x3PXh3ljAl0-unsplash.jpg");
 
 .body-wrap {
-background-image: $bgimg6;
-background-size: cover;
-background-position: center 47%;
 min-height: 100vh;
 position: relative;
 z-index: 0;
+}
+
+
+// Make background transluscent
+.body-wrap::before {
+  content: "";
+  position: absolute;
+  background: $bgimg6;
+  background-size: cover;
+  background-position: center 47%;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;  
+  // opacity: .9; 
+  z-index: -1;
 }
 
 // class i want to implement for JUST root path

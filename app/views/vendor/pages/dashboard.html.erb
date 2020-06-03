@@ -1,49 +1,24 @@
 <%= render 'shared/dash-vendor-sidebar' %>
 <div class="dash-main">
-<<<<<<< HEAD
-<h1>Dashboard</h1>
-<div style="border: solid 1px red;margin-bottom: 20px;" data-controller="vendor-modal">
-  <h1>My service request</h1>
-  <% @favorites.each do |favorite| %>
-    <div >
-      <p><%= favorite.user.first_name %> <%= favorite.user.last_name %>
-        <a href="#" class="btn btn-danger">Chat now !</a>
-        <button href="#"
-                class="btn btn-success"
-                data-action="click->vendor-modal#launchModal"
-                data-user_id="<%= favorite.user_id %>"
-                data-user_name="<%= favorite.user.first_name %>"
-                data-vendor_id="<%= favorite.vendor_id %>"
-                data-quote_id="<%= favorite.quote.id %>">Generate quote!</button>
-        <% if favorite.quote.booked == 0  %>
-          <button class="btn btn-warning">Quote has not send</button></p>
-        <% elsif favorite.quote.booked == 1 %>
-          <button class="btn btn-danger">Has not payed</button></p>
-        <% else %>
-          <button class="btn btn-success">Payed</button></p>
-        <% end %>
-    </div>
-  <% end %>
-  <%= render 'shared/vendor_modal' %>
-</div>
-
-
-
-<div style="border: solid 1px green;">
-  <h1>MY PRODUCTS</h1>
-  <a href="#" class="btn btn-primary" > Add new product </a>
-  <% @products.each do |product| %>
-    <p><%= product.name %> <a href="#" class="btn btn-primary" > Edit </a> <a href="#" class="btn btn-danger">Remove !</a></p>
-  <% end %>
-</div>
-
-
-=======
->>>>>>> master
-  <h2>Vendor Dashboard</h2>
+  <h2>Welcome, <%=@vendor.name%></h2>
   <div class="row">
 
-  <div class="col-xs-12 col-md-6">
+  <div class="col-xs-12 col-md-3">
+    <div class="my-accountinfo">
+      <h2>Account Info</h2>
+      <p class="vacctinfo-title"><strong>Category</strong></p>
+      <p><%=@vendor.category%></p>
+      <p class="vacctinfo-title"><strong>Address</strong></p>
+      <p><%=@vendor.address%></p>
+      <p class="vacctinfo-title"><strong>Describe your business</strong></p>
+      <p><%=@vendor.description%></p>
+      <p>Tel: <%=@vendor.phone_number%></p>
+      <p><%= link_to "Edit my Profile", edit_vendor_registration_path, class:"sha-mustard-btn"%></p>
+    </div>
+  </div>
+
+
+  <div class="col-xs-12 col-md-5">
     <div class="my-products" data-controller="product-modal">
       <h2>My Products</h2>
       <%= link_to "Add new products", new_vendor_product_path %>
@@ -65,13 +40,10 @@
         <% end %>
         
         <%= render 'shared/product_modal' %>
-
-        
-
     </div>
-  
 
-  <div class="col-xs-12 col-md-6">
+<%# See who favorited me and able to create invoices %>
+  <div class="col-xs-12 col-md-4">
     <div class="client-messages" data-controller="vendor-modal">
       <h2>My Clients</h2>
       <% @favorites.each do |favorite| %>
