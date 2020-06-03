@@ -46,7 +46,10 @@
                 data-product_price="<%=product.price%>"
                 data-product_description="<%=product.description%>"
                 data-product_category="<%=product.category%>"
+
+                
                 >Quick View</button> 
+                
                 <%= link_to "Edit Product", edit_vendor_product_path(product), class:"sha-mustard-btn" %>
                 </div>
           </div>
@@ -72,19 +75,21 @@
               <p><%= favorite.user.first_name.capitalize %> <%= favorite.user.last_name.capitalize %>
             </div>
             <div class="col-xs-12 col-md-7">
-              <a href="#" class="sha-green-btn">Chat now !</a>
-              <button href="#"
-                      class="sha-mustard-btn"
-                      data-action="click->vendor-modal#launchModal"
-                      data-user_id="<%= favorite.user_id %>"
-                      data-user_name="<%= favorite.user.first_name %>"
-                      data-vendor_id="<%= favorite.vendor_id %>"
-                      data-quote_id="<%= favorite.vendor.quotes.first.id %>">Generate quote!</button>
-              <% if favorite.vendor.quotes.first.booked == 0  %>
-                <button class="sha-grey-btn">Quote not sent</button>
-              <% else %>
-                <button class="sha-green-btn">Paid</button>
-              <% end %>
+              <div class="float-right">
+                <a href="#" class="sha-green-btn">Chat now !</a>
+                <button href="#"
+                        class="sha-mustard-btn"
+                        data-action="click->vendor-modal#launchModal"
+                        data-user_id="<%= favorite.user_id %>"
+                        data-user_name="<%= favorite.user.first_name %>"
+                        data-vendor_id="<%= favorite.vendor_id %>"
+                        data-quote_id="<%= favorite.vendor.quotes.first.id %>">Generate quote!</button>
+                <% if favorite.vendor.quotes.first.booked == 0  %>
+                  <button class="sha-grey-btn">Quote not sent</button>
+                <% else %>
+                  <button class="sha-green-btn">Paid</button>
+                <% end %>
+              </div>
             </div>
           </div>
           <div class="d-flex justify-content-around">
