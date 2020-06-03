@@ -56,15 +56,35 @@
           </p>
         </div>
       </div>
-
-        <div class="favbutton text-center">
-          <% if current_user.present? %>
-            <span id="user_id" style="display:none;"><%= current_user.id %></span>
-            <span id="vendor_id" style="display:none;"><%= @vendor.id %></span>
-            <button data-action="click->favoritevendor#add" class="sha-btn" >Add to favorites</button>
-          <% else %>
-            <%= link_to "Add to favorites", new_user_session_path, class: "sha-btn"  %>
-          <% end %>
+      <div class="col-xs-12 col-lg-3">
+        <div class="side-fav-content" data-controller="favoritevendor" data-target="favoritevendor.favorite" id="vendor-data">
+          <!-- Need to resolve this section so that nonuser will be redirected to signup if not currently signed in -->
+          <div class="vendor-info-side">
+            <%= image_tag @vendor.photo, class: "vinfoimg" %>
+            <div class="vinfo-text">
+              <h2><%= @vendor.name.capitalize %></h2>
+              <div class="vcatcity vcard-catcity d-flex justify-content-between mb-2">
+                <h5><%= @vendor.category %></h5>
+                <h5><%= @vendor.city.capitalize %></h5>
+              </div>
+              <p><%= @vendor.description %></p>
+              <p><%= @vendor.address %>
+              <p>Call: <%= @vendor.phone_number %></p>
+              </p>
+            </div>
+          </div>
+          <div class="favbutton text-center">
+            <% if current_user.present? %>
+              <span id="user_id" style="display:none;"><%= current_user.id %></span>
+              <span id="vendor_id" style="display:none;"><%= @vendor.id %></span>
+              <button data-action="click->favoritevendor#checkFavoriteVendor" class="sha-btn" >Add to favorites</button>
+            <% else %>
+              <%= link_to "Add to favorites", new_user_session_path, class: "sha-btn"  %>
+            <% end %>
+            <div class="valert-position">
+              <div class="vendor-exist"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

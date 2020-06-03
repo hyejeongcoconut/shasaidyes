@@ -1,3 +1,4 @@
+require "pry-byebug"
 class User::FavoriteVendorsController < User::BaseController
 
   #before_action :authenticate_user!, only: [ :create ]
@@ -8,17 +9,33 @@ class User::FavoriteVendorsController < User::BaseController
   end
 
   def create
-    @vendor = Vendor.find(params[:favorite_vendor][:vendor_id])
+    vendor = params[:favorite_vendor][:vendor_id]
+    @vendor = Vendor.find(vendor)
     @favorite_vendor = FavoriteVendor.new
     @favorite_vendor.user = current_user
     @favorite_vendor.vendor = @vendor
     @favorite_vendor.save
     id = @favorite_vendor.id
-    create_quote(current_user.id,params[:favorite_vendor][:vendor_id],id)
-    #redirect_to vendors_path
+    create_quote(current_user.id,vendor,id)
     respond_to do |format|
       format.html
       format.json { render json: { favorite_vendors: @favorite_vendor } }
+    end
+  end
+
+  def verify_vendor?
+    vendor = params[:favorite_vendor][:vendor_id]
+    validate = favorite_exist?(current_user.id,vendor)
+    if validate == true
+      respond_to do |format|
+        format.html
+        format.json { render json: { success: true } }
+      end
+    else
+      respond_to do |format|
+        format.html
+        format.json { render json: { success: false } }
+      end
     end
   end
 
@@ -46,5 +63,10 @@ class User::FavoriteVendorsController < User::BaseController
                        user_id: user_id,
                        favorite_vendor_id: fav_id)
     @quote.save
+  end
+
+  def favorite_exist?(user_id,vendor_id)
+    exist = FavoriteVendor.where(user_id: user_id).where(vendor_id: vendor_id)
+    exist.count > 0 ? true : false
   end
 end
