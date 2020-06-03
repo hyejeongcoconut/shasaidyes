@@ -1,5 +1,6 @@
 class Quote < ApplicationRecord
   belongs_to :vendor
   belongs_to :user
-  has_many :favorite_vendors, through: :vendor
+  belongs_to :favorite_vendor
+  #has_one :favorite_vendor, through: :vendor
 end
