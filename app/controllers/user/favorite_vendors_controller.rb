@@ -13,7 +13,8 @@ class User::FavoriteVendorsController < User::BaseController
     @favorite_vendor.user = current_user
     @favorite_vendor.vendor = @vendor
     @favorite_vendor.save
-    create_quote(current_user.id,params[:favorite_vendor][:vendor_id])
+    id = @favorite_vendor.id
+    create_quote(current_user.id,params[:favorite_vendor][:vendor_id],id)
     #redirect_to vendors_path
     respond_to do |format|
       format.html
@@ -36,13 +37,14 @@ class User::FavoriteVendorsController < User::BaseController
     params.require(:favorite_vendor).permit(:user_id,:vendor_id)
   end
 
-  def create_quote(user_id, vendor_id)
+  def create_quote(user_id, vendor_id,fav_id)
     @quote = Quote.new(total_price: 0,
                        list_of_services: "",
                        date: "",
                        booked: 0,
                        vendor_id: vendor_id,
-                       user_id: user_id)
+                       user_id: user_id,
+                       favorite_vendor_id: fav_id)
     @quote.save
   end
 end

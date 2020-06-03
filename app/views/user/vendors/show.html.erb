@@ -4,6 +4,15 @@
   <div class="col-xs-12 col-lg-7 offset-lg-1">
     <div class="vendor-info-main">
 
+<<<<<<< HEAD
+    <h1>This is where the vendor products will go</h1>
+    <div class="products">
+      <% @products.each do |product| %>
+        <p><%= product.name %> |
+        <%= link_to "Product Details", vendor_product_path(product) %> </p>
+        <% product.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+=======
     <h1><%= @vendor.name.capitalize %></h1>
 
       <div class="products">
@@ -16,6 +25,7 @@
               <%= product.name %>
               <%= product.description %>
             
+>>>>>>> master
         <% end %>
       </div>
     </div>
@@ -24,6 +34,12 @@
   <%# Vendor info left sidebar %>
   <div class="col-xs-12 col-lg-3">
     <div class="side-fav-content" data-controller="favoritevendor" data-target="favoritevendor.favorite" id="vendor-data">
+<<<<<<< HEAD
+      <!-- Need to resolve this section so that nonuser will be redirected to signup if not currently signed in -->
+
+
+=======
+>>>>>>> master
       <div class="vendor-info-side">
         <%= image_tag @vendor.photo, class: "vinfoimg" %>
         <div class="vinfo-text">
@@ -39,6 +55,18 @@
         </div>
       </div>
 
+<<<<<<< HEAD
+
+      <div class="favbutton text-center">
+        <% if current_user.present? %>
+          <span id="user_id" style="display:none;"><%= current_user.id %></span>
+          <span id="vendor_id" style="display:none;"><%= @vendor.id %></span>
+          <button data-action="click->favoritevendor#addVendor" class="sha-btn" >Add to favorites</button>
+          <%# <%= link_to "Add to favorites", user_favorite_vendors_path, class: "sha-btn" %>
+        <% else %>
+          <%= link_to "Add to favorites", new_user_session_path, class: "sha-btn"  %>
+        <% end %>
+=======
         <div class="favbutton text-center">
           <% if current_user.present? %>
             <span id="user_id" style="display:none;"><%= current_user.id %></span>
@@ -48,6 +76,7 @@
             <%= link_to "Add to favorites", new_user_session_path, class: "sha-btn"  %>
           <% end %>
         </div>
+>>>>>>> master
       </div>
     </div>
   </div>
