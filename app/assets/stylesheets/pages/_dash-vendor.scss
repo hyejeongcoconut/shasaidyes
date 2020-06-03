@@ -1,17 +1,30 @@
-.my-products {
-  border: 1px solid coral;
+.vdash-divbackground {
   height: 100%;
   padding: 20px;
   background-color: white;
+  box-shadow: 0 0 10px 0px #ffdadaab;
+}
+
+.my-accountinfo{
+  // border: 1px solid greenyellow;
+}
+
+.my-products {
+  // border: 1px solid coral;
 }
 
 .client-messages{
-  border: 1px solid rgb(247, 47, 47);
-  height: 100%;
-  padding: 20px;
-  background-color: white;
+  // border: 1px solid rgb(247, 47, 47);
 }
 
 .dash-main {
   margin-top: 20px;
+}
+
+.vacctinfo-title{
+  margin: 0;
+}
+
+.prod-name {
+  margin-bottom: 10px;
 }

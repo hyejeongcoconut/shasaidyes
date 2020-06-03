@@ -20,7 +20,7 @@
           <%= image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Dashbaord", user_dashboard_path, class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
+            <%= link_to "Inbox", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
@@ -28,7 +28,7 @@
       <%# VENDOR-SIGNED IN NAV BAR %>
       <% elsif vendor_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Home", "/", class: "nav-link" %>
+          <%= link_to "Search Vendors", user_vendors_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "My Dashboard", vendor_dashboard_path, class: "nav-link" %>
@@ -36,8 +36,8 @@
         <li class="nav-item dropdown">
           <%= image_tag current_vendor.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
             <%= link_to "Dashbaord", vendor_dashboard_path, class: "dropdown-item" %>
+            <%= link_to "Inbox", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>

@@ -1,15 +1,43 @@
 <%= render 'shared/dash-vendor-sidebar' %>
 <div class="dash-main">
-  <h2>Vendor Dashboard</h2>
+  <h1 class='text-center m-3'>Welcome, <%=@vendor.name%></h1>
   <div class="row">
 
-  <div class="col-xs-12 col-md-6">
-    <div class="my-products" data-controller="product-modal">
+  <div class="col-xs-12 col-md-3">
+    <div class="my-accountinfo vdash-divbackground">
+      <h2>Account Info</h2>
+      <hr>
+      <div class="d-flex justify-content-around">
+      <%= cl_image_tag @vendor.photo.key, class: "avatar-prof2"%>
+      </div>
+      <p class="vacctinfo-title"><strong>Category</strong></p>
+      <p><%=@vendor.category%></p>
+      <p class="vacctinfo-title"><strong>Address</strong></p>
+      <p><%=@vendor.address%></p>
+      <p class="vacctinfo-title"><strong>Business Description</strong></p>
+      <p><%=@vendor.description%></p>
+      <p><strong>Tel:</strong> <%=@vendor.phone_number%></p>
+      <div class="d-flex justify-content-around">
+      <%= link_to "Edit my Profile", edit_vendor_registration_path, class:"sha-mustard-btn sha-btn-md"%>
+    </div>
+    </div>
+  </div>
+
+
+  <div class="col-xs-12 col-md-5">
+    <div class="my-products vdash-divbackground" data-controller="product-modal">
       <h2>My Products</h2>
-      <%= link_to "Add new products", new_vendor_product_path %>
+      <hr>
+      <div class="row">
         <% if @products.present? %>
           <% @products.each do |product| %>
-            <p><%= product.name %>
+          <div class="col-xs-12 col-md-7">
+            <div class="prod-name">
+            <%= product.name %>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-5">
+          <div class="prod-options">
             <button
                 class="sha-green-btn"
                 data-action="click->product-modal#launchProductDeets"
@@ -18,38 +46,55 @@
                 data-product_price="<%=product.price%>"
                 data-product_description="<%=product.description%>"
                 data-product_category="<%=product.category%>"
-                >Product Details</button> 
+
+                
+                >Quick View</button> 
+                
                 <%= link_to "Edit Product", edit_vendor_product_path(product), class:"sha-mustard-btn" %>
-                </p>
+                </div>
+          </div>
           <% end %>
         <% end %>
+      </div>
+        <div class="d-flex justify-content-around">
+          <%= link_to "Add new products", new_vendor_product_path, class:"sha-btn-outline-md m-4" %>
+        </div>
         
         <%= render 'shared/product_modal' %>
-
-        
-
     </div>
-  
 
-  <div class="col-xs-12 col-md-6">
-    <div class="client-messages" data-controller="vendor-modal">
+<%# See who favorited me and able to create invoices %>
+  <div class="col-xs-12 col-md-4">
+    <div class="client-messages vdash-divbackground" data-controller="vendor-modal">
       <h2>My Clients</h2>
+      <hr>
       <% @favorites.each do |favorite| %>
         <div data-target="model.openmodal">
-          <p><%= favorite.user.first_name %> <%= favorite.user.last_name %>
-            <%= link_to "Chat Now", vendor_inbox_path(favorite.inbox.id) %>
-            <button href="#"
-                    class="btn btn-success"
-                    data-action="click->vendor-modal#launchModal"
-                    data-user_id="<%= favorite.user_id %>"
-                    data-user_name="<%= favorite.user.first_name %>"
-                    data-vendor_id="<%= favorite.vendor_id %>"
-                    data-quote_id="<%= favorite.vendor.quotes.first.id %>">Generate quote!</button>
-            <% if favorite.vendor.quotes.first.booked == 0  %>
-              <button class="btn btn-warning">Quote not sent</button></p>
-            <% else %>
-              <button class="btn btn-success">Paid</button></p>
-            <% end %>
+          <div class="row">
+            <div class="col-xs-12 col-md-5">
+              <p><%= favorite.user.first_name.capitalize %> <%= favorite.user.last_name.capitalize %>
+            </div>
+            <div class="col-xs-12 col-md-7">
+              <div class="float-right">
+                <%= link_to "Chat Now", vendor_inbox_path(favorite.inbox.id), class:"sha-green-btn" %>
+                <button href="#"
+                        class="sha-mustard-btn"
+                        data-action="click->vendor-modal#launchModal"
+                        data-user_id="<%= favorite.user_id %>"
+                        data-user_name="<%= favorite.user.first_name %>"
+                        data-vendor_id="<%= favorite.vendor_id %>"
+                        data-quote_id="<%= favorite.vendor.quotes.first.id %>">Generate quote!</button>
+                <% if favorite.vendor.quotes.first.booked == 0  %>
+                  <button class="sha-grey-btn">Quote not sent</button>
+                <% else %>
+                  <button class="sha-green-btn">Paid</button>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-around">
+            <%= link_to "Go to Inbox", "#", class:"sha-btn-outline-md m-4" %>
+          </div>
         </div>
       <% end %>
       <%= render 'shared/vendor_modal' %>
