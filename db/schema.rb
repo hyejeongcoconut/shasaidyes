@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_063127) do
+ActiveRecord::Schema.define(version: 2020_06_03_011919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(version: 2020_06_01_063127) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "favorite_vendor_id"
+    t.index ["favorite_vendor_id"], name: "index_quotes_on_favorite_vendor_id"
     t.index ["user_id"], name: "index_quotes_on_user_id"
     t.index ["vendor_id"], name: "index_quotes_on_vendor_id"
   end
@@ -147,6 +149,7 @@ ActiveRecord::Schema.define(version: 2020_06_01_063127) do
   add_foreign_key "inboxes", "vendors"
   add_foreign_key "messages", "inboxes"
   add_foreign_key "products", "vendors"
+  add_foreign_key "quotes", "favorite_vendors"
   add_foreign_key "quotes", "users"
   add_foreign_key "quotes", "vendors"
 end

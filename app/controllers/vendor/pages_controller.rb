@@ -1,3 +1,4 @@
+require "pry-byebug"
 class Vendor::PagesController < Vendor::BaseController
 
   before_action :authenticate_vendor!
