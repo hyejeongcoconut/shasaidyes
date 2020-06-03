@@ -44,10 +44,13 @@
             <% if current_user.present? %>
               <span id="user_id" style="display:none;"><%= current_user.id %></span>
               <span id="vendor_id" style="display:none;"><%= @vendor.id %></span>
-              <button data-action="click->favoritevendor#addVendor" class="sha-btn" >Add to favorites</button>
+              <button data-action="click->favoritevendor#checkFavoriteVendor" class="sha-btn" >Add to favorites</button>
             <% else %>
               <%= link_to "Add to favorites", new_user_session_path, class: "sha-btn"  %>
             <% end %>
+            <div class="valert-position">
+              <div class="vendor-exist"></div>
+            </div>
           </div>
         </div>
       </div>

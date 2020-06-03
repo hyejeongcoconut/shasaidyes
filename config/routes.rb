@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :vendors, only: [:index, :show]
 
     resources :favorite_vendors, only: [:index, :create, :destroy]
+    post "favorite_vendor_exist", to: "favorite_vendors#verify_vendor?"
 
     get "dashboard", to: "pages#dashboard", as: :dashboard
     resources :inboxes, only: [:index, :show] do
