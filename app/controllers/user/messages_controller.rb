@@ -19,6 +19,6 @@ class User::MessagesController < User::BaseController
   private
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :photo)
   end
 end
