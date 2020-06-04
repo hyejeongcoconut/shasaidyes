@@ -72,7 +72,7 @@ lovingyou = Vendor.new(
   email: "hello@lovingyou.co.kr",
   name: "Loving You",
   password: "123123",
-  category: category.sample,
+  category: "Reception Venue",
   phone_number: "01034591234",
   description: "Loving You wishes all our brides to feel special.",
   address: "haeundae-gu, busan, Republic of Korea",
@@ -82,6 +82,21 @@ puts "loving you created"
 
 lovingyou.photo.attach(io:URI.open('https://res.cloudinary.com/dambigbiy/image/upload/v1590480340/aia9bviwps2uh9l7m3h4.jpg'), filename: 'wedding.jpeg', content_type: 'image/jpeg')
 lovingyou.save!
+
+amor = Vendor.new(
+  email: "hello@amor.co.kr",
+  name: "Amor",
+  password: "123123",
+  category: "Reception Venue",
+  phone_number: "01034591232",
+  description: "Whether you're looking for a small wedding venue or a large reception space, explore thousands of options",
+  address: "haeundae-gu, busan, Republic of Korea",
+  city: "Busan"
+)
+puts "loving you created"
+
+amor.photo.attach(io:URI.open('https://res.cloudinary.com/dambigbiy/image/upload/v1590480340/aia9bviwps2uh9l7m3h4.jpg'), filename: 'wedding.jpeg', content_type: 'image/jpeg')
+amor.save!
 
 brideandyou = Vendor.new(
   email: "hello33@brideandyou.co.kr",
