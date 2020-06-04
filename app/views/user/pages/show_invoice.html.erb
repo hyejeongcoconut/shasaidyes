@@ -1,0 +1,24 @@
+<div>
+  <h1>Please check details and proceed with the payment.</h1>
+  <h4>Quote Number: <%= @purchase_data.id %></h4>
+  <h4>Date:</h4>
+  <p><%= @purchase_data.date %></p>
+  <h5 style="border-bottom: 1px solid black">List of services:</h5>
+  <p><%= @purchase_data.list_of_services %></p>
+  <div style="border-bottom: 1px solid black">
+  <h5>Total price:</h5>
+  </div>
+  <p><%= @purchase_data.total_price %>.00 USD</p>
+</div>
+<button id="pay" class="btn btn-primary">Pay</button>
+        <script src="https://js.stripe.com/v3/"></script>
+              <script>
+                const paymentButton = document.getElementById('pay');
+                paymentButton.addEventListener('click', () => {
+                  const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+                  stripe.redirectToCheckout({
+                    sessionId: '<%= @purchase_data.checkout_session_id %>'
+                  });
+                });
+              </script>
+

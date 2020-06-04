@@ -16,12 +16,14 @@ Rails.application.routes.draw do
     resources :favorite_vendors, only: [:index, :create, :destroy]
     patch "quote/pay", to: "pages#update"
     post "favorite_vendor_exist", to: "favorite_vendors#verify_vendor?"
-
     get "dashboard", to: "pages#dashboard", as: :dashboard
+    get "dashboard/payment", to: "pages#show_invoice"
+
+
     resources :inboxes, only: [:index, :create, :show] do
       resources :messages, only: :create
     end
-    
+
   end
 
   # everything that is acted by vendor, go under namespace `vendor`

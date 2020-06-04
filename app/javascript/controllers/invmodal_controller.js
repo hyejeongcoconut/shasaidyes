@@ -14,6 +14,7 @@ export default class extends Controller {
         this.quote_idTarget.innerHTML = data.quote_id;
     }
 
+
     formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
@@ -61,9 +62,20 @@ export default class extends Controller {
         })
           .then(response => response.json())
           .then((data) => {
-            console.log(data);
-            window.location.replace("/user/favorite_vendors");
+
+            this.purchase()
+            //window.location.replace("/user/favorite_vendors");
           });
+
+    }
+
+    purchase() {
+      const quote_id = this.quote_idTarget.innerHTML
+      const list_of_services = this.list_of_servicesTarget.innerHTML
+      const total_price = this.total_priceTarget.innerHTML
+      const date = this.dateTarget.innerHTML
+      window.location.replace(`/user/dashboard/payment?quote_id=${quote_id}&list_of_services=${list_of_services}&total_price=${total_price}&date=${date}`);
+
 
     }
 

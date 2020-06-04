@@ -26,7 +26,6 @@ export default class extends Controller {
     .then(response => response.json())
       .then((data) => {
         data.forEach((element)=>{
-          console.log(element)
           element.vendors.forEach((vendor)=>{
             const resultdiv = piece(vendor)
             search_div.insertAdjacentHTML("beforeend", resultdiv);
@@ -81,7 +80,7 @@ export default class extends Controller {
 }// FINISH IMPORT FUNCTION
 
 // div chunk for search result html code, reusable, vcard
-const piece = (boop) => { 
+const piece = (boop) => {
   const vendor = boop
   const vcard = `
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
