@@ -89,8 +89,8 @@ export default class extends Controller {
         })
 
         swalWithBootstrapButtons.fire({
-          title: 'Are you sure to proceed with the payment?',
-          text: "You won't be able to revert this!",
+          title: 'Are you sure to purchase?',
+          text: "later you can cancel",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonText: 'Yes, pay it!',
@@ -101,7 +101,7 @@ export default class extends Controller {
             this.confirmOrder()
             swalWithBootstrapButtons.fire(
               'Saved!',
-              'Your payment has been accepted.',
+              'Please perform the payment.',
               'success'
             )
           } else if (
@@ -110,7 +110,7 @@ export default class extends Controller {
           ) {
             swalWithBootstrapButtons.fire(
               'Cancelled',
-              'Your payment has not been sent :)',
+              'Later you can try again :)',
               'error'
             )
           }
