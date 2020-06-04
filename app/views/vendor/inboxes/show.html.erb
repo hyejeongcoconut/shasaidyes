@@ -11,14 +11,17 @@
             <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
           </i>
           <p><%= message.content %></p>
+          <% if message.photo.present? %>
+            <%= cl_image_tag message.photo.key, height: 300, wdith: 'auto', crop: :fill %>
+          <%end%>
         </div>
       <% end %>
     </div>
     <br>
     <%= simple_form_for [:vendor, @inbox, @message ],remote:true,wrapper: :inline_form, html: { class: "form-inline" }, authenticity_token: true do |f| %>
       <%= f.input :content, label: false, as: :text, input_html: {:rows => 3}, class:"chatsendbox", placeholder: "Send #{User.find(@inbox.user_id).first_name.capitalize} a message" %>
-      <%= f.submit "Send", class: 'sha-btn'%>
+      <%= f.input :photo, as: :file %>  
+    <%= f.submit "Send", class: 'sha-btn'%>
     <% end %>
-
   </div>
 </div>

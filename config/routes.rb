@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :inboxes, only: [:index, :create, :show] do
       resources :messages, only: :create
     end
-    
+
   end
 
   # everything that is acted by vendor, go under namespace `vendor`
