@@ -1,0 +1,35 @@
+.inbox-wrap{
+  margin: 20px auto;
+  width: 70%;
+  background-color: white;
+  box-shadow: 0 0 10px 0px #ffdadaab;
+  padding: 20px;
+  text-align: center;
+}
+
+.chatroom-wrap{
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 70%;
+  background-color: white;
+  box-shadow: 0 0 10px 0px #ffdadaab;
+  padding: 50px;
+}
+
+.message-wrap{
+  height: 300px;
+  overflow: auto;
+}
+
+.chatsendbox{
+  width: 500px;
+}
+
+.message_content, #message_content{
+  width: 85%;
+  margin-right: 20px;
+}
+
+#message_content{
+  width: 100%;
+}
