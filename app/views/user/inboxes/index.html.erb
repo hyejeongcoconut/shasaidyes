@@ -1,7 +1,7 @@
 <%= render 'shared/dash-user-sidebar' %>
 
-<div class="dash-main">
-  <div class="inbox-wrap">
+<div class="dash-main" data-controller="invoice-modal">
+  <div class="inbox-wrap" >
     <h1>My Inboxes</h1>
 
     <table class="table inbox-table">
@@ -23,7 +23,7 @@
           <td><%= Vendor.find(inbox.vendor_id).address.capitalize %></td>
           <td><button class="sha-green-btn sha-btn-md"><%= link_to "Chat Now", user_inbox_path(inbox.id) %></button></td>
           <td>
-            <% if inbox.vendor.quotes.first.booked == 0 %>
+            <% if inbox.quote.booked == 0 %>
               <button class="sha-grey-btn sha-btn-md" disabled>No Invoice</button>
             <% elsif inbox.quote.booked == 1 %>
               <button href="#"
@@ -40,9 +40,9 @@
           </td>
         </tr>
         <% end %>
+        
       </tbody>
     </table>
-
-
   </div>
+  <%= render 'shared/invoice_modal' %>
 </div>
