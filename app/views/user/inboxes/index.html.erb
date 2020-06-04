@@ -1,0 +1,48 @@
+<%= render 'shared/dash-user-sidebar' %>
+
+<div class="dash-main">
+  <div class="inbox-wrap">
+    <h1>My Inboxes</h1>
+
+    <table class="table inbox-table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Vendor Name</th>
+          <th scope="col">Vendor Address</th>
+          <th scope="col">Open Chat</th>
+          <th scope="col">Invoice</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% count = 0 %>
+        <% @favorites.reverse_each do |inbox| %>
+        <tr>
+          <th scope="row"><%= count += 1 %></th>
+          <td><%= Vendor.find(inbox.vendor_id).name.capitalize %></td>
+          <td><%= Vendor.find(inbox.vendor_id).address.capitalize %></td>
+          <td><button class="sha-green-btn sha-btn-md"><%= link_to "Chat Now", user_inbox_path(inbox.id) %></button></td>
+          <td>
+            <% if inbox.vendor.quotes.first.booked == 0 %>
+              <button class="sha-grey-btn sha-btn-md" disabled>No Invoice</button>
+            <% elsif inbox.quote.booked == 1 %>
+              <button href="#"
+                      class="sha-mustard-btn sha-btn-md"
+                      data-action="click->invoice-modal#openModal"
+                      data-date="<%= inbox.quote.date %>"
+                      data-list_of_services="<%= inbox.quote.list_of_services %>"
+                      data-total_price="<%= inbox.quote.total_price %>"
+                      data-quote_id="<%= inbox.quote.id %>">See invoice!</button>
+            <% else %>
+              <button class="sha-green-btn sha-btn-md">Paid</button>
+            <% end %>
+
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
