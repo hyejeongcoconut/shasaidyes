@@ -4,4 +4,8 @@
     <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
   </i>
   <p><%= message.content %></p>
+  <% if message.photo.present? %>
+    <%= cl_image_tag message.photo.key, height: 300, wdith: 'auto', crop: :fill %>
+  <% else %>
+  <% end %>
 </div>

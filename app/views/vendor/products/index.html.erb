@@ -1,28 +1,70 @@
 <%= render 'shared/dash-vendor-sidebar' %>
 
 <div class="dash-main">
+<div class="product-index">
   <h1>Product Index <%= link_to "Add product", new_vendor_product_path, class: 'sha-btn-outline-md inline' %></h1>
 
     <div class="row">
-      <% @products.each do |product| %>
+      <% @products.reverse_each do |product| %>
         <div class="col-xs-12 col-md-6">
         <div class="product-card">
             <h3><%= product.name %></h3>
             <p><%= product.category %>, $ <%=product.price%> </p>
-            <div class="product-photos">
-              <% product.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, height: 300, crop: :fill %>
-              <% end %>
+
+            <div class="glider-contain">
+              <div class="glider gliderwrapcustom">
+              <% if product.photos.present? %>
+              <%# IF product has images, %>
+                <% product.photos.each do |photo| %>
+                  <div class="gliderslide">
+                    <%= cl_image_tag photo.key, height: 300, wdith: 'auto', crop: :fill, id: "product-photo" %>
+                  </div>
+                <% end %>
+              <%# IF product does not have images, %>
+              <% else %>
+                <div class="gliderslide">
+                  <h3><%= product.name %></h3>
+                  <p><%= product.description %></p>
+                </div>
+              <%end%>
+              </div>
+              <button aria-label="Previous" class="glider-prev">«</button>
+              <button aria-label="Next" class="glider-next">»</button>
+              <div role="tablist" class="dots"></div>
             </div>
+
             <p><%= product.description %> </p>
+            <div class="d-flex justify-content-around">
             <p>
               <%= link_to "Edit Product", edit_vendor_product_path(product), class: 'sha-mustard-btn sha-btn-md' %>
               <%= link_to 'Delete', vendor_product_path(product),
                           method: :delete, data: { confirm: 'Are you sure?' },
                           class: "sha-pink-btn sha-btn-md" %>
             </p>
+            </div>
           </div>
         </div>
       <% end %>
     </div>
+  </div>
 </div>
+
+<script>
+  window.addEventListener('load', function(){
+    const allGliders = document.querySelectorAll('.glider');
+    allGliders.forEach(element => 
+    new Glider(element, {
+      slidesToShow: 'auto',
+      slidesToScroll: 'auto',
+      itemWidth: 'auto',
+      draggable: true,
+      dots: '.dots',
+      arrows: {
+        prev: '.glider-prev',
+        next: '.glider-next'
+      }
+    })
+
+    );
+  })
+</script>

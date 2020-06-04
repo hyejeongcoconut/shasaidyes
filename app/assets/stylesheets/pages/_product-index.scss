@@ -1,5 +1,13 @@
 .product-card {
   background-color: white;
   padding: 20px;
-  border: 1px solid red;
+  box-shadow: 0 0 10px 0px #ffdadaab;
+  margin-bottom: 20px;
+}
+
+.product-index{
+  text-align: center;
+  h1{
+    margin: 10px;
+  }
 }

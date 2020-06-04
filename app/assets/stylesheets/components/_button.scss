@@ -1,3 +1,7 @@
+button{
+  // background-color: white !important;
+}
+
 .search-btn {
   color: #e4314f;
   font-size: 24px;
@@ -6,6 +10,10 @@
   transition: transform 250ms ease-in-out;
   border: none;
   background-color: none;
+  a{
+    text-decoration: none;
+    color: #e4314f;
+  }
   &:hover, &:focus{
     background-color: #e4314f;
     transition: all 250ms ease-in-out;
@@ -25,6 +33,10 @@
   padding: 12px 24px;
   transition: transform 250ms ease-in-out;
   border: none;
+  a{
+    text-decoration: none;
+    color: white;
+  }
   &:hover, &:focus{
     background-color: #e43131;
     transition: all 250ms ease-in-out;
@@ -36,6 +48,7 @@
 }
 
 .sha-btn-outline {
+  background-color: white;
   text-decoration: none;
   color: $indian-red;
   border: 1px solid $indian-red;
@@ -44,6 +57,10 @@
   line-height: 12px;
   padding: 4px 8px;
   transition: transform 250ms ease-in-out;
+  a{
+    text-decoration: none;
+    color: $indian-red;
+  }
   &:hover, &:focus{
     transition: all 250ms ease-in-out;
     backface-visibility: hidden;
@@ -55,6 +72,7 @@
 }
 
 .sha-btn-outline-md {
+  background-color: white;
   font-family: $body-font;
   margin: 1px;
   text-decoration: none;
@@ -65,6 +83,10 @@
   line-height: 16px;
   padding: 8px 16px;
   transition: transform 250ms ease-in-out;
+  a{
+    text-decoration: none;
+    color: $indian-red;
+  }
   &:hover, &:focus{
     transition: all 250ms ease-in-out;
     backface-visibility: hidden;
@@ -84,6 +106,10 @@
   padding: 4px 8px;
   transition: transform 250ms ease-in-out;
   border: none;
+  a{
+    text-decoration: none;
+    color: white;
+  }
   &:hover, &:focus{
     background-color: $coral-pink;
     transition: all 250ms ease-in-out;
@@ -95,6 +121,7 @@
 }
 
 .sha-green-btn {
+  text-decoration: none;
   color: white;
   background-color: #2a9177;
   border-radius: 50px;
@@ -103,6 +130,10 @@
   padding: 4px 8px;
   transition: transform 250ms ease-in-out;
   border: none;
+  a{
+    text-decoration: none;
+    color: white;
+  }
   &:hover, &:focus{
     background-color: $soft-green;
     transition: all 250ms ease-in-out;
@@ -123,6 +154,10 @@
   padding: 4px 8px;
   transition: transform 250ms ease-in-out;
   border: none;
+  a{
+    text-decoration: none;
+    color: white;
+  }
   &:hover, &:focus{
     background-color: $md-mustard;
     transition: all 250ms ease-in-out;
@@ -143,6 +178,10 @@
   padding: 4px 8px;
   transition: transform 250ms ease-in-out;
   border: none;
+  a{
+    text-decoration: none;
+    color: white;
+  }
   &:hover, &:focus{
     background-color: #b8b8b8;
     transition: all 250ms ease-in-out;

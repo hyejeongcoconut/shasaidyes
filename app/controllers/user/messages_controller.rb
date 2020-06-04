@@ -4,6 +4,7 @@ class User::MessagesController < User::BaseController
     @message = Message.new(message_params)
     @message.inbox = @inbox
     @message.sender = current_user
+    raise
     if @message.save
       InboxChannel.broadcast_to(
         @inbox,
@@ -19,6 +20,6 @@ class User::MessagesController < User::BaseController
   private
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :photo)
   end
 end
