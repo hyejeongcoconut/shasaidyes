@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
-  validates :first_name, :last_name, presence:true
+  validates :first_name, :last_name, :photo, presence:true
 
   def name
     name = first_name + last_name

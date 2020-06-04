@@ -20,7 +20,8 @@ class Vendor < ApplicationRecord
     rails_blob_path(self.photo, disposition: "attachment", only_path: true)
   end
 
-  validates :name, :category, :address, presence:true
+  
+  validates :name, :category, :address, :photo, presence:true
   validates :email, presence:true, uniqueness:true
   validates :phone_number, format: { with: /\A\d{10,11}\z/,
                                      message: "Please check again"}
