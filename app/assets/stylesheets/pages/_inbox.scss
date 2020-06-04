@@ -13,7 +13,7 @@
   width: 70%;
   background-color: white;
   box-shadow: 0 0 10px 0px #ffdadaab;
-  padding: 50px;
+  padding: 20px 50px;
 }
 
 .message-wrap{
@@ -26,10 +26,13 @@
 }
 
 .message_content, #message_content{
-  width: 85%;
   margin-right: 20px;
 }
 
 #message_content{
   width: 100%;
+}
+
+.senddiv{
+  margin-top: 20px;
 }

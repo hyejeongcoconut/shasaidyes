@@ -18,10 +18,16 @@
       <% end %>
     </div>
     <br>
-    <%= simple_form_for [:vendor, @inbox, @message ],remote:true,wrapper: :inline_form, html: { class: "form-inline" }, authenticity_token: true do |f| %>
-      <%= f.input :content, label: false, as: :text, input_html: {:rows => 3}, class:"chatsendbox", placeholder: "Send #{User.find(@inbox.user_id).first_name.capitalize} a message" %>
-      <%= f.input :photo, as: :file %>  
-    <%= f.submit "Send", class: 'sha-btn'%>
+    <%= simple_form_for [:vendor, @inbox, @message ],remote:true,authenticity_token: true do |f| %>
+      <div class="row senddiv align-items-center">
+        <div class="col-xs-12 col-md-9">
+          <%= f.input :photo, label: false, as: :file %>
+          <%= f.input :content, label: false, placeholder: "Send #{User.find(@inbox.user_id).first_name.capitalize} a message" %>
+        </div>
+        <div class="class-xs-12 col-md-3 float-right">
+          <%= f.submit "Send", class: 'sha-btn btn-block'%>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

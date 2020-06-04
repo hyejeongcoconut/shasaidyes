@@ -1,15 +1,46 @@
 <%= render 'shared/dash-user-sidebar' %>
 
 <div class="dash-main">
-<h1>Guest Index</h1>
-<% @guests.each do |guest| %>
-  <p><%= guest.first_name %>
-    <%= guest.last_name %>
-    <%= link_to "View details. . .",user_guest_path(guest.id), class: 'btn btn-success' %>
-    <%= link_to 'Delete', user_guest_path(guest.id),
-                 method: :delete, data: { confirm: 'Are you sure?' },
-                 class: "btn btn-danger" %>
-  </p>
-<% end %>
-<%= link_to "Add guest",new_user_guest_path, class: 'btn btn-primary' %>
+
+<div class="inbox-wrap">
+    <h1>My Guest List</h1>
+
+    <table class="table inbox-table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Meal Pref</th>
+          <th scope="col">Additional Guests</th>
+          <th scope="col">RSVP Status</th>
+          <th scope="col">Edit Guest Info</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% count = 0 %>
+        <% @guests.each do |guest| %>
+        <tr>
+          <th scope="row"><%= count += 1 %></th>
+          <td><%= guest.first_name %> <%= guest.last_name %></td>
+          <td><%= guest.address %></td>
+          <td><%= guest.phone_number %></td>
+          <td><%= guest.food_preference %></td>
+          <td><%= guest.additional_guest_numbers %></td>
+          <td><% if guest.rsvp == false %>
+                Not Yet...
+              <% else %>
+                YES
+              <% end %>
+          </td>
+          <td><button class="sha-green-btn sha-btn-md"><%= link_to "Edit Details", edit_user_guest_path(guest.id) %></button></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-around">
+      <button class="sha-btn-outline-md m-4"><%= link_to "Add Guests", new_user_guest_path %></button>
+    </div>
+  </div>
 </div>

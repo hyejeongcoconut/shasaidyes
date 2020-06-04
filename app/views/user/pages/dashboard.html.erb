@@ -1,6 +1,102 @@
 <%= render 'shared/dash-user-sidebar' %>
 
 <div class="dash-main">
-  <h2>User Dashboard</h2>
-  <p>Box out favorites and Guest list</p>
+  <h1 class='text-center m-3'>My Dashboard</h1>
+  <div class="row">
+    <div class="col-xs-12 col-md-3">
+    <div class="my-accountinfo vdash-divbackground">
+      <h2>Account Info</h2>
+      <hr>
+      <div class="d-flex justify-content-around">
+        <%= cl_image_tag @user.photo.key, class: "avatar-prof2"%>
+      </div>
+      <p class="vacctinfo-title"><strong>Name</strong></p>
+      <p><%=@user.first_name.capitalize%> <%=@user.last_name.capitalize%></p>
+      <p class="vacctinfo-title"><strong>Email</strong></p>
+      <p><%=@user.email%></p>
+      <div class="d-flex justify-content-around">
+      <button class="sha-mustard-btn sha-btn-md"><%= link_to "Edit my Profile", edit_user_registration_path%></button>
+    </div>
+    </div>
+  </div>
+
+<%# My Favorites %>
+  <div class="col-xs-12 col-md-6">
+    <div class="client-messages vdash-divbackground" data-controller="vendor-modal">
+      <h2>My Favorite Vendors</h2>
+      <hr>
+      <div class="row align-items-center">
+      <% if @favorites.present? %>
+        <% @favorites.reverse_each do |favorite| %>
+          <div class="col-xs-12 col-md-7">
+            <div class="fav-names">
+              <%= link_to user_vendor_path(favorite.vendor.id) do %>
+                <h4 id="fav-v-name"><%= favorite.vendor.name.capitalize %></h4>
+              <%end%>
+              <p>(<%= favorite.vendor.category.capitalize %>) </p>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-md-5">
+
+            <div class="chat-options float-right">
+              <button class="sha-green-btn sha-btn-md"><%= link_to "Chat Now", user_inbox_path(favorite.inbox.id) %></button>
+              <% if favorite.inbox.messages.blank? %>
+              
+                <%= link_to "Remove",
+                  user_favorite_vendor_path(favorite),
+                  class: "sha-btn-outline sha-btn-md",
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+              <%# elsif favorite.quote.booked == 0 %>
+                <%# <button class="sha-grey-btn sha-btn-md" disabled>No Invoice</button> %>
+                
+              <% elsif favorite.quote.booked == 1 %>
+                <button href="#"
+                        class="sha-mustard-btn sha-btn-md"
+                        data-action="click->invoice-modal#openModal"
+                        data-date="<%= favorite.quote.date %>"
+                        data-list_of_services="<%= favorite.quote.list_of_services %>"
+                        data-total_price="<%= favorite.quote.total_price %>"
+                        data-quote_id="<%= favorite.quote.id %>">See invoice!</button>
+              <% else %>
+                <button class="sha-green-btn sha-btn-md">Paid</button>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+      <div class="d-flex justify-content-around">
+        <button class="sha-btn-outline-md m-4"><%= link_to "Go to my Inbox", user_inboxes_path %></button>
+      </div>
+      <%= render 'shared/vendor_modal' %>
+    </div>
+  </div>
+<%# End my favorites %>
+
+<%# My guests list %>
+  <div class="col-xs-12 col-md-3">
+    <div class="dash-guests vdash-divbackground">
+      <h2>My Guests</h2>
+      <hr>
+      <div class="row align-items-center">
+        <% @guests.each do |guest| %>
+          <div class="col-xs-12 col-md-7">
+            <h4><%= guest.first_name.capitalize %> <%= guest.last_name.capitalize %></h4>
+          </div>
+          <div class="col-xs-12 col-md-5">
+            <button class="sha-green-btn"><%= link_to "Guest Details",user_guest_path(guest.id) %></button>
+          </div>
+        <% end %>
+      </div>
+        <div class="d-flex justify-content-around">
+          <button class="sha-btn-outline-md m-4"><%= link_to "View my Guest list", user_guests_path %></button>
+        </div>
+    </div>
+  </div>
+<%# My guests list end%>
+
+<%# end row %>
+  </div>
 </div>
