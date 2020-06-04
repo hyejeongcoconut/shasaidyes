@@ -48,6 +48,10 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 
 gem 'pg_search', '~> 2.3.0'
 
+# STRIPE for payments
+
+gem 'stripe'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
