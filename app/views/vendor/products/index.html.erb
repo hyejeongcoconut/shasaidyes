@@ -50,11 +50,11 @@
 </div>
 
 <script>
-  window.addEventListener('load', function(){
+  document.addEventListener('turbolinks:load', function(){
     const allGliders = document.querySelectorAll('.glider');
     allGliders.forEach(element => 
     new Glider(element, {
-      slidesToShow: 'auto',
+      slidesToShow: 1,
       slidesToScroll: 'auto',
       itemWidth: 'auto',
       draggable: true,
@@ -64,7 +64,6 @@
         next: '.glider-next'
       }
     })
-
     );
   })
 </script>
