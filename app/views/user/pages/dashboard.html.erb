@@ -38,15 +38,18 @@
           </div>
 
           <div class="col-xs-12 col-md-5">
+
             <div class="chat-options float-right">
               <button class="sha-green-btn sha-btn-md"><%= link_to "Chat Now", user_inbox_path(favorite.inbox.id) %></button>
-              <% if favorite.quote.booked == 0 %>
-              <%# <button class="sha-grey-btn sha-btn-md" disabled>No Invoice</button> %>
+              <% if favorite.inbox.messages.blank? %>
+              
                 <%= link_to "Remove",
                   user_favorite_vendor_path(favorite),
                   class: "sha-btn-outline sha-btn-md",
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>
+              <%# elsif favorite.quote.booked == 0 %>
+                <%# <button class="sha-grey-btn sha-btn-md" disabled>No Invoice</button> %>
                 
               <% elsif favorite.quote.booked == 1 %>
                 <button href="#"
