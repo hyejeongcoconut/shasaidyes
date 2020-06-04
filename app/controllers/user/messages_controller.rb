@@ -4,7 +4,6 @@ class User::MessagesController < User::BaseController
     @message = Message.new(message_params)
     @message.inbox = @inbox
     @message.sender = current_user
-    raise
     if @message.save
       InboxChannel.broadcast_to(
         @inbox,
