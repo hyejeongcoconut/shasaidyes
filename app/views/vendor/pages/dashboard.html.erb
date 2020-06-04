@@ -1,6 +1,6 @@
 <%= render 'shared/dash-vendor-sidebar' %>
 <div class="dash-main">
-  <h1 class='text-center m-3'>Welcome, <%=@vendor.name%></h1>
+  <h1 class='text-center m-3'>My Dashboard</h1>
   <div class="row">
 
   <div class="col-xs-12 col-md-3">
@@ -30,14 +30,14 @@
       <hr>
       <div class="row">
         <% if @products.present? %>
-          <% @products.each do |product| %>
+          <% @products.reverse_each do |product| %>
           <div class="col-xs-12 col-md-7">
             <div class="prod-name">
             <%= product.name %>
             </div>
           </div>
           <div class="col-xs-12 col-md-5">
-          <div class="prod-options">
+          <div class="prod-options float-right">
             <button
                 class="sha-green-btn"
                 data-action="click->product-modal#launchProductDeets"
@@ -46,20 +46,18 @@
                 data-product_price="<%=product.price%>"
                 data-product_description="<%=product.description%>"
                 data-product_category="<%=product.category%>"
+                >Quick View</button>
 
-                
-                >Quick View</button> 
-                
-                <%= link_to "Edit Product", edit_vendor_product_path(product), class:"sha-mustard-btn" %>
+                <button class="sha-mustard-btn"><%= link_to "Edit Product", edit_vendor_product_path(product) %></button>
                 </div>
           </div>
           <% end %>
         <% end %>
       </div>
         <div class="d-flex justify-content-around">
-          <%= link_to "Add new products", new_vendor_product_path, class:"sha-btn-outline-md m-4" %>
+          <button class="sha-btn-outline-md m-4"><%= link_to "Add new products", new_vendor_product_path %></button>
         </div>
-        
+
         <%= render 'shared/product_modal' %>
     </div>
 
@@ -68,35 +66,38 @@
     <div class="client-messages vdash-divbackground" data-controller="vendor-modal">
       <h2>My Clients</h2>
       <hr>
-      <% @favorites.each do |favorite| %>
+      <% @favorites.reverse_each do |favorite| %>
         <div data-target="model.openmodal">
           <div class="row">
-            <div class="col-xs-12 col-md-5">
+            <div class="col-xs-12 col-md-6">
               <p><%= favorite.user.first_name.capitalize %> <%= favorite.user.last_name.capitalize %>
             </div>
-            <div class="col-xs-12 col-md-7">
-              <div class="float-right">
-                <%= link_to "Chat Now", vendor_inbox_path(favorite.inbox.id), class:"sha-green-btn" %>
+            <div class="col-xs-12 col-md-6">
+              <div class="chat-options float-right">
+                <button class="sha-green-btn"><%= link_to "Chat Now", vendor_inbox_path(favorite.inbox.id) %></button>
+                <% if favorite.quote.booked == 0  %>
                 <button href="#"
                         class="sha-mustard-btn"
                         data-action="click->vendor-modal#launchModal"
                         data-user_id="<%= favorite.user_id %>"
                         data-user_name="<%= favorite.user.first_name %>"
                         data-vendor_id="<%= favorite.vendor_id %>"
-                        data-quote_id="<%= favorite.vendor.quotes.first.id %>">Generate quote!</button>
-                <% if favorite.vendor.quotes.first.booked == 0  %>
-                  <button class="sha-grey-btn">Quote not sent</button>
+                        data-quote_id="<%= favorite.quote.id %>">Generate quote!</button>
+                
+                  <%# <button class="sha-grey-btn">Quote not sent</button> %>
+                <% elsif favorite.quote.booked == 1  %>
+                  <button class="sha-grey-btn">Has not payed</button>
                 <% else %>
                   <button class="sha-green-btn">Paid</button>
                 <% end %>
               </div>
             </div>
           </div>
-          <div class="d-flex justify-content-around">
-            <%= link_to "Go to Inbox", "#", class:"sha-btn-outline-md m-4" %>
-          </div>
         </div>
       <% end %>
+      <div class="d-flex justify-content-around">
+        <button class="sha-btn-outline-md m-4"><%= link_to "Go to my Inbox", vendor_inboxes_path %></button>
+      </div>
       <%= render 'shared/vendor_modal' %>
     </div>
   </div>

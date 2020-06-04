@@ -1,22 +1,27 @@
-<h1>#<%= @inbox.name %></h1>
-<div id="messages" data-inbox-id="<%= @inbox.id %>">
-  <% @inbox.messages.each do |message| %>
-    <div class="message-container" id="message-<%= message.id %>">
-      <i class="author">
-        <span><%= message.sender.name%></span>
-        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-      </i>
-      <p><%= message.content %></p>
-      <% if message.photo.present? %>
-        <%= cl_image_tag message.photo.key, height: 300, wdith: 'auto', crop: :fill %>
-      <%end%>
+<%= render 'shared/dash-vendor-sidebar' %>
+
+<div class="dash-main">
+  <div class="chatroom-wrap">
+    <h1>Chat with <%= User.find(@inbox.user_id).first_name.capitalize %> <%= User.find(@inbox.user_id).last_name.capitalize %></h1>
+    <div id="messages" class="message-wrap" data-inbox-id="<%= @inbox.id %>">
+      <% @inbox.messages.each do |message| %>
+        <div class="message-container" id="message-<%= message.id %>">
+          <i class="author">
+            <span><%= message.sender.name%></span>
+            <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+          </i>
+          <p><%= message.content %></p>
+          <% if message.photo.present? %>
+            <%= cl_image_tag message.photo.key, height: 300, wdith: 'auto', crop: :fill %>
+          <%end%>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
-<%= simple_form_for [:vendor, @inbox, @message ],remote:true,authenticity_token: true do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message ##{@inbox.name}" %>
-  <%= f.input :photo, as: :file %>
-  <div class="form-actions form-btn-wrap d-flex justify-content-around">
-    <%= f.submit "submit", class: 'sha-btn'%>
+    <br>
+    <%= simple_form_for [:vendor, @inbox, @message ],remote:true,wrapper: :inline_form, html: { class: "form-inline" }, authenticity_token: true do |f| %>
+      <%= f.input :content, label: false, as: :text, input_html: {:rows => 3}, class:"chatsendbox", placeholder: "Send #{User.find(@inbox.user_id).first_name.capitalize} a message" %>
+      <%= f.input :photo, as: :file %>  
+    <%= f.submit "Send", class: 'sha-btn'%>
+    <% end %>
   </div>
-<% end %>
+</div>

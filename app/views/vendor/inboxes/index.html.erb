@@ -1,0 +1,49 @@
+<%= render 'shared/dash-vendor-sidebar' %>
+
+<div class="dash-main">
+  <div class="inbox-wrap">
+    <h1>My Inboxes</h1>
+
+    <table class="table inbox-table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Open Chat</th>
+          <th scope="col">Quote Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% count = 0 %>
+        <% @favorites.reverse_each do |inbox| %>
+        <tr>
+          <th scope="row"><%= count += 1 %></th>
+          <td><%= User.find(inbox.user_id).first_name.capitalize %></td>
+          <td><%= User.find(inbox.user_id).last_name.capitalize %></td>
+          <td><button class="sha-green-btn sha-btn-md"><%= link_to "Chat Now", vendor_inbox_path(inbox.inbox.id) %></button></td>
+          <td>
+            <% if inbox.quote.booked == 0  %>
+                <button href="#"
+                        class="sha-mustard-btn sha-btn-md"
+                        data-action="click->vendor-modal#launchModal"
+                        data-user_id="<%= inbox.user_id %>"
+                        data-user_name="<%= inbox.user.first_name %>"
+                        data-vendor_id="<%= inbox.vendor_id %>"
+                        data-quote_id="<%= inbox.quote.id %>">Generate quote!</button>
+                
+              <%# <button class="sha-grey-btn">Quote not sent</button> %>
+            <% elsif inbox.quote.booked == 1  %>
+              <button class="sha-grey-btn sha-btn-md">Has not payed</button>
+            <% else %>
+              <button class="sha-green-btn sha-btn-md">Paid</button>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
