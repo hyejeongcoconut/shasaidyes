@@ -9,8 +9,6 @@ class User::PagesController < User::BaseController
 
     @quote = Quote.find(params[:page][:id])
 
-    ############### ADDED FOR STRIPE ######################
-
     session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         line_items: [{
@@ -19,14 +17,10 @@ class User::PagesController < User::BaseController
           currency: 'usd',
           quantity: 1
         }],
-        success_url: user_dashboard_payment_url(@quote),
-        cancel_url: user_dashboard_payment_url(@quote)
+        success_url: user_favorite_vendors_url,
+        cancel_url: user_favorite_vendors_url
       )
 
-      #order.update(checkout_session_id: session.id)
-      #redirect_to new_order_payment_path(order)
-
-    ############### ADDED FOR STRIPE ######################
     params_stripe = quote_params
     params_stripe[:checkout_session_id] = session.id
     @quote.update(params_stripe)
@@ -40,6 +34,7 @@ class User::PagesController < User::BaseController
   def show_invoice
     @purchase_data = Quote.find_by(id: params[:quote_id].to_i)
   end
+
 
   private
 
