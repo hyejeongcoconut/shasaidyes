@@ -5,8 +5,9 @@
     <div class="vendor-info-main">
 
     <h1><%= @vendor.name.capitalize %></h1>
-
+<%# product card starts %>
       <div class="products">
+<%# glider starts %>
       <div class="glider-contain">
       <div class="glider gliderwrapcustom">
 
@@ -29,14 +30,14 @@
           <%end%>
         <% end %>
       </div>
-
         <button aria-label="Previous" class="glider-prev">◄</button>
         <button aria-label="Next" class="glider-next">►</button>
         <div role="tablist" class="dots"></div>
       </div>
-
       </div>
+<%# glider ends %>
     </div>
+    <%# product card ends %>
   </div>
 
   <%# Vendor info left sidebar %>

@@ -2,7 +2,7 @@
 
 <div class="dash-main">
   <div class="chatroom-wrap">
-    <h1>Message <%= User.find(@inbox.user_id).first_name.capitalize %> <%= User.find(@inbox.user_id).last_name.capitalize %></h1>
+    <h1>Chat with <%= User.find(@inbox.user_id).first_name.capitalize %> <%= User.find(@inbox.user_id).last_name.capitalize %></h1>
     <div id="messages" class="message-wrap" data-inbox-id="<%= @inbox.id %>">
       <% @inbox.messages.each do |message| %>
         <div class="message-container" id="message-<%= message.id %>">

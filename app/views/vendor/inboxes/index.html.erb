@@ -16,7 +16,7 @@
       </thead>
       <tbody>
         <% count = 0 %>
-        <% @favorites.each do |inbox| %>
+        <% @favorites.reverse_each do |inbox| %>
         <tr>
           <th scope="row"><%= count += 1 %></th>
           <td><%= User.find(inbox.user_id).first_name.capitalize %></td>
