@@ -329,21 +329,43 @@ kimchitaco.photo.attach(io:URI.open('https://www.liveeatlearn.com/wp-content/upl
 kimchitaco.save!
 #------------------------------------------------ product's seed --------------------------------------------------------------------
 
-all_vendor = Vendor.all
-idss = []
 
-all_vendor.each {|x| idss << x.id }
+lovingyoupro = Product.new(
+  name: Faker::Ancient.god,
+  price: Faker::Commerce.price,
+  description: "best product's in the world",
+  category: "Reception Venue",
+  vendor_id: 1
+)
+puts "lovingyoupro okay"
 
-20.times do
-  Product.create!(
-    name: Faker::Ancient.god,
-    price: Faker::Commerce.price,
-    description: "best product's in the world",
-    category: category.sample,
-    vendor_id: idss.sample
-  )
-  puts "okay"
-end
+lovingyoupro.photos.attach(io:URI.open('http://www.paolocicognani.com/wp-content/uploads/2015/01/Mainpicture.jpg'), filename: 'wefddsdding21.jpg', content_type: 'image/jpg')
+lovingyoupro.save!
+
+lovingyoupro.photos.attach(io:URI.open('https://img.traveltriangle.com/blog/wp-content/uploads/2018/10/wedding-venues-berlin-cover-img.jpg'), filename: 'wefddsg21.jpg', content_type: 'image/jpg')
+lovingyoupro.save!
+
+yujinproduct = Product.new(
+  name: Faker::Ancient.god,
+  price: Faker::Commerce.price,
+  description: "Sexy, Cute, beautiful",
+  category: "Wedding Dresses",
+  vendor_id: 4
+)
+puts "Yujin okay"
+
+yujinproduct.photos.attach(io:URI.open('https://www.kleinfeldbridal.com/wp-content/uploads/2019/07/pronovias-3-4-sleeve-beaded-illusion-ball-gown-34110551-450x600.jpg'), filename: 'wefdddddsdding21.jpg', content_type: 'image/jpg')
+yujinproduct.save!
+
+yujinproduct.photos.attach(io:URI.open('https://www.kleinfeldbridal.com/wp-content/uploads/2020/02/vanilla-sposa-3-4-sleeve-lace-ball-gown-wedding-dress-34182436-400x600.jpg'), filename: 'wefddssssg21.jpg', content_type: 'image/jpg')
+yujinproduct.save!
+
+
+
+
+
+
+
 
 
 
