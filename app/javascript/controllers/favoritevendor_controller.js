@@ -83,7 +83,7 @@ export default class extends Controller {
         .then((data) => {
           if (data.success === true) {
             const vendorAlert = document.querySelector(".vendor-exist")
-            const alert = '<span class="alert alert-danger" role="alert">This vendor already exist in your favorites !, Cannot be added</span>'
+            const alert = '<span class="alert alert-danger" role="alert">Cannot be added - Already exists</span> '
             vendorAlert.insertAdjacentHTML("beforeend", alert);
           } else{
             this.addVendor()
@@ -92,3 +92,4 @@ export default class extends Controller {
   }
 
 }
+
