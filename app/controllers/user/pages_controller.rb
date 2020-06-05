@@ -17,8 +17,8 @@ class User::PagesController < User::BaseController
           currency: 'usd',
           quantity: 1
         }],
-        success_url: user_favorite_vendors_url,
-        cancel_url: user_favorite_vendors_url
+        success_url: user_inboxes_url,
+        cancel_url: user_inboxes_url
       )
 
     params_stripe = quote_params
@@ -32,6 +32,7 @@ class User::PagesController < User::BaseController
   end
 
   def show_invoice
+    @user = current_user
     @purchase_data = Quote.find_by(id: params[:quote_id].to_i)
   end
 

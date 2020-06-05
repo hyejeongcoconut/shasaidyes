@@ -9,7 +9,8 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Vendor Name</th>
-          <th scope="col">Vendor Address</th>
+          <th scope="col">Category</th>
+          <th scope="col">Address</th>
           <th scope="col">Open Chat</th>
           <th scope="col">Invoice</th>
         </tr>
@@ -20,6 +21,7 @@
         <tr>
           <th scope="row"><%= count += 1 %></th>
           <td><%= Vendor.find(inbox.vendor_id).name.capitalize %></td>
+          <td><%= Vendor.find(inbox.vendor_id).category.capitalize %></td>
           <td><%= Vendor.find(inbox.vendor_id).address.capitalize %></td>
           <td><button class="sha-green-btn sha-btn-md"><%= link_to "Chat Now", user_inbox_path(inbox.id) %></button></td>
           <td>

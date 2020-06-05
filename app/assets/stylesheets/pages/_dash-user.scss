@@ -1,66 +1,26 @@
+.fav-names{
+  h3,h4{
+  color: black;
+  padding-bottom: none;
+  }
+  a{
+    text-decoration: none;
+    :hover{
+      color: $indian-red;
+    }
+  }
+}
 
-
-// // OLD USER_DASH SCSS for dashboard2.html.erb//
-
-// .dash-wrap{
-//   margin-bottom: 20px;
-//   h2{
-//     font-family: $body-font2;
-//     color: $green-grey;
-//   }
-// }
-
-// .dash-u-sidebar{
-//   // border: 1px solid lightsalmon;
-//   background-color: white;
-//   box-shadow: 0 0 10px #ffffff;
-//   min-height: 75vh;
-//   padding: 20px;
-//   text-align: center;
-// }
-
-// .dash-user{
-//   text-align: center;
-//   color: $green-grey;
-//   flex-direction:column;
-// }
-
-// .dash-user-menu{
-//   margin-top: 20px;
-// }
-
-// .dash-u-main{
-//   // border: 1px solid lightseagreen;
-//   min-height: 75vh;
-// }
-
-// .main-fav, .main-guest {
-//   // border: 1px solid lightsalmon;
-//   padding: 20px;
-//   background-color: white;
-//   box-shadow: 0 0 10px #ffffff;
-//   height: 100%;
-// }
-
-// .fav-vendor-wrap {
-//   padding: 10px 0;
-//   h3, h4, h5, p {
-//     margin: 0;
-//   }
-//   a {
-//     text-decoration: none;
-//   }
-//   #fav-v-name{
-//     color: $not-black
-//     :hover {
-//       color: $green-grey
-//     }
-//   }
-// }
-
-// .guest-options {
-//   padding: 10px 0;
-//   h3, h4, h5, p {
-//     margin: 0;
-//   }
-// }
+.fav-v-table {
+  // text-align: center;
+  h3,h4{
+  color: black;
+  padding-bottom: none;
+  }
+  a{
+    text-decoration: none;
+    :hover{
+      color: $indian-red;
+    }
+  }
+}

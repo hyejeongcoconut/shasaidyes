@@ -3,10 +3,9 @@
   <%= f.input :first_name %>
   <%= f.input :last_name %>
   <%= f.input :phone_number %>
-  <%= f.input :address %>
   <%= f.input :email %>
   <%= f.input :additional_guest_numbers %>
-  <%= f.input :food_preference %>
+  <%= f.input :food_preference, as: :radio_buttons, collection: Guest::FOOD_PREFERENCE, wrapper: :vertical_collection_inline %>
 
   <div class="form-actions form-btn-wrap d-flex justify-content-around">
   <%= f.submit "Add new guest", class: 'sha-btn'%>

@@ -1,22 +1,30 @@
 <%= render 'shared/dash-user-sidebar' %>
 
 <div class="dash-main">
-  <div class="chatroom-wrap">
+  <div class="chatroom-wrap mb-3">
     <h1>Chat with <%= @inbox.name %></h1>
-    <div id="messages" class="message-wrap" data-inbox-id="<%= @inbox.id %>">
+    <div id="messages" class="message-wrap mt-3" data-inbox-id="<%= @inbox.id %>">
+
+
       <% @inbox.messages.each do |message| %>
-        <div class="message-container" id="message-<%= message.id %>">
-          <i class="author">
-            <span><%= message.sender.name %></span>
-            <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-          </i>
-          <p><%= message.content %></p>
-          <% if message.photo.present? %>
-            <%= cl_image_tag message.photo.key, height: 300, wdith: 'auto', crop: :fill %>
-          <%end%>
+        <div class="d-flex">
+          <div class="message-avater">
+            <%=cl_image_tag message.sender.photo.key, class:"avatar mr-2" %>
+          </div>
+          <div class="message-container" id="message-<%= message.id %>">
+            <i class="author">
+              <span><%= message.sender.name %></span>
+              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+            </i>
+            <p><%= message.content %></p>
+            <% if message.photo.present? %>
+              <%= cl_image_tag message.photo.key, height: 300, wdith: 'auto', crop: :fill %>
+            <%end%>
+          </div>
         </div>
       <% end %>
     </div>
+    <hr>
     <%= simple_form_for [:user, @inbox, @message ],remote:true, authenticity_token: true do |f| %>
       <div class="row senddiv align-items-center">
         <div class="col-xs-12 col-md-9">

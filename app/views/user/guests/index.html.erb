@@ -2,7 +2,7 @@
 
 <div class="dash-main">
 
-<div class="inbox-wrap">
+<div class="guest-wrap">
     <h1>My Guest List</h1>
 
     <table class="table inbox-table">
@@ -10,7 +10,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
-          <th scope="col">Address</th>
+          <th scope="col">Email</th>
           <th scope="col">Phone Number</th>
           <th scope="col">Meal Pref</th>
           <th scope="col">Additional Guests</th>
@@ -24,7 +24,7 @@
         <tr>
           <th scope="row"><%= count += 1 %></th>
           <td><%= guest.first_name %> <%= guest.last_name %></td>
-          <td><%= guest.address %></td>
+          <td><%= guest.email %></td>
           <td><%= guest.phone_number %></td>
           <td><%= guest.food_preference %></td>
           <td><%= guest.additional_guest_numbers %></td>
