@@ -38,7 +38,7 @@ gem 'simple_form'
 gem 'dotenv-rails', groups: [:development, :test]
 
 # Added cloudinary
-gem 'cloudinary', '~> 1.12.0'
+gem 'cloudinary', '~> 1.14.0'
 
 # Faker added for seeding
 
