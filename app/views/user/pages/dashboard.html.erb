@@ -26,47 +26,51 @@
 <%# My Favorites %>
   <div class="col-xs-12 col-md-6">
     <div class="client-messages vdash-divbackground" data-controller="invoice-modal">
-      <h2>My Favorite Vendors</h2>
-      <hr>
-      <div class="row align-items-center">
-      <% if @favorites.present? %>
-        <% @favorites.reverse_each do |favorite| %>
-          <div class="col-xs-12 col-md-7">
-            <div class="fav-names">
-              <%= link_to user_vendor_path(favorite.vendor.id) do %>
+    <h2>My Favorite Vendors</h2>
+      <table class="table fav-v-table">
+        <thead>
+          <tr>
+            <th scope="col">Vendor Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Chat</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% if @favorites.present? %>
+          <% @favorites.reverse_each do |favorite| %>
+          <tr>
+            <th scope="row"> <%= link_to user_vendor_path(favorite.vendor.id) do %>
                 <h4 id="fav-v-name"><%= favorite.vendor.name.capitalize %></h4>
-              <%end%>
-              <p>(<%= favorite.vendor.category.capitalize %>) </p>
-            </div>
-          </div>
-
-          <div class="col-xs-12 col-md-5">
-            <div class="chat-options float-right">
-              <button class="sha-green-btn sha-btn-md"><%= link_to "Chat Now", user_inbox_path(favorite.inbox.id) %></button>
-              <% if favorite.inbox.messages.blank? %>
-                <%= link_to "Remove",
+              <%end%></th>
+            <td><p><%= favorite.vendor.category.capitalize %></p></td>
+            <td><button class="sha-green-btn sha-btn-md"><%= link_to "Chat Now", user_inbox_path(favorite.inbox.id) %></button></td>
+            <td><% if favorite.inbox.messages.blank? %>
+                <button class="sha-btn-outline sha-btn-md"><%= link_to "Remove",
                   user_favorite_vendor_path(favorite),
-                  class: "sha-btn-outline sha-btn-md",
                   method: :delete,
-                  data: { confirm: "Are you sure?" } %>
-              <% elsif favorite.quote.booked == 0 %>
-                <button class="sha-grey-btn sha-btn-md" disabled>No Invoice</button>
-              <% elsif favorite.quote.booked == 1 %>
-                <button href="#"
-                        class="sha-mustard-btn sha-btn-md"
-                        data-action="click->invoice-modal#openModal"
-                        data-date="<%= favorite.quote.date %>"
-                        data-list_of_services="<%= favorite.quote.list_of_services %>"
-                        data-total_price="<%= favorite.quote.total_price %>"
-                        data-quote_id="<%= favorite.quote.id %>">See invoice!</button>
-              <% else %>
-                <button class="sha-green-btn sha-btn-md">Paid</button>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
+                  data: { confirm: "Are you sure?" } %></button>
+                <% elsif favorite.quote.booked == 0 %>
+                  <button class="sha-grey-btn sha-btn-md" disabled>No Invoice</button>
+                <% elsif favorite.quote.booked == 1 %>
+                  <button href="#"
+                          class="sha-mustard-btn sha-btn-md"
+                          data-action="click->invoice-modal#openModal"
+                          data-date="<%= favorite.quote.date %>"
+                          data-list_of_services="<%= favorite.quote.list_of_services %>"
+                          data-total_price="<%= favorite.quote.total_price %>"
+                          data-quote_id="<%= favorite.quote.id %>">See invoice!</button>
+                <% else %>
+                  <button class="sha-green-btn sha-btn-md">Paid</button>
+                <% end %>
+              </td>
+          </tr>
+          <% end %>
       <% end %>
-      </div>
+        </tbody>
+      </table>
+      
+      
       <div class="d-flex justify-content-around">
         <button class="sha-btn-outline-md m-4"><%= link_to "Go to my Inbox", user_inboxes_path %></button>
       </div>
@@ -80,10 +84,10 @@
     <div class="dash-guests vdash-divbackground">
       <h2>My Guests</h2>
       <hr>
-      <div class="row align-items-center">
+      <div class="row align-items-top">
         <% @guests.each do |guest| %>
-          <div class="col-xs-12 col-md-7">
-            <h4><%= guest.first_name.capitalize %> <%= guest.last_name.capitalize %></h4>
+          <div class="col-xs-12 col-md-7 pb-0">
+            <p><%= guest.first_name.capitalize %> <%= guest.last_name.capitalize %></p>
           </div>
           <div class="col-xs-12 col-md-5">
             <button class="sha-green-btn"><%= link_to "Guest Details",user_guest_path(guest.id) %></button>
