@@ -19,6 +19,6 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :photo, presence:true
 
   def name
-    name = first_name + last_name
+    name = first_name + " " + last_name
   end
 end
