@@ -12,43 +12,43 @@ Guest.destroy_all
 Vendor.destroy_all
 Product.destroy_all
 
-# h = User.new(
-#   first_name: "Hyejeong",
-#   last_name: "Kwon",
-#   email: "hyejeongcoconut@test.com",
-#   password:"123456"
-# )
-# puts "You has unlocked a new character Hyejeong created!"
+h = User.new(
+  first_name: "Hyejeong",
+  last_name: "Kwon",
+  email: "hyejeongcoconut@test.com",
+  password:"123456"
+)
+puts "You has unlocked a new character Hyejeong created!"
 
 
-h.photo.attach(io: File.open('app/assets/images/portrait.png'), filename: 'pokemon.png', content_type: 'image/png')
+h.photo.attach(io: File.open('app/assets/images/me.jpg'), filename: 'me.jpg', content_type: 'image/jpg')
 h.save!
 
 
-# m = User.new(
-#   first_name: "Michelle",
-#   last_name: "Kim",
-#   email: "michelle@test.com",
-#   password:"123456"
-# )
-# puts "You has unlocked a new character Michelle done!"
+m = User.new(
+  first_name: "Michelle",
+  last_name: "Kim",
+  email: "michelle@test.com",
+  password:"123456"
+)
+puts "You has unlocked a new character Michelle done!"
 
 
-file = URI.open('https://d29zunrt9sid73.cloudfront.net/speaker_media/asset/28695/portrait_70_28695.png')
-m.photo.attach(io: file, filename: 'pokemon.png', content_type: 'image/png')
+file = File.open('app/assets/images/YmdI9lLq_400x400.jpg')
+m.photo.attach(io: file, filename: 'michelle.jpg', content_type: 'image/jpg')
 m.save!
 
 
-# y = User.new(
-#   first_name: "Yiro",
-#   last_name: "Yi",
-#   email: "yiroyi@test.com",
-#   password:"123456"
-# )
-# puts "You has unlocked a new character Yiro done!"
+y = User.new(
+  first_name: "Yiro",
+  last_name: "Yi",
+  email: "yiroyi@test.com",
+  password:"123456"
+)
+puts "You has unlocked a new character Yiro done!"
 
-# y.photo.attach(io: URI.open('https://d29zunrt9sid73.cloudfront.net/speaker_media/asset/28695/portrait_70_28695.png'), filename: 'pokemon.png', content_type: 'image/png')
-# y.save!
+y.photo.attach(io: URI.open('https://d29zunrt9sid73.cloudfront.net/speaker_media/asset/28695/portrait_70_28695.png'), filename: 'pokemon.png', content_type: 'image/png')
+y.save!
 
 
 
