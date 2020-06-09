@@ -1,8 +1,8 @@
 <%= render 'shared/dash-vendor-sidebar' %>
 
 <div class="dash-main">
-  <div class="inbox-wrap">
-    <h1>My Inboxes</h1>
+  <div class="inbox-wrap" data-controller="vendor-modal">
+    <h1>My Inboxes HOO</h1>
 
     <table class="table inbox-table">
       <thead>
@@ -40,8 +40,10 @@
             <% end %>
           </td>
         </tr>
+        
         <% end %>
       </tbody>
+      <%= render 'shared/vendor_modal' %>
     </table>
 
 
