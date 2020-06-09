@@ -5,15 +5,20 @@
     <h1>Chat with <%= User.find(@inbox.user_id).first_name.capitalize %> <%= User.find(@inbox.user_id).last_name.capitalize %></h1>
     <div id="messages" class="message-wrap" data-inbox-id="<%= @inbox.id %>">
       <% @inbox.messages.each do |message| %>
-        <div class="message-container" id="message-<%= message.id %>">
-          <i class="author">
-            <span><%= message.sender.name%></span>
-            <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-          </i>
-          <p><%= message.content %></p>
-          <% if message.photo.present? %>
-            <%= cl_image_tag message.photo.key, height: 300, wdith: 'auto', crop: :fill %>
-          <%end%>
+        <div class="d-flex">
+          <div class="message-avater">
+            <%=cl_image_tag message.sender.photo.key, class:"avatar mr-2" %>
+          </div>
+          <div class="message-container" id="message-<%= message.id %>">
+            <i class="author">
+              <span><%= message.sender.name %></span>
+              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+            </i>
+            <p><%= message.content %></p>
+            <% if message.photo.present? %>
+              <%= cl_image_tag message.photo.key, height: 300, wdith: 'auto', crop: :fill %>
+            <%end%>
+          </div>
         </div>
       <% end %>
     </div>
